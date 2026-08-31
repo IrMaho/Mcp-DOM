@@ -1,0 +1,46 @@
+{
+  "name": "browser-forensic-recorder",
+  "version": "2.0.0",
+  "description": "Browser Forensic Recorder, DOM Time-Travel Debugger, Lifecycle Tracer, and Agent MCP Interface",
+  "type": "module",
+  "main": "dist/server/mcp-server.js",
+  "bin": {
+    "forensic-mcp": "./bin/mcp-server.js",
+    "forensic-bridge": "./bin/bridge-server.js"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build:client": "vite build",
+    "build:server": "vite build --config vite.config.server.ts",
+    "build": "npm run build:client && npm run build:server && tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "mcp": "node ./bin/mcp-server.js",
+    "bridge": "node ./bin/bridge-server.js"
+  },
+  "keywords": [
+    "browser",
+    "debugger",
+    "dom-recording",
+    "time-travel",
+    "forensics",
+    "mcp",
+    "modelcontextprotocol",
+    "chrome-extension"
+  ],
+  "author": "Antigravity Engineering Pair",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "ws": "^8.18.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.308",
+    "@types/node": "^22.13.9",
+    "@types/ws": "^8.5.14",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.0",
+    "vitest": "^3.0.7"
+  }
+}

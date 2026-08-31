@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Local session recordings & cache
+.forensic_sessions/
+.test_forensic_storage/
+.cache/
+.temp/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS Files
+Thumbs.db
+.DS_Store

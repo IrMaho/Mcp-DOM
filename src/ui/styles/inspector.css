@@ -1,0 +1,164 @@
+/* DOM Tree View & Node Details Inspector */
+.inspector-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+  overflow: hidden;
+}
+
+.tree-container {
+  border-right: 1px solid var(--border-default);
+  overflow: auto;
+  padding: 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.tree-node-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.tree-node-row:hover {
+  background: var(--bg-surface-elevated);
+}
+
+.tree-node-row.selected {
+  background: rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+  font-weight: 600;
+}
+
+.tree-node-row .tag { color: #f43f5e; font-weight: 600; }
+.tree-node-row .attr-name { color: #fbbf24; }
+.tree-node-row .attr-val { color: #34d399; }
+.tree-node-row .text-preview { color: var(--text-secondary); font-style: italic; }
+.tree-node-row .node-id-badge {
+  font-size: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-muted);
+  padding: 0 4px;
+  border-radius: 3px;
+}
+
+/* Node Properties Pane */
+.node-details-pane {
+  padding: 16px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.details-card {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+}
+
+.details-card h4 {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.kv-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  font-family: var(--font-mono);
+}
+
+.kv-table td {
+  padding: 4px 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.kv-table td.key {
+  color: var(--text-muted);
+  width: 120px;
+}
+
+.kv-table td.val {
+  color: var(--text-primary);
+  word-break: break-all;
+}
+
+.quick-actions-bar {
+  display: flex;
+  gap: 8px;
+}
+
+/* Forensics & Disappearing Element View */
+.forensics-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.diagnosis-hero {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(15, 23, 42, 0.8) 100%);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.diagnosis-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.confidence-meter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  color: #f87171;
+  font-size: 13px;
+}
+
+.evidentiary-trail {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.evidence-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+}
+
+.evidence-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.evidence-badge.direct { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+.evidence-badge.preceding { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+.evidence-badge.correlated { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }

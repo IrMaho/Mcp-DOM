@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Browser Forensic Recorder & Time-Travel Debugger</title>
+    <script type="module" crossorigin src="/assets/ui-5ABFVSNo.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-P2Xu9kJm.js">
+    <link rel="modulepreload" crossorigin href="/assets/indexeddb-storage-CKIWviAV.js">
+    <link rel="modulepreload" crossorigin href="/assets/recorder--oksUSXW.js">
+    <link rel="stylesheet" crossorigin href="/assets/ui-DItbNCUT.css">
+  </head>
+  <body>
+    <!-- App Header -->
+    <header class="app-header">
+      <div class="brand-section">
+        <div class="logo-badge">⚡</div>
+        <div class="app-title">
+          Browser Forensic Debugger
+          <span class="version">v2.0 MCP</span>
+        </div>
+      </div>
+
+      <div class="header-center">
+        <div class="session-selector-container">
+          <label for="session-select" style="font-size: 11px; color: var(--text-muted);">Session:</label>
+          <select id="session-select" class="session-select">
+            <option value="">(No session loaded)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button id="btn-start-record" class="btn btn-primary">⏺ Start Live Session</button>
+        <button id="btn-stop-record" class="btn btn-danger" style="display: none;">⏹ Stop Session</button>
+        <button id="btn-checkpoint" class="btn btn-ghost" disabled>📍 Checkpoint</button>
+        <button id="btn-export" class="btn btn-ghost">💾 Export JSON</button>
+        <button id="btn-import" class="btn btn-ghost">📂 Import</button>
+        <input type="file" id="file-import-input" accept=".json" style="display: none;" />
+        <button id="btn-search" class="btn btn-ghost btn-icon-only" title="Search (Ctrl+F)">🔍</button>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="workspace-container">
+      <!-- Left Column: Replay Viewport -->
+      <section class="left-pane">
+        <div class="replay-viewport-container">
+          <div class="viewport-overlay-info" id="viewport-overlay-info">
+            T: <span id="overlay-time">0.0ms</span> | URL: <span id="overlay-url">-</span>
+          </div>
+          <div id="replay-iframe-host" style="width: 100%; height: 100%;"></div>
+        </div>
+      </section>
+
+      <!-- Right Column: Tabs -->
+      <section class="right-pane">
+        <nav class="tabs-header">
+          <button class="tab-btn active" data-tab="inspector">
+            <span>🌲 DOM Inspector</span>
+          </button>
+          <button class="tab-btn" data-tab="diff">
+            <span>⚖️ DOM Diff</span>
+            <span class="tab-badge" id="badge-diff-count">0</span>
+          </button>
+          <button class="tab-btn" data-tab="forensics">
+            <span>🔬 Forensics & Disappearing UI</span>
+          </button>
+          <button class="tab-btn" data-tab="diagnostics">
+            <span>⚠️ Console & Errors</span>
+            <span class="tab-badge" id="badge-error-count">0</span>
+          </button>
+          <button class="tab-btn" data-tab="network">
+            <span>🌐 Network</span>
+            <span class="tab-badge" id="badge-network-count">0</span>
+          </button>
+          <button class="tab-btn" data-tab="annotations">
+            <span>📝 Notes</span>
+          </button>
+        </nav>
+
+        <div class="tab-content-container">
+          <!-- Tab 1: DOM Inspector -->
+          <div class="tab-pane active" id="pane-inspector">
+            <div class="inspector-layout">
+              <div class="tree-container" id="dom-tree-view">
+                <div style="color: var(--text-muted); padding: 12px;">Load or record a session to inspect DOM.</div>
+              </div>
+              <div class="node-details-pane" id="node-details-pane">
+                <div style="color: var(--text-muted); padding: 12px;">Select an element from the DOM tree or replay viewport.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 2: DOM Diff -->
+          <div class="tab-pane" id="pane-diff">
+            <div class="diff-container">
+              <div class="diff-controls">
+                <label style="font-size: 11px; color: var(--text-secondary);">Compare T1 (ms):</label>
+                <input type="number" id="diff-t1-input" value="0" style="width: 80px; background: var(--bg-app); border: 1px solid var(--border-default); color: #fff; padding: 4px 6px; border-radius: 4px;" />
+                <label style="font-size: 11px; color: var(--text-secondary);">vs T2 (ms):</label>
+                <input type="number" id="diff-t2-input" value="100" style="width: 80px; background: var(--bg-app); border: 1px solid var(--border-default); color: #fff; padding: 4px 6px; border-radius: 4px;" />
+                <button id="btn-run-diff" class="btn btn-primary">Compare States</button>
+                <button id="btn-diff-prev-mutation" class="btn btn-ghost">Before/After Current Event</button>
+              </div>
+              <div class="diff-summary-card" id="diff-summary-metrics"></div>
+              <div class="diff-list" id="diff-results-list">
+                <div style="color: var(--text-muted); padding: 12px;">Select timestamps and click Compare States.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 3: Forensics & Disappearing UI -->
+          <div class="tab-pane" id="pane-forensics">
+            <div class="forensics-container">
+              <div class="details-card">
+                <h4>Disappearing UI Forensic Diagnosis</h4>
+                <div style="display: flex; gap: 8px; margin-top: 8px;">
+                  <input type="text" id="forensic-target-input" placeholder="e.g. .gpt-panel or #injected-modal or Node ID" style="flex: 1; background: var(--bg-app); border: 1px solid var(--border-default); color: #fff; padding: 8px 12px; border-radius: 6px; font-size: 12px;" />
+                  <button id="btn-run-forensics" class="btn btn-primary">🔍 Investigate Disappearance</button>
+                </div>
+              </div>
+              <div id="forensic-report-output">
+                <div style="color: var(--text-muted); padding: 12px;">Enter a CSS selector or node ID to run root-cause diagnosis.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 4: Diagnostics -->
+          <div class="tab-pane" id="pane-diagnostics">
+            <div style="padding: 16px; display: flex; flex-direction: column; gap: 8px;" id="diagnostics-list">
+              <div style="color: var(--text-muted);">No console or error events recorded.</div>
+            </div>
+          </div>
+
+          <!-- Tab 5: Network -->
+          <div class="tab-pane" id="pane-network">
+            <div style="padding: 16px; display: flex; flex-direction: column; gap: 8px;" id="network-list">
+              <div style="color: var(--text-muted);">No network events recorded.</div>
+            </div>
+          </div>
+
+          <!-- Tab 6: Annotations -->
+          <div class="tab-pane" id="pane-annotations">
+            <div style="padding: 16px; display: flex; flex-direction: column; gap: 12px;">
+              <div style="display: flex; gap: 8px;">
+                <input type="text" id="annotation-input" placeholder="Add investigative note or root-cause finding..." style="flex: 1; background: var(--bg-surface-elevated); border: 1px solid var(--border-default); color: #fff; padding: 8px 12px; border-radius: 6px; font-size: 12px;" />
+                <button id="btn-add-annotation" class="btn btn-primary">Add Note</button>
+              </div>
+              <div id="annotations-list" style="display: flex; flex-direction: column; gap: 8px;"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom Timeline Section -->
+    <footer class="timeline-section">
+      <div class="timeline-controls-bar">
+        <div class="playback-buttons">
+          <button id="btn-step-prev" class="btn btn-ghost btn-icon-only" title="Step Backward (Prev Event)">⏮</button>
+          <button id="btn-play-pause" class="btn btn-primary btn-icon-only" title="Play/Pause">▶</button>
+          <button id="btn-step-next" class="btn btn-ghost btn-icon-only" title="Step Forward (Next Event)">⏭</button>
+          <button id="btn-jump-prev-err" class="btn btn-ghost btn-icon-only" title="Jump to Previous Error">⚠️⏮</button>
+          <button id="btn-jump-next-err" class="btn btn-ghost btn-icon-only" title="Jump to Next Error">⏭⚠️</button>
+        </div>
+
+        <div class="timeline-time-display">
+          <span class="current-ts" id="time-current">0.0ms</span>
+          <span class="total-ts">/ <span id="time-duration">0.0ms</span></span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <label style="font-size: 11px; color: var(--text-muted);">Speed:</label>
+          <select id="speed-select" class="speed-select">
+            <option value="0.25">0.25x</option>
+            <option value="0.5">0.5x</option>
+            <option value="1" selected>1x</option>
+            <option value="2">2x</option>
+            <option value="5">5x</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="timeline-tracks-container" id="timeline-tracks-container">
+        <div class="timeline-playhead" id="timeline-playhead" style="left: 90px;"></div>
+        <div class="timeline-ruler" id="timeline-ruler"></div>
+        <div class="timeline-track">
+          <div class="track-label">DOM Mut</div>
+          <div class="track-events-lane" id="lane-dom"></div>
+        </div>
+        <div class="timeline-track">
+          <div class="track-label">User Act</div>
+          <div class="track-events-lane" id="lane-user"></div>
+        </div>
+        <div class="timeline-track">
+          <div class="track-label">Errors</div>
+          <div class="track-events-lane" id="lane-error"></div>
+        </div>
+        <div class="timeline-track">
+          <div class="track-label">Network</div>
+          <div class="track-events-lane" id="lane-network"></div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Search Modal -->
+    <div class="modal-backdrop" id="search-modal">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3 style="font-size: 14px; font-weight: 700;">Search Session Events & Nodes</h3>
+          <button id="btn-close-search" class="btn btn-ghost btn-icon-only">✕</button>
+        </div>
+        <div class="modal-body">
+          <input type="text" id="search-query-input" placeholder="Search by text, selector, tag, error, URL, or node ID..." style="background: var(--bg-app); border: 1px solid var(--border-default); color: #fff; padding: 10px 14px; border-radius: 6px; font-size: 13px;" />
+          <div id="search-results-list" style="display: flex; flex-direction: column; gap: 6px; max-height: 400px; overflow: auto;"></div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "browser-forensics": {
+      "command": "node",
+      "args": [
+        "c:/Users/ASUS/Desktop/flutter_project/job/gpt-git/mcp_dom/bin/mcp-server.js"
+      ],
+      "disabled": false
+    }
+  }
+}

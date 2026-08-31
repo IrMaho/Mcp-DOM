@@ -1,0 +1,1 @@
+{"version":3,"file":"dom-diff-engine.d.ts","sourceRoot":"","sources":["../../../src/diff/dom-diff-engine.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,WAAW,EAAqD,MAAM,mBAAmB,CAAC;AACnG,OAAO,EAIL,aAAa,EAMd,MAAM,eAAe,CAAC;AAGvB,qBAAa,aAAa;IACxB,OAAc,IAAI,CAAC,EAAE,EAAE,WAAW,EAAE,EAAE,EAAE,WAAW,GAAG,aAAa,CA8MlE;IAED,OAAO,CAAC,MAAM,CAAC,gBAAgB;IAsC/B,OAAO,CAAC,MAAM,CAAC,iBAAiB;CAYjC"}

@@ -1,0 +1,1 @@
+import"./modulepreload-polyfill-P2Xu9kJm.js";typeof chrome<`u`&&chrome.devtools&&chrome.devtools.panels.create(`Forensic Debugger`,`icons/icon16.png`,`dist/ui/index.html`,e=>{});

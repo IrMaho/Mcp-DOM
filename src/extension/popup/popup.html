@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Forensic Recorder</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="popup-container">
+      <header class="popup-header">
+        <div class="logo-title">
+          <div class="status-pulse" id="status-indicator"></div>
+          <h2>Forensic Recorder</h2>
+        </div>
+        <span class="badge" id="status-badge">READY</span>
+      </header>
+
+      <div class="popup-body">
+        <div class="session-info" id="session-info">
+          <p id="current-url">Target: Current Active Tab</p>
+          <div class="stats-row">
+            <span id="stat-events">0 Events</span>
+            <span id="stat-time">0.0s</span>
+          </div>
+        </div>
+
+        <div class="actions-grid">
+          <button id="btn-toggle-record" class="btn btn-primary">
+            <span class="btn-icon">⏺</span>
+            <span id="btn-record-text">Start Recording</span>
+          </button>
+          <button id="btn-checkpoint" class="btn btn-secondary" disabled>
+            <span class="btn-icon">📍</span>
+            <span>Checkpoint</span>
+          </button>
+        </div>
+
+        <hr class="divider" />
+
+        <button id="btn-open-dashboard" class="btn btn-outline">
+          <span class="btn-icon">🔍</span>
+          <span>Open Forensic Dashboard</span>
+        </button>
+      </div>
+    </div>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>
