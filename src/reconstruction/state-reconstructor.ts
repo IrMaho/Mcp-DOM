@@ -63,7 +63,21 @@ export class StateReconstructor {
     // 1. Locate nearest preceding checkpoint
     const checkpoint = this.checkpointManager.findNearestCheckpoint({ sequence: effectiveSequence });
     if (!checkpoint) {
-      throw new Error('No baseline checkpoint or initial snapshot available for reconstruction');
+      return {
+        snapshotId: 'snap_empty',
+        sessionId: '',
+        timestamp: 0,
+        sequence: 0,
+        rootId: 1,
+        nodes: {
+          1: { id: 1, nodeType: 9 as any, tagName: '#document', children: [], parentId: null },
+        },
+        title: '',
+        url: '',
+        origin: '',
+        viewport: { width: 1920, height: 1080, scrollX: 0, scrollY: 0, devicePixelRatio: 1 },
+        totalNodeCount: 1,
+      };
     }
 
     // 2. Initialize VirtualTreeBuilder with checkpoint snapshot

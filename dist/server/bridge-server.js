@@ -1,4 +1,4 @@
-import { n as SessionSerializer, r as FileStorageProvider, t as MCPToolsHandler } from "./assets/tools-handler-CqGRXxhu.js";
+import { n as SessionSerializer, r as FileStorageProvider, t as MCPToolsHandler } from "./assets/tools-handler-Bc3nr5jC.js";
 import * as http from "http";
 import { WebSocketServer } from "ws";
 //#region src/mcp/bridge-server.ts

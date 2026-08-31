@@ -1,4 +1,4 @@
-import { r as FileStorageProvider, t as MCPToolsHandler } from "./assets/tools-handler-CqGRXxhu.js";
+import { r as FileStorageProvider, t as MCPToolsHandler } from "./assets/tools-handler-Bc3nr5jC.js";
 import * as readline from "readline";
 //#region src/mcp/tools-definition.ts
 var FORENSIC_MCP_TOOLS = [

@@ -11,8 +11,9 @@
   "scripts": {
     "dev": "vite",
     "build:client": "vite build",
+    "build:extension": "node scripts/build-extension.js",
     "build:server": "vite build --config vite.config.server.ts",
-    "build": "npm run build:client && npm run build:server && tsc --noEmit",
+    "build": "npm run build:client && npm run build:extension && npm run build:server && tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
