@@ -19,6 +19,35 @@ async function getActiveTab(): Promise<chrome.tabs.Tab | null> {
   return tabs[0] || null;
 }
 
+async function sendTabMessageWithFallback(tabId: number, message: any): Promise<any> {
+  return new Promise((resolve) => {
+    chrome.tabs.sendMessage(tabId, message, async (res) => {
+      if (chrome.runtime.lastError || !res) {
+        // Tab might have been opened before extension install/reload, inject content script programmatically
+        try {
+          if (chrome.scripting?.executeScript) {
+            await chrome.scripting.executeScript({
+              target: { tabId },
+              files: ['dist/extension/content-script.js'],
+            });
+            setTimeout(() => {
+              chrome.tabs.sendMessage(tabId, message, (retryRes) => {
+                resolve(retryRes || null);
+              });
+            }, 100);
+            return;
+          }
+        } catch {
+          // Cannot inject into special chrome:// pages
+        }
+        resolve(null);
+      } else {
+        resolve(res);
+      }
+    });
+  });
+}
+
 async function checkStatus() {
   const tab = await getActiveTab();
   if (!tab || !tab.id) return;
@@ -31,13 +60,12 @@ async function checkStatus() {
     }
   }
 
-  chrome.tabs.sendMessage(tab.id, { type: 'GET_RECORDER_STATUS' }, (res) => {
-    if (chrome.runtime.lastError || !res) {
-      setUIState(false);
-      return;
-    }
+  const res = await sendTabMessageWithFallback(tab.id, { type: 'GET_RECORDER_STATUS' });
+  if (res) {
     setUIState(res.isRecording, res.metadata);
-  });
+  } else {
+    setUIState(false);
+  }
 }
 
 function setUIState(recording: boolean, metadata?: any) {
@@ -81,9 +109,8 @@ btnToggleOverlay?.addEventListener('click', async () => {
   const tab = await getActiveTab();
   if (!tab || !tab.id) return;
 
-  chrome.tabs.sendMessage(tab.id, { type: 'TOGGLE_FLOATING_OVERLAY' }, () => {
-    window.close(); // Close popup so user immediately uses floating widget on the page!
-  });
+  await sendTabMessageWithFallback(tab.id, { type: 'TOGGLE_FLOATING_OVERLAY' });
+  window.close(); // Close popup so user immediately uses floating widget on the page!
 });
 
 btnToggleRecord.addEventListener('click', async () => {
@@ -91,16 +118,18 @@ btnToggleRecord.addEventListener('click', async () => {
   if (!tab || !tab.id) return;
 
   if (!isRecording) {
-    chrome.tabs.sendMessage(tab.id, { type: 'START_RECORDING', sessionName: `Session on ${tab.title || 'Tab'}` }, (res) => {
-      if (res && res.success) {
-        recordingStartTime = Date.now();
-        setUIState(true, res.metadata);
-      }
+    const res = await sendTabMessageWithFallback(tab.id, {
+      type: 'START_RECORDING',
+      sessionName: `Session on ${tab.title || 'Tab'}`,
     });
+    if (res && res.success) {
+      recordingStartTime = Date.now();
+      setUIState(true, res.metadata);
+      window.close(); // Close popup, user now has live floating controller on page!
+    }
   } else {
-    chrome.tabs.sendMessage(tab.id, { type: 'STOP_RECORDING' }, (res) => {
-      setUIState(false);
-    });
+    await sendTabMessageWithFallback(tab.id, { type: 'STOP_RECORDING' });
+    setUIState(false);
   }
 });
 
@@ -108,14 +137,13 @@ btnCheckpoint.addEventListener('click', async () => {
   const tab = await getActiveTab();
   if (!tab || !tab.id) return;
 
-  chrome.tabs.sendMessage(tab.id, { type: 'CAPTURE_CHECKPOINT' }, (res) => {
-    if (res && res.success) {
-      btnCheckpoint.style.backgroundColor = '#10b981';
-      setTimeout(() => {
-        btnCheckpoint.style.backgroundColor = '';
-      }, 500);
-    }
-  });
+  const res = await sendTabMessageWithFallback(tab.id, { type: 'CAPTURE_CHECKPOINT' });
+  if (res && res.success) {
+    btnCheckpoint.style.backgroundColor = '#10b981';
+    setTimeout(() => {
+      btnCheckpoint.style.backgroundColor = '';
+    }, 500);
+  }
 });
 
 btnOpenDashboard.addEventListener('click', () => {

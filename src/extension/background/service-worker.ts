@@ -15,27 +15,25 @@ interface ActiveRecording {
 
 const activeTabRecordings = new Map<number, ActiveRecording>();
 
+// Optional WebSocket bridge for live streaming to external MCP tools
 function connectBridge() {
+  // Only connect if explicit flag or probe silently
+  if (typeof WebSocket === 'undefined') return;
   try {
-    if (typeof WebSocket !== 'undefined') {
-      const ws = new WebSocket('ws://localhost:3847');
-      ws.onopen = () => {
-        wsBridge = ws;
-      };
-      ws.onclose = () => {
-        wsBridge = null;
-        setTimeout(connectBridge, 5000);
-      };
-      ws.onerror = () => {
-        wsBridge = null;
-      };
-    }
+    const ws = new WebSocket('ws://127.0.0.1:3847');
+    ws.onopen = () => {
+      wsBridge = ws;
+    };
+    ws.onclose = () => {
+      wsBridge = null;
+    };
+    ws.onerror = () => {
+      wsBridge = null;
+    };
   } catch {
-    // Bridge might not be running locally
+    wsBridge = null;
   }
 }
-
-connectBridge();
 
 // WebNavigation listener to capture reload, back, forward, and link navigations
 if (typeof chrome !== 'undefined' && chrome.webNavigation?.onCommitted) {
