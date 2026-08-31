@@ -2,6 +2,7 @@ let isRecording = false;
 let updateInterval: ReturnType<typeof setInterval> | null = null;
 let recordingStartTime = 0;
 
+const btnToggleOverlay = document.getElementById('btn-toggle-overlay') as HTMLButtonElement;
 const btnToggleRecord = document.getElementById('btn-toggle-record') as HTMLButtonElement;
 const btnRecordText = document.getElementById('btn-record-text') as HTMLSpanElement;
 const btnCheckpoint = document.getElementById('btn-checkpoint') as HTMLButtonElement;
@@ -23,7 +24,11 @@ async function checkStatus() {
   if (!tab || !tab.id) return;
 
   if (tab.url) {
-    currentUrlEl.textContent = `Target: ${new URL(tab.url).hostname}`;
+    try {
+      currentUrlEl.textContent = `Target: ${new URL(tab.url).hostname}`;
+    } catch {
+      currentUrlEl.textContent = `Target: Active Tab`;
+    }
   }
 
   chrome.tabs.sendMessage(tab.id, { type: 'GET_RECORDER_STATUS' }, (res) => {
@@ -72,6 +77,15 @@ function setUIState(recording: boolean, metadata?: any) {
   }
 }
 
+btnToggleOverlay?.addEventListener('click', async () => {
+  const tab = await getActiveTab();
+  if (!tab || !tab.id) return;
+
+  chrome.tabs.sendMessage(tab.id, { type: 'TOGGLE_FLOATING_OVERLAY' }, () => {
+    window.close(); // Close popup so user immediately uses floating widget on the page!
+  });
+});
+
 btnToggleRecord.addEventListener('click', async () => {
   const tab = await getActiveTab();
   if (!tab || !tab.id) return;
@@ -106,7 +120,7 @@ btnCheckpoint.addEventListener('click', async () => {
 
 btnOpenDashboard.addEventListener('click', () => {
   if (typeof chrome !== 'undefined' && chrome.tabs) {
-    chrome.tabs.create({ url: chrome.runtime.getURL('dist/ui/index.html') });
+    chrome.tabs.create({ url: chrome.runtime.getURL('dist/src/ui/index.html') });
   } else {
     window.open('../ui/index.html', '_blank');
   }
