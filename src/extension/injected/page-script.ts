@@ -20,60 +20,40 @@
     }
   }
 
-  // 1. Console Interception
-  const levels = ['log', 'warn', 'error', 'info', 'debug'] as const;
-  levels.forEach((level) => {
-    const original = (console as any)[level];
-    if (original) {
-      (console as any)[level] = function (...args: any[]) {
-        try {
-          const formatted = args.map((arg) => {
-            if (arg instanceof Error) return `${arg.name}: ${arg.message}\n${arg.stack || ''}`;
-            if (typeof arg === 'object' && arg !== null) {
-              try {
-                return JSON.stringify(arg);
-              } catch {
-                return '[Unserializable]';
-              }
-            }
-            return String(arg);
-          });
-          postForensicEvent(`RUNTIME_CONSOLE_${level.toUpperCase()}`, {
-            level,
-            formattedMessage: formatted.join(' '),
-          });
-        } catch {
-          // Never break page execution
-        }
-        return original.apply(console, args);
-      };
-    }
-  });
-
-  // 2. Uncaught Errors & Rejections
+  // 1. Uncaught Global Errors
   window.addEventListener('error', (e) => {
-    postForensicEvent('RUNTIME_ERROR', {
-      message: e.message,
-      filename: e.filename,
-      lineno: e.lineno,
-      colno: e.colno,
-      stack: e.error?.stack,
-    });
+    try {
+      postForensicEvent('RUNTIME_ERROR', {
+        message: e.message || 'Script Error',
+        filename: e.filename,
+        lineno: e.lineno,
+        colno: e.colno,
+        stack: e.error?.stack,
+        name: e.error?.name || 'Error',
+      });
+    } catch {
+      // Ignored
+    }
   });
 
+  // 2. Unhandled Promise Rejections
   window.addEventListener('unhandledrejection', (e) => {
-    let msg = 'Unhandled Promise Rejection';
-    let stack: string | undefined;
-    if (e.reason instanceof Error) {
-      msg = e.reason.message;
-      stack = e.reason.stack;
-    } else {
-      msg = String(e.reason);
+    try {
+      let message = 'Unhandled Promise Rejection';
+      let stack: string | undefined;
+      if (e.reason instanceof Error) {
+        message = e.reason.message;
+        stack = e.reason.stack;
+      } else if (typeof e.reason === 'string') {
+        message = e.reason;
+      }
+      postForensicEvent('RUNTIME_UNHANDLED_REJECTION', {
+        message,
+        stack,
+        isUnhandledRejection: true,
+      });
+    } catch {
+      // Ignored
     }
-    postForensicEvent('RUNTIME_UNHANDLED_REJECTION', {
-      message: msg,
-      stack,
-      isUnhandledRejection: true,
-    });
   });
 })();

@@ -161,8 +161,13 @@ class ForensicDashboardApp {
       select.appendChild(opt);
     }
 
-    if (sessions.length > 0) {
-      this.loadSession(sessions[0].id);
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetSessionId = urlParams.get('session');
+    if (targetSessionId && sessions.some((s) => s.id === targetSessionId)) {
+      select.value = targetSessionId;
+      await this.loadSession(targetSessionId);
+    } else if (sessions.length > 0) {
+      await this.loadSession(sessions[0].id);
     }
   }
 
@@ -173,7 +178,6 @@ class ForensicDashboardApp {
     this.currentSession = session;
     this.events = await this.storage.getEvents(sessionId);
     const checkpoints = await this.storage.getCheckpoints(sessionId);
-    const initialSnapshot = await this.storage.getInitialSnapshot(sessionId);
 
     this.reconstructor = new StateReconstructor(checkpoints, this.events);
     this.sessionIndex = new SessionIndex(this.events);
@@ -190,15 +194,19 @@ class ForensicDashboardApp {
       },
     });
 
-    // Sync Time Controller
+    let rafId: number | null = null;
+    // Sync Time Controller with RAF throttling
     this.timeController.onTimeChange((ts) => {
       this.updateTimelineUI(ts);
-      const snapshot = this.reconstructor!.getStateAt({ timestamp: ts });
-      this.currentSnapshot = snapshot;
-      this.renderDOMTree(snapshot);
-      if (this.selectedNodeId) {
-        this.renderNodeDetails(this.selectedNodeId);
-      }
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const snapshot = this.reconstructor!.getStateAt({ timestamp: ts });
+        this.currentSnapshot = snapshot;
+        this.renderDOMTree(snapshot);
+        if (this.selectedNodeId) {
+          this.renderNodeDetails(this.selectedNodeId);
+        }
+      });
     });
 
     // Initial render at T=0
@@ -235,12 +243,16 @@ class ForensicDashboardApp {
     const errorLane = document.getElementById('lane-error')!;
     const netLane = document.getElementById('lane-network')!;
 
-    domLane.innerHTML = '';
-    userLane.innerHTML = '';
-    errorLane.innerHTML = '';
-    netLane.innerHTML = '';
+    const domFrag = document.createDocumentFragment();
+    const userFrag = document.createDocumentFragment();
+    const errorFrag = document.createDocumentFragment();
+    const netFrag = document.createDocumentFragment();
 
-    for (const evt of this.events) {
+    const maxMarkers = 400;
+    const step = Math.max(1, Math.floor(this.events.length / maxMarkers));
+
+    for (let i = 0; i < this.events.length; i += step) {
+      const evt = this.events[i];
       const percent = (evt.timestamp / duration) * 100;
       const dot = document.createElement('div');
       dot.className = `event-marker ${evt.category.toLowerCase()}`;
@@ -251,11 +263,16 @@ class ForensicDashboardApp {
         this.timeController?.seek(evt.timestamp);
       });
 
-      if (evt.category === 'DOM') domLane.appendChild(dot);
-      else if (evt.category === 'USER') userLane.appendChild(dot);
-      else if (evt.category === 'ERROR' || evt.category === 'CONSOLE') errorLane.appendChild(dot);
-      else if (evt.category === 'NETWORK') netLane.appendChild(dot);
+      if (evt.category === 'DOM') domFrag.appendChild(dot);
+      else if (evt.category === 'USER') userFrag.appendChild(dot);
+      else if (evt.category === 'ERROR' || evt.category === 'CONSOLE') errorFrag.appendChild(dot);
+      else if (evt.category === 'NETWORK') netFrag.appendChild(dot);
     }
+
+    domLane.replaceChildren(domFrag);
+    userLane.replaceChildren(userFrag);
+    errorLane.replaceChildren(errorFrag);
+    netLane.replaceChildren(netFrag);
 
     // Click on timeline container to seek
     const container = document.getElementById('timeline-tracks-container')!;
@@ -271,23 +288,36 @@ class ForensicDashboardApp {
     };
   }
 
+  private escapeHtml(str: string): string {
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
   private renderDOMTree(snapshot: DOMSnapshot): void {
     const treeView = document.getElementById('dom-tree-view')!;
     treeView.innerHTML = '';
+    const fragment = document.createDocumentFragment();
+    let renderedCount = 0;
+    const maxNodes = 300;
 
     const renderNode = (nodeId: LogicalNodeId, depth: number): HTMLElement | null => {
+      if (renderedCount >= maxNodes) return null;
       const node = snapshot.nodes[nodeId];
       if (!node || node.isDetached) return null;
+      renderedCount++;
 
       const row = document.createElement('div');
       row.className = `tree-node-row ${node.id === this.selectedNodeId ? 'selected' : ''}`;
-      row.style.paddingLeft = `${depth * 14 + 6}px`;
+      row.style.paddingLeft = `${depth * 12 + 6}px`;
 
       if (node.nodeType === VirtualDOMNodeType.ELEMENT_NODE) {
         let attrsStr = '';
         if (node.attributes) {
           const attrs = Object.entries(node.attributes).slice(0, 2);
-          attrsStr = attrs.map(([k, v]) => ` <span class="attr-name">${k}</span>="<span class="attr-val">${v}</span>"`).join('');
+          attrsStr = attrs.map(([k, v]) => ` <span class="attr-name">${k}</span>="<span class="attr-val">${this.escapeHtml((v || '').substring(0, 25))}</span>"`).join('');
         }
         row.innerHTML = `
           <span class="tag">&lt;${node.tagName || 'element'}${attrsStr}&gt;</span>
@@ -295,7 +325,7 @@ class ForensicDashboardApp {
         `;
       } else if (node.nodeType === VirtualDOMNodeType.TEXT_NODE) {
         const preview = (node.textContent || '').substring(0, 30);
-        row.innerHTML = `<span class="text-preview">"${preview}"</span>`;
+        row.innerHTML = `<span class="text-preview">"${this.escapeHtml(preview)}"</span>`;
       } else {
         row.innerHTML = `<span class="text-preview">&lt;${node.tagName || 'node'}&gt;</span>`;
       }
@@ -311,7 +341,7 @@ class ForensicDashboardApp {
       const wrapper = document.createElement('div');
       wrapper.appendChild(row);
 
-      if (node.children && node.children.length > 0) {
+      if (node.children && node.children.length > 0 && renderedCount < maxNodes) {
         for (const childId of node.children) {
           const childEl = renderNode(childId, depth + 1);
           if (childEl) wrapper.appendChild(childEl);
@@ -322,7 +352,17 @@ class ForensicDashboardApp {
     };
 
     const treeEl = renderNode(snapshot.rootId, 0);
-    if (treeEl) treeView.appendChild(treeEl);
+    if (treeEl) fragment.appendChild(treeEl);
+
+    const totalNodes = Object.keys(snapshot.nodes).length;
+    if (totalNodes > renderedCount) {
+      const moreNote = document.createElement('div');
+      moreNote.style.cssText = 'padding: 8px 12px; color: var(--text-muted); font-size: 11px; font-style: italic;';
+      moreNote.textContent = `... and ${totalNodes - renderedCount} more nodes in virtual DOM`;
+      fragment.appendChild(moreNote);
+    }
+
+    treeView.appendChild(fragment);
   }
 
   private renderNodeDetails(nodeId: LogicalNodeId): void {

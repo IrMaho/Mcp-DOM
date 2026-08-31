@@ -138,6 +138,28 @@ export class ReplayEngine {
     };
 
     const treeHtml = renderNodeHtml(rootId);
+    const hasHtmlTag = treeHtml.includes('<html') || treeHtml.includes('<body');
+    const inspectorStyle = `
+      <style>
+        /* Reset & Inspector Highlighting Styles */
+        [data-forensic-selected="true"] {
+          outline: 2px solid #3b82f6 !important;
+          outline-offset: 2px !important;
+          background-color: rgba(59, 130, 246, 0.15) !important;
+        }
+        [data-forensic-hover="true"] {
+          outline: 1px dashed #60a5fa !important;
+        }
+        * { cursor: crosshair !important; }
+      </style>
+    `;
+
+    if (hasHtmlTag) {
+      if (treeHtml.includes('</head>')) {
+        return treeHtml.replace('</head>', `${inspectorStyle}</head>`);
+      }
+      return `${inspectorStyle}${treeHtml}`;
+    }
 
     return `
       <!DOCTYPE html>
@@ -145,18 +167,7 @@ export class ReplayEngine {
         <head>
           <meta charset="utf-8" />
           <title>${this.escapeHtml(snapshot.title || 'Forensic Replay')}</title>
-          <style>
-            /* Reset & Inspector Highlighting Styles */
-            [data-forensic-selected="true"] {
-              outline: 2px solid #3b82f6 !important;
-              outline-offset: 2px !important;
-              background-color: rgba(59, 130, 246, 0.15) !important;
-            }
-            [data-forensic-hover="true"] {
-              outline: 1px dashed #60a5fa !important;
-            }
-            * { cursor: crosshair !important; }
-          </style>
+          ${inspectorStyle}
         </head>
         <body>
           ${treeHtml}
