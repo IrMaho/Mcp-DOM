@@ -97,8 +97,18 @@ export class SessionIndex {
       }
 
       if (lowerText) {
-        const payloadStr = JSON.stringify(evt.payload);
+        let payloadStr = '';
+        if (evt.type === 'DOM_SNAPSHOT' || evt.type === 'CHECKPOINT') {
+          payloadStr = String((evt.payload as any)?.title || (evt.payload as any)?.url || '');
+        } else {
+          try {
+            payloadStr = JSON.stringify(evt.payload || {});
+          } catch {
+            payloadStr = '';
+          }
+        }
         const lowerPayload = payloadStr.toLowerCase();
+
         if (lowerPayload.includes(lowerText)) {
           matchedField = 'payload';
           const matchIdx = lowerPayload.indexOf(lowerText);

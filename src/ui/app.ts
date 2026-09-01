@@ -752,29 +752,47 @@ class ForensicDashboardApp {
 
   private async exportSession(): Promise<void> {
     if (!this.currentSession) return;
-    const initialSnapshot = (await this.storage.getInitialSnapshot(this.currentSession.id)) || this.currentSnapshot;
-    if (!initialSnapshot) return;
+    try {
+      const initialSnapshot = (await this.storage.getInitialSnapshot(this.currentSession.id)) || this.currentSnapshot;
+      if (!initialSnapshot) {
+        alert('No baseline snapshot found for this session.');
+        return;
+      }
 
-    const checkpoints = await this.storage.getCheckpoints(this.currentSession.id);
-    const annotations = await this.storage.getAnnotations(this.currentSession.id);
+      const checkpoints = await this.storage.getCheckpoints(this.currentSession.id);
+      const annotations = await this.storage.getAnnotations(this.currentSession.id);
 
-    const bundle = SessionSerializer.exportBundle(
-      this.currentSession,
-      initialSnapshot,
-      this.events,
-      checkpoints,
-      annotations
-    );
+      const bundle = SessionSerializer.exportBundle(
+        this.currentSession,
+        initialSnapshot,
+        this.events,
+        checkpoints,
+        annotations
+      );
 
-    const jsonStr = SessionSerializer.exportToJson(bundle);
-    const blob = new Blob([jsonStr], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
+      const jsonStr = SessionSerializer.exportToJson(bundle, false);
+      const blob = new Blob([jsonStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
 
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${this.currentSession.id}.forensic.json`;
-    a.click();
-    URL.revokeObjectURL(url);
+      const sanitizedName = (this.currentSession.name || 'session').replace(/[^a-zA-Z0-9_-]/g, '_');
+      const filename = `${sanitizedName}_${this.currentSession.id}.forensic.json`;
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+
+      setTimeout(() => {
+        if (a.parentNode) {
+          a.parentNode.removeChild(a);
+        }
+        URL.revokeObjectURL(url);
+      }, 2000);
+    } catch (err: any) {
+      alert(`Export error: ${err.message}`);
+    }
   }
 
   private importSession(e: Event): void {

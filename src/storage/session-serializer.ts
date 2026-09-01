@@ -38,7 +38,7 @@ export class SessionSerializer {
     };
   }
 
-  public static exportToJson(bundle: SessionExportBundle, pretty: boolean = true): string {
+  public static exportToJson(bundle: SessionExportBundle, pretty: boolean = false): string {
     return JSON.stringify(bundle, null, pretty ? 2 : undefined);
   }
 
