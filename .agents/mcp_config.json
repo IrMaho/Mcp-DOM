@@ -3,12 +3,15 @@
     "browser-forensics": {
       "command": "node",
       "args": [
-        "c:/Users/ASUS/Desktop/flutter_project/job/gpt-git/mcp_dom/bin/mcp-server.js"
+        "C:/Users/ASUS/Desktop/flutter_project/job/gpt-git/mcp_dom/bin/mcp-server.js"
       ],
       "disabled": false,
       "alwaysAllow": [
         "list_sessions",
         "get_session",
+        "export_session",
+        "import_session",
+        "delete_session",
         "get_timeline",
         "get_events",
         "get_events_around",
@@ -25,9 +28,19 @@
         "annotate_session",
         "get_annotations",
         "get_recording_health",
-        "export_session",
-        "import_session",
-        "delete_session"
+        "inspect_live_page",
+        "inspect_live_element",
+        "get_selected_element",
+        "start_element_picker",
+        "stop_element_picker",
+        "capture_page_screenshot",
+        "capture_element_screenshot",
+        "interact_with_element",
+        "start_element_observation",
+        "stop_element_observation",
+        "get_live_dom_snapshot",
+        "get_live_dom_subtree",
+        "get_element_visual_state"
       ]
     }
   }

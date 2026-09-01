@@ -6,7 +6,9 @@ import { FileStorageProvider } from '../storage/file-storage';
 import { MCPToolsHandler } from './tools-handler';
 import { MCPResourcesHandler } from './resources-handler';
 import { ForensicStorageProvider } from '../storage/storage-interface';
-import { LiveToolsHandler } from './live-tools-handler';
+import { LiveToolsHandler, BrowserBridgeClient } from './live-tools-handler';
+import { MCPBridgeServer } from './bridge-server';
+import { BrowserCommandType } from '../types/browser-control';
 
 export { FORENSIC_MCP_TOOLS, FileStorageProvider, MCPToolsHandler };
 
@@ -14,6 +16,7 @@ export class ForensicMCPServer {
   private storage: ForensicStorageProvider;
   private toolsHandler: MCPToolsHandler;
   private resourcesHandler: MCPResourcesHandler;
+  private bridgeServer: MCPBridgeServer | null = null;
   private protocolVersion: string = '2024-11-05';
   private serverInfo = {
     name: 'browser-forensic-mcp',
@@ -25,6 +28,63 @@ export class ForensicMCPServer {
     this.storage = storage || new FileStorageProvider(storageDir);
     this.toolsHandler = new MCPToolsHandler(this.storage, liveToolsHandler);
     this.resourcesHandler = new MCPResourcesHandler(this.storage);
+
+    if (process.env.NODE_ENV !== 'test' && process.env.AUTO_BRIDGE !== 'false') {
+      this.initAutoBridge().catch(() => {});
+    }
+  }
+
+  public async initAutoBridge(): Promise<void> {
+    const bridgePort = parseInt(process.env.FORENSIC_BRIDGE_PORT || '3847', 10);
+    try {
+      this.bridgeServer = new MCPBridgeServer(bridgePort, this.storage);
+      await this.bridgeServer.start();
+      this.toolsHandler.getLiveToolsHandler().setBridgeClient(this.bridgeServer);
+      process.stderr.write(`[MCP] Auto-started background WebSocket Bridge on ws://127.0.0.1:${bridgePort}\n`);
+    } catch (err: any) {
+      this.bridgeServer = null;
+      if (err.code === 'EADDRINUSE' || (err.message && err.message.includes('EADDRINUSE'))) {
+        // Bridge is already active in background, connect as client
+        this.connectToExistingBridge(`http://127.0.0.1:${bridgePort}`);
+      }
+    }
+  }
+
+  private connectToExistingBridge(bridgeHttpUrl: string): void {
+    const remoteClient: BrowserBridgeClient = {
+      sendCommand: async (command: BrowserCommandType, payload?: any) => {
+        const toolMap: Record<BrowserCommandType, string> = {
+          LIVE_PAGE_INSPECT: 'inspect_live_page',
+          LIVE_ELEMENT_INSPECT: 'inspect_live_element',
+          GET_SELECTED_ELEMENT: 'get_selected_element',
+          START_ELEMENT_PICKER: 'start_element_picker',
+          STOP_ELEMENT_PICKER: 'stop_element_picker',
+          LIVE_PAGE_SCREENSHOT: 'capture_page_screenshot',
+          LIVE_ELEMENT_SCREENSHOT: 'capture_element_screenshot',
+          INTERACT_WITH_ELEMENT: 'interact_with_element',
+          START_ELEMENT_OBSERVATION: 'start_element_observation',
+          STOP_ELEMENT_OBSERVATION: 'stop_element_observation',
+          GET_LIVE_DOM_SNAPSHOT: 'get_live_dom_snapshot',
+          GET_LIVE_DOM_SUBTREE: 'get_live_dom_subtree',
+          GET_ELEMENT_VISUAL_STATE: 'get_element_visual_state',
+        };
+        const toolName = toolMap[command] || command.toLowerCase();
+        const res = await fetch(`${bridgeHttpUrl}/api/mcp/tool`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: toolName,
+            arguments: payload || {},
+          }),
+        });
+        const json = await res.json();
+        if (json.isError) {
+          throw new Error(json.error || json.content?.[0]?.text || 'Remote bridge command failed');
+        }
+        return JSON.parse(json.content[0].text);
+      },
+    };
+    this.toolsHandler.getLiveToolsHandler().setBridgeClient(remoteClient);
   }
 
   public getToolsHandler(): MCPToolsHandler {

@@ -235,11 +235,13 @@ export class MCPBridgeServer implements BrowserBridgeClient {
         });
       });
 
+      this.httpServer.once('error', (err) => {
+        reject(err);
+      });
+
       this.httpServer.listen(this.port, () => {
         resolve();
       });
-
-      this.httpServer.on('error', (err) => reject(err));
     });
   }
 

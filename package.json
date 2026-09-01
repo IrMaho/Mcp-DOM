@@ -5,6 +5,10 @@
   "type": "module",
   "main": "dist/server/mcp-server.js",
   "bin": {
+    "dom-antigravity": "./bin/cli.js",
+    "mcp-dom": "./bin/cli.js",
+    "browser-antigravity": "./bin/cli.js",
+    "browser-forensics": "./bin/cli.js",
     "forensic-mcp": "./bin/mcp-server.js",
     "forensic-bridge": "./bin/bridge-server.js"
   },
@@ -20,7 +24,10 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "mcp": "node ./bin/mcp-server.js",
-    "bridge": "node ./bin/bridge-server.js"
+    "bridge": "node ./bin/bridge-server.js",
+    "cli": "node ./bin/cli.js",
+    "setup:global": "node ./bin/cli.js install-global",
+    "setup:project": "node ./bin/cli.js install"
   },
   "keywords": [
     "browser",
