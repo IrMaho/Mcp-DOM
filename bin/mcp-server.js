@@ -1,7 +1,6 @@
-#!/usr/bin/env node
-
 import fs from 'fs';
 import { JSDOM } from 'jsdom';
+// Browser Forensic MCP Server Runner (v2.0.0)
 import { ForensicMCPServer } from '../dist/server/mcp-server.js';
 
 if (typeof document === 'undefined') {

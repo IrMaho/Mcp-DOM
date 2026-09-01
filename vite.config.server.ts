@@ -4,7 +4,7 @@ import { resolve } from 'path';
 export default defineConfig({
   build: {
     outDir: 'dist/server',
-    emptyOutDir: false,
+    emptyOutDir: true,
     target: 'node20',
     ssr: true,
     rollupOptions: {

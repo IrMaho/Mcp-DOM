@@ -4471,62 +4471,64 @@ class MCPBridgeServer {
         res.writeHead(404, { "Content-Type": "application/json" });
         res.end(JSON.stringify({ error: "Endpoint not found" }));
       });
-      this.wss = new WebSocketServer({ server: this.httpServer });
-      this.wss.on("connection", (ws) => {
-        this.activeSockets.add(ws);
-        ws.on("close", () => {
-          this.activeSockets.delete(ws);
-        });
-        ws.on("error", () => {
-          this.activeSockets.delete(ws);
-        });
-        ws.on("message", async (data) => {
-          try {
-            const message = JSON.parse(data.toString());
-            if (message.type === "BROWSER_COMMAND_RESPONSE" && message.id) {
-              const pending = this.pendingCommands.get(message.id);
-              if (pending) {
-                clearTimeout(pending.timer);
-                this.pendingCommands.delete(message.id);
-                if (message.success) {
-                  pending.resolve(message.data);
-                } else {
-                  pending.reject(new Error(message.error?.message || "Browser command failed"));
-                }
-              }
-              return;
-            }
-            if (message.type === "ELEMENT_SELECTED" && message.elementInfo) {
-              this.toolsHandler.getLiveToolsHandler().getLocalController().getPicker().setSelectedElement(message.elementInfo);
-              return;
-            }
-            if (message.type === "SESSION_START" || message.type === "FORENSIC_SESSION_START") {
-              await this.storage.saveSession(message.metadata);
-              if (message.initialSnapshot) {
-                await this.storage.saveInitialSnapshot(message.metadata.id, message.initialSnapshot);
-              }
-            } else if (message.type === "EVENTS_CHUNK" || message.type === "FORENSIC_EVENTS_CHUNK") {
-              await this.storage.appendEvents(message.sessionId, message.events);
-            } else if (message.type === "CHECKPOINT" || message.type === "FORENSIC_CHECKPOINT") {
-              await this.storage.saveCheckpoint(message.checkpoint);
-            } else if (message.type === "SESSION_STOP" || message.type === "FORENSIC_SESSION_STOP") {
-              const session = await this.storage.getSession(message.sessionId);
-              if (session) {
-                session.status = "stopped";
-                session.endTime = Date.now();
-                if (message.durationMs) session.durationMs = message.durationMs;
-                await this.storage.saveSession(session);
-              }
-            }
-          } catch (err) {
-            console.error("[MCPBridge] WebSocket message processing error:", err);
-          }
-        });
-      });
-      this.httpServer.once("error", (err) => {
+      this.httpServer.on("error", (err) => {
         reject(err);
       });
       this.httpServer.listen(this.port, () => {
+        this.wss = new WebSocketServer({ server: this.httpServer });
+        this.wss.on("error", () => {
+        });
+        this.wss.on("connection", (ws) => {
+          this.activeSockets.add(ws);
+          ws.on("close", () => {
+            this.activeSockets.delete(ws);
+          });
+          ws.on("error", () => {
+            this.activeSockets.delete(ws);
+          });
+          ws.on("message", async (data) => {
+            try {
+              const message = JSON.parse(data.toString());
+              if (message.type === "BROWSER_COMMAND_RESPONSE" && message.id) {
+                const pending = this.pendingCommands.get(message.id);
+                if (pending) {
+                  clearTimeout(pending.timer);
+                  this.pendingCommands.delete(message.id);
+                  if (message.success) {
+                    pending.resolve(message.data);
+                  } else {
+                    pending.reject(new Error(message.error?.message || "Browser command failed"));
+                  }
+                }
+                return;
+              }
+              if (message.type === "ELEMENT_SELECTED" && message.elementInfo) {
+                this.toolsHandler.getLiveToolsHandler().getLocalController().getPicker().setSelectedElement(message.elementInfo);
+                return;
+              }
+              if (message.type === "SESSION_START" || message.type === "FORENSIC_SESSION_START") {
+                await this.storage.saveSession(message.metadata);
+                if (message.initialSnapshot) {
+                  await this.storage.saveInitialSnapshot(message.metadata.id, message.initialSnapshot);
+                }
+              } else if (message.type === "EVENTS_CHUNK" || message.type === "FORENSIC_EVENTS_CHUNK") {
+                await this.storage.appendEvents(message.sessionId, message.events);
+              } else if (message.type === "CHECKPOINT" || message.type === "FORENSIC_CHECKPOINT") {
+                await this.storage.saveCheckpoint(message.checkpoint);
+              } else if (message.type === "SESSION_STOP" || message.type === "FORENSIC_SESSION_STOP") {
+                const session = await this.storage.getSession(message.sessionId);
+                if (session) {
+                  session.status = "stopped";
+                  session.endTime = Date.now();
+                  if (message.durationMs) session.durationMs = message.durationMs;
+                  await this.storage.saveSession(session);
+                }
+              }
+            } catch (err) {
+              console.error("[MCPBridge] WebSocket message processing error:", err);
+            }
+          });
+        });
         resolve();
       });
     });

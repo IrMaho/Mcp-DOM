@@ -267,6 +267,8 @@ if (command === 'install' || command === 'install-global') {
   import('./mcp-server.js');
 } else if (command === 'screenshot' || command === 'capture') {
   captureScreenshot();
+} else if (command === 'dom' || command === 'export-dom') {
+  import('../scripts/export-live-dom.js');
 } else if (command === 'config') {
   printConfig(args[1]);
 } else {
