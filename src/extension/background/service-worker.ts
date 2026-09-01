@@ -3,6 +3,7 @@ import { BaseEvent } from '../../types/events';
 
 const storage = new IndexedDBStorageProvider('ForensicExtensionDB');
 let wsBridge: WebSocket | null = null;
+let reconnectTimer: any = null;
 
 // Tab-specific active recording state
 interface ActiveRecording {
@@ -15,25 +16,152 @@ interface ActiveRecording {
 
 const activeTabRecordings = new Map<number, ActiveRecording>();
 
-// Optional WebSocket bridge for live streaming to external MCP tools
+// Connect & maintain WebSocket bridge for live commands and streaming
 function connectBridge() {
-  // Only connect if explicit flag or probe silently
   if (typeof WebSocket === 'undefined') return;
   try {
     const ws = new WebSocket('ws://127.0.0.1:3847');
     ws.onopen = () => {
       wsBridge = ws;
+      if (reconnectTimer) {
+        clearInterval(reconnectTimer);
+        reconnectTimer = null;
+      }
     };
+
     ws.onclose = () => {
       wsBridge = null;
+      ensureReconnect();
     };
+
     ws.onerror = () => {
       wsBridge = null;
+      ensureReconnect();
+    };
+
+    ws.onmessage = async (event) => {
+      try {
+        const message = JSON.parse(event.data.toString());
+
+        // Dispatch live browser command to active tab content script
+        if (message.type === 'BROWSER_COMMAND_REQUEST') {
+          const { id, command, payload } = message;
+
+          if (typeof chrome === 'undefined' || !chrome.tabs) {
+            ws.send(
+              JSON.stringify({
+                type: 'BROWSER_COMMAND_RESPONSE',
+                id,
+                command,
+                success: false,
+                error: { code: 'NO_CHROME_TABS_API', message: 'chrome.tabs API not available in this context' },
+              })
+            );
+            return;
+          }
+
+          chrome.tabs.query({ active: true, lastFocusedWindow: true }, async (tabs) => {
+            const activeTab = tabs && tabs[0] ? tabs[0] : null;
+            const tabId = activeTab?.id;
+
+            if (!tabId) {
+              ws.send(
+                JSON.stringify({
+                  type: 'BROWSER_COMMAND_RESPONSE',
+                  id,
+                  command,
+                  success: false,
+                  error: { code: 'NO_ACTIVE_TAB', message: 'No active browser tab found' },
+                })
+              );
+              return;
+            }
+
+            // If command is screenshot, capture pixel buffer using chrome.tabs.captureVisibleTab
+            if (command === 'LIVE_PAGE_SCREENSHOT' || command === 'LIVE_ELEMENT_SCREENSHOT') {
+              chrome.tabs.captureVisibleTab({ format: 'png' }, (dataUrl) => {
+                if (chrome.runtime.lastError || !dataUrl) {
+                  ws.send(
+                    JSON.stringify({
+                      type: 'BROWSER_COMMAND_RESPONSE',
+                      id,
+                      command,
+                      success: false,
+                      error: {
+                        code: 'SCREENSHOT_FAILED',
+                        message: chrome.runtime.lastError?.message || 'captureVisibleTab failed',
+                      },
+                    })
+                  );
+                  return;
+                }
+
+                // Pass screenshot pixel dataUrl to content script for coordinate framing and metadata
+                chrome.tabs.sendMessage(
+                  tabId,
+                  {
+                    type: 'BROWSER_COMMAND_REQUEST',
+                    id,
+                    command,
+                    payload: { ...payload, dataUrl },
+                  },
+                  (res) => {
+                    const response = res || {
+                      id,
+                      command,
+                      success: true,
+                      data: { dataUrl, captureType: command === 'LIVE_ELEMENT_SCREENSHOT' ? 'ELEMENT' : 'FULL_PAGE' },
+                    };
+                    ws.send(JSON.stringify({ type: 'BROWSER_COMMAND_RESPONSE', ...response }));
+                  }
+                );
+              });
+              return;
+            }
+
+            // Forward general live command to tab content script
+            chrome.tabs.sendMessage(tabId, message, (res) => {
+              if (chrome.runtime.lastError) {
+                ws.send(
+                  JSON.stringify({
+                    type: 'BROWSER_COMMAND_RESPONSE',
+                    id,
+                    command,
+                    success: false,
+                    error: {
+                      code: 'CONTENT_SCRIPT_UNREACHABLE',
+                      message: chrome.runtime.lastError.message || 'Content script unreachable on active tab',
+                    },
+                  })
+                );
+                return;
+              }
+              ws.send(JSON.stringify({ type: 'BROWSER_COMMAND_RESPONSE', ...(res || { id, command, success: true }) }));
+            });
+          });
+        }
+      } catch (err: any) {
+        console.error('[ServiceWorker] Bridge message handling error:', err);
+      }
     };
   } catch {
     wsBridge = null;
+    ensureReconnect();
   }
 }
+
+function ensureReconnect() {
+  if (!reconnectTimer) {
+    reconnectTimer = setInterval(() => {
+      if (!wsBridge || wsBridge.readyState !== WebSocket.OPEN) {
+        connectBridge();
+      }
+    }, 5000);
+  }
+}
+
+// Start bridge connection
+connectBridge();
 
 // WebNavigation listener to capture reload, back, forward, and link navigations
 if (typeof chrome !== 'undefined' && chrome.webNavigation?.onCommitted) {
@@ -160,6 +288,11 @@ if (typeof chrome !== 'undefined' && chrome.runtime?.onMessage) {
             return;
           }
           sendResponse({ success: false, error: 'Screenshot capture unsupported' });
+        } else if (message.type === 'ELEMENT_SELECTED') {
+          if (wsBridge && wsBridge.readyState === WebSocket.OPEN) {
+            wsBridge.send(JSON.stringify(message));
+          }
+          sendResponse({ success: true });
         }
       } catch (err: any) {
         sendResponse({ success: false, error: err.message });

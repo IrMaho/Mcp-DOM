@@ -4,18 +4,61 @@ import { ForensicStorageProvider } from '../storage/storage-interface';
 import { SessionSerializer } from '../storage/session-serializer';
 import { FileStorageProvider } from '../storage/file-storage';
 import { MCPToolsHandler } from './tools-handler';
+import { BrowserBridgeClient } from './live-tools-handler';
+import { BrowserCommandType } from '../types/browser-control';
 
-export class MCPBridgeServer {
+export class MCPBridgeServer implements BrowserBridgeClient {
   private port: number;
   private storage: ForensicStorageProvider;
   private toolsHandler: MCPToolsHandler;
   private httpServer: http.Server | null = null;
   private wss: WebSocketServer | null = null;
+  private activeSockets: Set<WebSocket> = new Set();
+  private pendingCommands = new Map<
+    string,
+    { resolve: (val: any) => void; reject: (err: Error) => void; timer: NodeJS.Timeout }
+  >();
 
   constructor(port: number = 3847, storage?: ForensicStorageProvider) {
     this.port = port;
     this.storage = storage || new FileStorageProvider('./.forensic_sessions');
     this.toolsHandler = new MCPToolsHandler(this.storage);
+    this.toolsHandler.getLiveToolsHandler().setBridgeClient(this);
+  }
+
+  public getToolsHandler(): MCPToolsHandler {
+    return this.toolsHandler;
+  }
+
+  /**
+   * BrowserBridgeClient implementation: Send live command to connected Chrome extension
+   */
+  public async sendCommand(command: BrowserCommandType, payload?: any): Promise<any> {
+    if (this.activeSockets.size === 0) {
+      throw new Error('No active browser extension connected to MCP bridge');
+    }
+
+    const commandId = `bridge_cmd_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
+    const ws = Array.from(this.activeSockets)[this.activeSockets.size - 1]; // Use latest connection
+
+    return new Promise((resolve, reject) => {
+      const timer = setTimeout(() => {
+        this.pendingCommands.delete(commandId);
+        reject(new Error(`Browser command '${command}' timed out after 8000ms`));
+      }, 8000);
+
+      this.pendingCommands.set(commandId, { resolve, reject, timer });
+
+      ws.send(
+        JSON.stringify({
+          type: 'BROWSER_COMMAND_REQUEST',
+          id: commandId,
+          command,
+          payload,
+          timestamp: Date.now(),
+        })
+      );
+    });
   }
 
   public start(): Promise<void> {
@@ -37,7 +80,14 @@ export class MCPBridgeServer {
         // 1. Health check
         if (url === '/health' && req.method === 'GET') {
           res.writeHead(200, { 'Content-Type': 'application/json' });
-          res.end(JSON.stringify({ status: 'ok', server: 'browser-forensic-bridge', version: '2.0.0' }));
+          res.end(
+            JSON.stringify({
+              status: 'ok',
+              server: 'browser-forensic-bridge',
+              version: '2.0.0',
+              connectedBrowsers: this.activeSockets.size,
+            })
+          );
           return;
         }
 
@@ -121,19 +171,56 @@ export class MCPBridgeServer {
       this.wss = new WebSocketServer({ server: this.httpServer });
 
       this.wss.on('connection', (ws: WebSocket) => {
+        this.activeSockets.add(ws);
+
+        ws.on('close', () => {
+          this.activeSockets.delete(ws);
+        });
+
+        ws.on('error', () => {
+          this.activeSockets.delete(ws);
+        });
+
         ws.on('message', async (data: string) => {
           try {
             const message = JSON.parse(data.toString());
-            if (message.type === 'SESSION_START') {
+
+            // Handle Response to Pending Browser Command
+            if (message.type === 'BROWSER_COMMAND_RESPONSE' && message.id) {
+              const pending = this.pendingCommands.get(message.id);
+              if (pending) {
+                clearTimeout(pending.timer);
+                this.pendingCommands.delete(message.id);
+                if (message.success) {
+                  pending.resolve(message.data);
+                } else {
+                  pending.reject(new Error(message.error?.message || 'Browser command failed'));
+                }
+              }
+              return;
+            }
+
+            // Handle Asynchronous Element Selected Notification
+            if (message.type === 'ELEMENT_SELECTED' && message.elementInfo) {
+              this.toolsHandler
+                .getLiveToolsHandler()
+                .getLocalController()
+                .getPicker()
+                .setSelectedElement(message.elementInfo);
+              return;
+            }
+
+            // Handle Historical Streaming Messages
+            if (message.type === 'SESSION_START' || message.type === 'FORENSIC_SESSION_START') {
               await this.storage.saveSession(message.metadata);
               if (message.initialSnapshot) {
                 await this.storage.saveInitialSnapshot(message.metadata.id, message.initialSnapshot);
               }
-            } else if (message.type === 'EVENTS_CHUNK') {
+            } else if (message.type === 'EVENTS_CHUNK' || message.type === 'FORENSIC_EVENTS_CHUNK') {
               await this.storage.appendEvents(message.sessionId, message.events);
-            } else if (message.type === 'CHECKPOINT') {
+            } else if (message.type === 'CHECKPOINT' || message.type === 'FORENSIC_CHECKPOINT') {
               await this.storage.saveCheckpoint(message.checkpoint);
-            } else if (message.type === 'SESSION_STOP') {
+            } else if (message.type === 'SESSION_STOP' || message.type === 'FORENSIC_SESSION_STOP') {
               const session = await this.storage.getSession(message.sessionId);
               if (session) {
                 session.status = 'stopped';
@@ -158,6 +245,13 @@ export class MCPBridgeServer {
 
   public stop(): Promise<void> {
     return new Promise((resolve) => {
+      for (const [_, pending] of this.pendingCommands) {
+        clearTimeout(pending.timer);
+        pending.reject(new Error('MCP Bridge stopped'));
+      }
+      this.pendingCommands.clear();
+      this.activeSockets.clear();
+
       if (this.wss) {
         this.wss.close();
       }

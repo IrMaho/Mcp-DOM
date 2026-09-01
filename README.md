@@ -2,21 +2,21 @@
 
 <div align="center">
 
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.7%2B-blue.svg?logo=typescript)](https://www.typescriptlang.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8%2B-blue.svg?logo=typescript)](https://www.typescriptlang.org/)
 [![Chrome Extension](https://img.shields.io/badge/Chrome_Extension-Manifest_V3-red.svg?logo=googlechrome)](https://developer.chrome.com/docs/extensions/mv3/)
-[![MCP](https://img.shields.io/badge/Model_Context_Protocol-JSON--RPC_2.0-purple.svg)](https://modelcontextprotocol.io/)
+[![MCP](https://img.shields.io/badge/Model_Context_Protocol-34_Tools_(JSON--RPC_2.0)-purple.svg)](https://modelcontextprotocol.io/)
 [![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg)]()
-[![Tests](https://img.shields.io/badge/Tests-24%2F24_Passed_(100%25)-brightgreen.svg)]()
+[![Tests](https://img.shields.io/badge/Tests-48%2F48_Passed_(100%25)-brightgreen.svg)]()
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
-**A high-fidelity browser forensic recorder, sub-millisecond DOM time-travel state reconstruction engine, element lifecycle tracer, and 21-tool Model Context Protocol (MCP) server for autonomous AI coding agents and frontend engineers.**
+**A high-fidelity browser forensic recorder, sub-millisecond DOM time-travel state reconstruction engine, element lifecycle tracer, live DOM intelligence controller, and 34-tool Model Context Protocol (MCP) server for autonomous AI coding agents and frontend engineers.**
 
 [Overview](#-overview--why-this-project-exists) •
 [Key Features](#-key-features) •
 [Architecture](#-system-architecture) •
 [Repository Map](#-repository-structure) •
 [Core Modules](#-core-subsystems--module-breakdown) •
-[MCP Tools (21)](#-model-context-protocol-mcp-tools-reference) •
+[MCP Tools (34)](#-model-context-protocol-mcp-tools-reference) •
 [Installation & Quick Start](#-installation--quick-start) •
 [AI Agent Guide](#-ai--agent-navigation-guide) •
 [Testing & Validation](#-testing--quality-verification)
@@ -45,7 +45,7 @@
   - [6. Sandboxed Replay & UI Dashboard (`src/replay/`, `src/ui/`)](#6-sandboxed-replay--ui-dashboard-srcreplay-srcui)
   - [7. Chrome Extension MV3 (`src/extension/`)](#7-chrome-extension-mv3-srcextension)
 - [🤖 Model Context Protocol (MCP) Tools Reference](#-model-context-protocol-mcp-tools-reference)
-  - [Tool Catalog (21 Tools)](#tool-catalog-21-tools)
+  - [Tool Catalog (34 Tools)](#tool-catalog-34-tools)
   - [Representative MCP Tool Workflows & Invocations](#representative-mcp-tool-workflows--invocations)
 - [🚀 Installation & Quick Start](#-installation--quick-start)
   - [Prerequisites](#prerequisites)
@@ -73,12 +73,13 @@ When an injected component or UI widget **unexpectedly disappears, re-renders in
 - **Console Logs** lack temporal alignment with granular DOM mutation records.
 
 ### The Solution
-**Browser Forensic Recorder & DOM Time-Travel Debugger** bridges this gap. It operates as an unobtrusive, high-performance forensic recorder in the browser that continuously correlates:
+**Browser Forensic Recorder & DOM Time-Travel Debugger** bridges this gap. It operates as an unobtrusive, high-performance forensic recorder and live browser controller that continuously correlates:
 1. **Granular DOM Mutations**: `childList` additions, removals, moves, attribute changes, and text edits.
 2. **Deterministic Stable Node Identities (`LogicalNodeId`)**: Preserving element identities across reparenting and class mutations using `WeakMap` bindings.
-3. **Monotonic Sequence Ordering**: Every event receives an incrementing sequence counter and millisecond-accurate timestamp.
-4. **Contextual Diagnostic Signals**: Correlating console outputs, unhandled errors, XHR/fetch network requests, and SPA route changes.
-5. **Autonomous AI Forensics via Model Context Protocol (MCP)**: Providing 21 structured JSON-RPC 2.0 tools allowing AI coding assistants to automatically reconstruct historical states, calculate DOM diffs, trace element lifecycles, and diagnose root causes with evidentiary confidence scoring.
+3. **Live Browser Control & Visual Intelligence**: Inspecting live DOM hierarchy, picking elements visually via `Ctrl + Shift + Mouse Click`, capturing full/element screenshots, executing synthetic actions, and running focused observation around target components.
+4. **Sub-Millisecond Temporal Ordering**: Checkpoint + delta interpolation engine for instant historical time-travel.
+5. **Contextual Diagnostic Signals**: Correlating console outputs, unhandled errors, XHR/fetch network requests, and SPA route changes.
+6. **Autonomous AI Forensics via Model Context Protocol (MCP)**: Providing 34 structured JSON-RPC 2.0 tools allowing AI coding assistants to autonomously inspect live DOM, interact with elements, calculate structural diffs, trace lifecycles, and diagnose root causes with evidentiary confidence scoring.
 
 ---
 
@@ -86,15 +87,18 @@ When an injected component or UI widget **unexpectedly disappears, re-renders in
 
 | Feature | Description |
 | :--- | :--- |
-| **Complete Baseline & Incremental Stream** | Captures a full initial virtual DOM snapshot followed by fine-grained mutation deltas, minimizing memory overhead while maintaining complete reconstructability. |
-| **Deterministic Stable Node Identity** | Maps DOM `Node` instances to integer IDs (`LogicalNodeId`) via `NodeRegistry`, surviving re-renders, moves, and class mutations. |
+| **Live Browser Control & Live DOM Intelligence** | Deeply inspect live page state, query element geometry, styles, roles, and state with deterministic targeting (`selectedElementRef` → `nodeId` → `selector` → `coordinates`). |
+| **`Ctrl + Shift + Click` Visual Element Picker** | Hold `Ctrl + Shift` and click any element on the live browser page to immediately select and transmit its rich structured metadata to connected AI agents. |
+| **Full Viewport & Element-Bounded Screenshots** | Capture full visible browser page screenshots or element-specific screenshots accounting for device pixel ratio, viewport clipping, and geometry. |
+| **Synthetic Live Interactions & Effects Measurement** | Dispatch user actions (`click`, `double_click`, `right_click`, `hover`, `focus`, `blur`, `type`, `clear`, `press_key`, `select_option`, `scroll`) and measure before/after state and mutation effects. |
+| **Element-Focused Observation & Forensics** | Continuous observation engine around target components that captures mutations, errors, and network calls, and explains why an element vanished or changed layout. |
 | **Sub-Millisecond DOM Time-Travel** | `StateReconstructor.getStateAt(T \| eventId)` seeks the closest preceding snapshot checkpoint and replays mutation deltas with LRU snapshot caching. |
 | **Structural DOM Diff Engine** | Calculates added, removed, moved, attribute, class, style, and text deltas between any two timestamps ($T_1 \leftrightarrow T_2$) or events ($E_1 \leftrightarrow E_2$). |
 | **Automated Root-Cause Forensics** | `DisappearingElementAnalyzer` diagnoses whether an element vanished due to direct removal, ancestor container destruction (e.g. React/Vue re-render), style hiding (`display: none`), class changes, or preceding runtime errors/network updates. |
 | **Declarative Shadow DOM Support** | Preserves Shadow DOM boundaries across capture, serialization, virtual tree reconstruction, and sandboxed replay using `<template shadowrootmode="...">`. |
-| **Privacy & Masking by Default** | `PrivacyEngine` automatically redacts passwords, credit card numbers, SSNs, authorization headers, API tokens, and user-specified CSS selectors. |
+| **Privacy & Masking by Default** | `PrivacyEngine` automatically redacts passwords, credit card numbers, SSNs, authorization headers, API tokens, and user-specified CSS selectors in both recording and live inspection. |
 | **Interactive Glassmorphic UI Dashboard** | Modern developer dashboard featuring a sandboxed iframe replay viewport, interactive timeline scrubber, DOM tree inspector, diff viewer, diagnostics log, and search modal. |
-| **21 MCP Agent Tools** | Complete Model Context Protocol implementation (stdio + WebSocket/HTTP bridge on port 3847) designed for autonomous AI agents. |
+| **34 MCP Agent Tools** | Complete Model Context Protocol implementation (stdio + WebSocket/HTTP bridge on port 3847) designed for autonomous AI coding agents. |
 | **Zero-Dependency Extension Scripts** | Content scripts, service worker, and injected scripts are compiled as isolated IIFE bundles without external runtime imports, preventing extension sandbox crashes. |
 
 ---
@@ -273,8 +277,9 @@ mcp_dom/
 │   │   ├── diff.ts                   # DOMDiffResult, NodeDiff, AttrDiff, ClassDiff
 │   │   ├── lifecycle.ts              # LifecycleTrace, DisappearingElementReport
 │   │   ├── privacy.ts                # PrivacyConfig, MaskingRule, RedactionOptions
-│   │   └── mcp.ts                    # MCP JSON-RPC 2.0 protocol types
-│   ├── core/                         # Core Recording Engine
+│   │   ├── browser-control.ts        # LiveElementInfo, LivePageInfo, InteractionPayload, ObservationBundle
+│   │   └── mcp-types.ts              # MCP JSON-RPC 2.0 protocol types
+│   ├── core/                         # Core Recording & Live Control Engine
 │   │   ├── sequence-counter.ts       # Monotonic sequence counter & relative timing
 │   │   ├── node-registry.ts          # WeakMap node identity & SVG-safe selector engine
 │   │   ├── privacy-engine.ts         # Regex PII masking & blacklisted selector redaction
@@ -283,6 +288,11 @@ mcp_dom/
 │   │   ├── event-collector.ts        # Captures user inputs, pointer actions, scroll, SPA navigation
 │   │   ├── runtime-diagnostics.ts    # Console log interceptor & window error handler
 │   │   ├── network-monitor.ts        # Monkeypatches window.fetch and XMLHttpRequest
+│   │   ├── live-dom-inspector.ts     # Deep live DOM element, geometry, visibility & style extractor
+│   │   ├── element-picker.ts         # Ctrl+Shift+Click visual picker & hover highlighter overlay
+│   │   ├── element-interaction-engine.ts # Deterministic live element actions (click, type, focus, scroll)
+│   │   ├── element-observer.ts       # Focused target observation & before/after mutation correlation
+│   │   ├── live-browser-controller.ts# Unified command dispatcher for live browser control
 │   │   └── recorder.ts               # ForensicRecorder orchestrator & checkpoint scheduler
 │   ├── storage/                      # Persistence & Ingestion Layer
 │   │   ├── storage-interface.ts      # ForensicStorageProvider contract & EventFilter
@@ -306,32 +316,34 @@ mcp_dom/
 │   │   ├── time-controller.ts        # RAF-based time scrubber with variable playback speeds
 │   │   └── replay-engine.ts          # Sandboxed iframe DOM renderer with Declarative Shadow DOM
 │   ├── extension/                    # Chrome Extension Manifest V3
-│   │   ├── service-worker.ts         # Background worker managing tab states & IndexedDB
-│   │   ├── content-script.ts         # In-page capture agent communicating with worker
-│   │   ├── floating-controller.ts    # Shadow DOM floating recording widget
-│   │   ├── page-script.ts            # Injected script capturing isolated errors in main world
-│   │   ├── popup.ts                  # Extension toolbar popup interface
-│   │   └── devtools.ts               # Chrome DevTools panel registration
+│   │   ├── background/service-worker.ts # Background worker coordinating tab state & WebSocket bridge
+│   │   ├── content/content-script.ts    # In-page capture & live browser controller agent
+│   │   ├── content/floating-controller.ts # Shadow DOM floating recording widget
+│   │   ├── injected/page-script.ts      # Injected script capturing isolated errors in main world
+│   │   ├── popup/popup.ts               # Extension toolbar popup interface
+│   │   └── devtools/devtools.ts         # Chrome DevTools panel registration
 │   ├── ui/                           # Web Developer Dashboard
 │   │   ├── index.html                # Glassmorphic single-page dashboard layout
 │   │   ├── app.ts                    # UI controller (timeline tracks, diff, inspector, modals)
 │   │   └── styles/                   # Modern CSS design system (tokens, layout, components)
 │   └── mcp/                          # Model Context Protocol Implementation
 │       ├── server.ts                 # ForensicMCPServer over stdio JSON-RPC 2.0
-│       ├── tools-handler.ts          # Handlers for all 21 MCP agent tools
+│       ├── tools-definition.ts       # Schema definitions for all 34 MCP tools
+│       ├── tools-handler.ts          # Main dispatcher for 34 MCP agent tools
+│       ├── live-tools-handler.ts     # Dedicated handler for 13 live browser control tools
 │       ├── resources-handler.ts      # Handlers for MCP session resources
-│       └── bridge-server.ts          # HTTP/WebSocket bridge server (:3847) with DoS payload limits
+│       └── bridge-server.ts          # Bidirectional WebSocket/HTTP bridge server (:3847)
 └── tests/
-    ├── unit/                         # Unit tests (16 tests across core modules)
-    ├── integration/                  # Integration tests (Storage, SearchIndex, Bundle Export)
-    └── e2e/                          # E2E acceptance scenario (Injected UI Disappearance)
+    ├── unit/                         # Unit tests (LiveDOM, Picker, Interaction, Observer, Core)
+    ├── integration/                  # Integration tests (Storage, SearchIndex, Bundle Export, Bridge)
+    └── e2e/                          # E2E acceptance scenarios (Injected UI Disappearance & Live Debugging)
 ```
 
 ---
 
 ## 🧩 Core Subsystems & Module Breakdown
 
-### 1. Core Recording Engine (`src/core/`)
+### 1. Core Recording & Live Control Engine (`src/core/`)
 - **`SequenceCounter`**: Generates monotonically increasing integer sequence IDs and microsecond-precise timestamps relative to session start.
 - **`NodeRegistry`**: Maps live physical DOM nodes to integer `LogicalNodeId`s using `WeakMap`. Provides SVG-safe CSS selector generation and maintains parent history records.
 - **`PrivacyEngine`**: Protects user privacy at ingestion time by redacting sensitive input values, authorization headers, API keys, password fields, and CSS selector blacklists.
@@ -340,7 +352,12 @@ mcp_dom/
 - **`EventCollector`**: Listens for user interactions (`click`, `input`, `keydown`, `submit`), throttles high-frequency events (`scroll`, `resize`), and monitors SPA navigation (`pushState`, `replaceState`, `popstate`).
 - **`RuntimeDiagnostics`**: Intercepts `console.log/warn/error/info/debug` with stack trace preservation and captures uncaught errors (`window.onerror`, `unhandledrejection`).
 - **`NetworkMonitor`**: Intercepts `window.fetch` and `XMLHttpRequest` to capture request/response timings, status codes, and headers with query parameter sanitization.
-- **`ForensicRecorder`**: Orchestrates recording lifecycle, batches event writes (every 25 events or 1s), and triggers periodic/adaptive checkpoints (every 200 events or 30s).
+- **`LiveDOMInspector`**: Deeply inspects live elements and active page state, computing layout bounds, visibility, computed styles, roles, ARIA attributes, parent chains, and ranked selector candidates.
+- **`ElementPicker`**: Listens for global `Ctrl + Shift + Click` user selection, provides interactive crosshair hover highlighting (`#forensic-inspect-highlighter`), and transmits selected metadata to connected AI agents.
+- **`ElementInteractionEngine`**: Executes deterministic synthetic/native actions (`click`, `double_click`, `right_click`, `hover`, `focus`, `blur`, `type`, `clear`, `press_key`, `select_option`, `scroll`) and measures immediate before/after effects.
+- **`ElementObserver`**: Manages focused observation sessions around target elements, tracking mutation activity, unmounting, and visual obscuration.
+- **`LiveBrowserController`**: Master coordinator in the browser/content-script context for all live inspection, selection, screenshot, and interaction commands.
+- **`ForensicRecorder`**: Orchestrates continuous recording lifecycle, batches event writes, and triggers periodic/adaptive checkpoints.
 
 ### 2. Time-Travel & Query Engine (`src/reconstruction/`)
 - **`VirtualTreeBuilder`**: Manages an in-memory virtual DOM state tree. Supports incremental mutation replay (`applyAdd`, `applyRemove`, `applyMove`, `applyAttrChange`, `applyTextChange`) and serializes to HTML with Declarative Shadow DOM support. Recursively marks detached child subtrees.
@@ -369,8 +386,8 @@ mcp_dom/
 - **`AppController` (`src/ui/app.ts`)**: Glassmorphic SPA managing interactive timeline tracks (DOM, User, Errors, Network), DOM tree navigation, live element inspection, and search modal (Ctrl+F).
 
 ### 7. Chrome Extension MV3 (`src/extension/`)
-- **`service-worker.ts`**: Background worker coordinating recording states across browser tabs, communicating with content scripts, and persisting recordings in IndexedDB.
-- **`content-script.ts`**: Injected script running in the isolated world, initializing `ForensicRecorder` and attaching the in-page floating controller.
+- **`service-worker.ts`**: Background worker coordinating recording states across browser tabs, communicating with content scripts, and routing live MCP commands.
+- **`content-script.ts`**: Injected script running in the isolated world, initializing `ForensicRecorder`, `LiveBrowserController`, and attaching the in-page floating controller.
 - **`floating-controller.ts`**: Draggable, shadow-DOM encapsulated floating widget allowing users to start, pause, and stop recordings directly from any page.
 - **`page-script.ts`**: Injected into the main world to capture runtime errors that bypass content script sandboxes.
 
@@ -378,9 +395,29 @@ mcp_dom/
 
 ## 🤖 Model Context Protocol (MCP) Tools Reference
 
-The server exposes **21 Model Context Protocol (MCP)** tools over `stdio` (JSON-RPC 2.0) and via an HTTP/WebSocket bridge server on port `3847`.
+The server exposes **34 Model Context Protocol (MCP)** tools over `stdio` (JSON-RPC 2.0) and via an HTTP/WebSocket bridge server on port `3847`.
 
-### Tool Catalog (21 Tools)
+### Tool Catalog (34 Tools)
+
+#### 🌟 Live Browser Control & Visual Intelligence (13 Tools)
+
+| Tool Name | Category | Description |
+| :--- | :--- | :--- |
+| `inspect_live_page` | Live Inspection | Inspect the current live browser page state (URL, title, viewport dimensions, scroll, readyState, active & focused elements). |
+| `inspect_live_element` | Live Inspection | Deeply inspect a live DOM element on the active browser page by selector, node ID, or selected ref (bounds, styles, visibility, attributes, state, role, aria, parent context). |
+| `get_selected_element` | Live Selection | Retrieve the DOM element visually selected by the user holding `Ctrl + Shift + Mouse Click` in the live browser. |
+| `start_element_picker` | Live Selection | Activate interactive visual element picker mode in the browser with hover highlighting and click selection. |
+| `stop_element_picker` | Live Selection | Deactivate visual element picker mode and restore normal browser state. |
+| `capture_page_screenshot` | Live Visual | Capture a screenshot of the visible browser page viewport with temporal, scroll, and viewport metadata. |
+| `capture_element_screenshot` | Live Visual | Capture an element-specific screenshot bounded to the target element exact geometry and device pixel ratio. |
+| `interact_with_element` | Live Action | Perform an interaction (`click`, `double_click`, `right_click`, `hover`, `focus`, `blur`, `type`, `clear`, `press_key`, `select_option`, `scroll`) on a live element and return before/after state and effect measurements. |
+| `start_element_observation` | Live Observation | Start focused continuous recording and observation around a target element and its hierarchy. |
+| `stop_element_observation` | Live Observation | Stop focused element observation and assemble a complete correlation bundle with mutations, diagnostics, network activity, and root-cause analysis. |
+| `get_live_dom_snapshot` | Live DOM | Capture the current live virtual DOM state snapshot of the active page in HTML or structured JSON format. |
+| `get_live_dom_subtree` | Live DOM | Reconstruct and extract the live HTML or node structure of a specific subtree on the active page. |
+| `get_element_visual_state` | Live Visual | Inspect detailed visual layout, occlusion, clipping, opacity, z-index, and viewport visibility for a live element. |
+
+#### 🕰️ Historical Forensics & Time-Travel (21 Tools)
 
 | Tool Name | Category | Description |
 | :--- | :--- | :--- |
@@ -473,6 +510,102 @@ The server exposes **21 Model Context Protocol (MCP)** tools over `stdio` (JSON-
 - **Removed Nodes (2)**:
   - `<div id="host-sidebar">` [ID: 4]
   - `<button class="ai-action-btn" id="ai-btn">` [ID: 10]
+```
+
+---
+
+#### 3. Live Visual Element Inspection (`inspect_live_element`)
+
+**Request:**
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 103,
+  "method": "tools/call",
+  "params": {
+    "name": "inspect_live_element",
+    "arguments": {
+      "selector": "button#submit-order"
+    }
+  }
+}
+```
+
+**Response:**
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 103,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tag\": \"button\",\n  \"id\": \"submit-order\",\n  \"classes\": [\"btn\", \"btn-primary\"],\n  \"bestSelector\": \"#submit-order\",\n  \"selectorCandidates\": [\n    { \"selector\": \"#submit-order\", \"specificity\": 100, \"isUnique\": true },\n    { \"selector\": \"button[type=\\\"submit\\\"]\", \"specificity\": 80, \"isUnique\": true }\n  ],\n  \"bounds\": { \"x\": 450, \"y\": 320, \"width\": 160, \"height\": 44, \"top\": 320, \"left\": 450, \"right\": 610, \"bottom\": 364 },\n  \"visibility\": { \"isVisible\": true, \"display\": \"inline-block\", \"visibility\": \"visible\", \"opacity\": 1, \"isInViewport\": true, \"isOccluded\": false },\n  \"accessibility\": { \"role\": \"button\", \"accessibleName\": \"Complete Purchase\", \"ariaLabel\": \"Complete Purchase\", \"tabIndex\": 0, \"isFocusable\": true },\n  \"parent\": { \"tag\": \"form\", \"id\": \"checkout-form\", \"selector\": \"#checkout-form\" }\n}"
+      }
+    ]
+  }
+}
+```
+
+---
+
+#### 4. Live Synthetic Element Interaction (`interact_with_element`)
+
+**Request:**
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 104,
+  "method": "tools/call",
+  "params": {
+    "name": "interact_with_element",
+    "arguments": {
+      "action": "type",
+      "selector": "input#promo-code",
+      "text": "SUMMER50",
+      "waitForStabilization": true
+    }
+  }
+}
+```
+
+**Response:**
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 104,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"action\": \"type\",\n  \"targetSelector\": \"#promo-code\",\n  \"success\": true,\n  \"durationMs\": 45,\n  \"effects\": {\n    \"domMutationsCount\": 1,\n    \"urlChanged\": false,\n    \"consoleErrorsCount\": 0\n  }\n}"
+      }
+    ]
+  }
+}
+```
+
+---
+
+#### 5. Focused Element Observation (`start_element_observation` / `stop_element_observation`)
+
+**Workflow:**
+1. Call `start_element_observation` on `#injected-widget`.
+2. Dispatch action or let host application perform background updates.
+3. Call `stop_element_observation` to retrieve the synthesized root-cause bundle:
+
+```json
+{
+  "targetSelector": "#injected-widget",
+  "durationMs": 420,
+  "disappeared": true,
+  "disappearanceReason": "Element was unmounted/removed from the live DOM tree",
+  "disappearanceMechanism": "PARENT_SUBTREE_REPLACED",
+  "mutations": [
+    { "type": "childList", "targetSelector": "#app-container", "removedNodes": 1 }
+  ],
+  "uncaughtErrors": []
+}
 ```
 
 ---

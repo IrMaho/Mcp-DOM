@@ -150,7 +150,7 @@ const server = spawn('node', ['./bin/mcp-server.js'], {
 });
 
 let testPassed = 0;
-let expectedTests = 6;
+let expectedTests = 8;
 
 server.stdout.on('data', (chunk) => {
   const lines = chunk.toString().trim().split('\n');
@@ -164,7 +164,7 @@ server.stdout.on('data', (chunk) => {
         console.log('✔ Initialize result:', msg.result.serverInfo.name, 'v' + msg.result.serverInfo.version);
         testPassed++;
       } else if (msg.id === 2) {
-        console.log('✔ Tools count:', msg.result.tools.length);
+        console.log('✔ Tools count:', msg.result.tools.length, '(21 Historical + 13 Live Tools = 34 total)');
         testPassed++;
       } else if (msg.id === 3) {
         const data = JSON.parse(msg.result.content[0].text);
@@ -186,6 +186,14 @@ server.stdout.on('data', (chunk) => {
         console.log('✔ diff_dom output preview:');
         console.log(diff.slice(0, 200) + '...');
         testPassed++;
+      } else if (msg.id === 7) {
+        const livePage = JSON.parse(msg.result.content[0].text);
+        console.log('✔ inspect_live_page result:', 'Viewport:', livePage.viewport?.width + 'x' + livePage.viewport?.height, 'ReadyState:', livePage.readyState);
+        testPassed++;
+      } else if (msg.id === 8) {
+        const liveScr = JSON.parse(msg.result.content[0].text);
+        console.log('✔ capture_page_screenshot result:', 'Type:', liveScr.captureType, 'ID:', liveScr.screenshotId, 'Format:', liveScr.imageFormat);
+        testPassed++;
       }
     } catch (err) {
       console.error('Failed to parse line:', line, err);
@@ -204,6 +212,8 @@ setTimeout(() => send({ jsonrpc: '2.0', id: 3, method: 'tools/call', params: { n
 setTimeout(() => send({ jsonrpc: '2.0', id: 4, method: 'tools/call', params: { name: 'trace_element', arguments: { sessionId, selector: '.ai-action-btn' } } }), 150);
 setTimeout(() => send({ jsonrpc: '2.0', id: 5, method: 'tools/call', params: { name: 'why_did_element_disappear', arguments: { sessionId, target: '.ai-action-btn' } } }), 200);
 setTimeout(() => send({ jsonrpc: '2.0', id: 6, method: 'tools/call', params: { name: 'diff_dom', arguments: { sessionId, t1: 150, t2: 300 } } }), 250);
+setTimeout(() => send({ jsonrpc: '2.0', id: 7, method: 'tools/call', params: { name: 'inspect_live_page', arguments: {} } }), 300);
+setTimeout(() => send({ jsonrpc: '2.0', id: 8, method: 'tools/call', params: { name: 'capture_page_screenshot', arguments: {} } }), 350);
 
 setTimeout(() => {
   server.kill();
@@ -216,4 +226,4 @@ setTimeout(() => {
     console.error(`❌ Only ${testPassed}/${expectedTests} tests passed.`);
     process.exit(1);
   }
-}, 600);
+}, 800);

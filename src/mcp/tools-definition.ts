@@ -268,4 +268,168 @@ export const FORENSIC_MCP_TOOLS: MCPToolDefinition[] = [
       required: ['sessionId'],
     },
   },
+  // ==========================================
+  // LIVE BROWSER CONTROL & LIVE DOM INTELLIGENCE
+  // ==========================================
+  {
+    name: 'inspect_live_page',
+    description: 'Inspect the current live browser page state, including URL, title, viewport dimensions, scroll positions, readyState, active and focused elements.',
+    inputSchema: {
+      type: 'object',
+      properties: {},
+    },
+  },
+  {
+    name: 'inspect_live_element',
+    description: 'Deeply inspect a live DOM element on the active browser page by CSS selector, LogicalNodeId, or selectedElementRef, returning bounds, computed styles, visibility, attributes, state, role, aria, and parent context.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        selector: { type: 'string', description: 'CSS selector of the target element' },
+        nodeId: { type: 'number', description: 'LogicalNodeId of the element if recorded' },
+        selectedElementRef: { type: 'string', description: 'Reference token of the last selected element' },
+        xpath: { type: 'string', description: 'XPath expression for the element' },
+      },
+    },
+  },
+  {
+    name: 'get_selected_element',
+    description: 'Retrieve the DOM element visually selected by the user via Ctrl + Shift + Mouse Click in the live browser.',
+    inputSchema: {
+      type: 'object',
+      properties: {},
+    },
+  },
+  {
+    name: 'start_element_picker',
+    description: 'Activate the interactive visual element picker mode in the live browser with hover highlighting and click selection.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        highlightColor: { type: 'string', description: 'Hex color for hover highlighter (default: #0ea5e9)' },
+      },
+    },
+  },
+  {
+    name: 'stop_element_picker',
+    description: 'Deactivate the visual element picker mode in the browser and restore normal cursor and interaction state.',
+    inputSchema: {
+      type: 'object',
+      properties: {},
+    },
+  },
+  {
+    name: 'capture_page_screenshot',
+    description: 'Capture a screenshot of the visible browser page viewport with temporal, scroll, and viewport metadata.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        format: { type: 'string', enum: ['png', 'jpeg'], description: 'Image format (default: png)' },
+      },
+    },
+  },
+  {
+    name: 'capture_element_screenshot',
+    description: 'Capture an element-specific screenshot bounded to the target element exact geometry and device pixel ratio.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        selector: { type: 'string', description: 'CSS selector of the target element' },
+        nodeId: { type: 'number', description: 'LogicalNodeId of the target element' },
+        selectedElementRef: { type: 'string', description: 'Selected element reference token' },
+      },
+    },
+  },
+  {
+    name: 'interact_with_element',
+    description: 'Perform an interaction (click, double_click, right_click, hover, focus, blur, type, clear, press_key, select_option, scroll_into_view, scroll) on a live element and return before/after state and effect measurements.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        action: {
+          type: 'string',
+          enum: [
+            'click',
+            'double_click',
+            'right_click',
+            'hover',
+            'focus',
+            'blur',
+            'type',
+            'clear',
+            'press_key',
+            'select_option',
+            'scroll_into_view',
+            'scroll',
+          ],
+          description: 'The user action to perform',
+        },
+        selector: { type: 'string', description: 'CSS selector of the target element' },
+        nodeId: { type: 'number', description: 'LogicalNodeId of the target element' },
+        selectedElementRef: { type: 'string', description: 'Selected element reference token' },
+        text: { type: 'string', description: 'Text string for type action' },
+        key: { type: 'string', description: 'Key name for press_key action (e.g. Enter, Escape, Tab, ArrowDown)' },
+        optionValue: { type: 'string', description: 'Value or label for select_option action' },
+        scrollDelta: {
+          type: 'object',
+          properties: { x: { type: 'number' }, y: { type: 'number' } },
+          description: 'Scroll deltas for scroll action',
+        },
+        waitForStabilization: { type: 'boolean', description: 'Wait for DOM and network stabilization after interaction (default: true)' },
+        stabilizationTimeoutMs: { type: 'number', description: 'Max wait time in milliseconds (default: 300ms)' },
+      },
+      required: ['action'],
+    },
+  },
+  {
+    name: 'start_element_observation',
+    description: 'Start focused continuous recording and observation around a target element and its subtree/ancestors.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        selector: { type: 'string', description: 'CSS selector of the target element' },
+        nodeId: { type: 'number', description: 'LogicalNodeId of the target element' },
+      },
+    },
+  },
+  {
+    name: 'stop_element_observation',
+    description: 'Stop focused element observation and assemble a complete correlation bundle with mutations, diagnostics, network activity, and root-cause analysis.',
+    inputSchema: {
+      type: 'object',
+      properties: {},
+    },
+  },
+  {
+    name: 'get_live_dom_snapshot',
+    description: 'Capture the current live virtual DOM state snapshot of the active browser page in HTML or structured JSON format.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        format: { type: 'string', enum: ['html', 'json'], description: 'Output format (default: html)' },
+      },
+    },
+  },
+  {
+    name: 'get_live_dom_subtree',
+    description: 'Reconstruct and extract the live HTML or node structure of a specific subtree on the active browser page.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        selector: { type: 'string', description: 'CSS selector of the subtree root' },
+        nodeId: { type: 'number', description: 'LogicalNodeId of the subtree root' },
+      },
+    },
+  },
+  {
+    name: 'get_element_visual_state',
+    description: 'Inspect detailed visual layout, occlusion, clipping, opacity, z-index, and viewport visibility for a live element.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        selector: { type: 'string', description: 'CSS selector of the target element' },
+        nodeId: { type: 'number', description: 'LogicalNodeId of the target element' },
+      },
+    },
+  },
 ];

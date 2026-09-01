@@ -6,3 +6,4 @@ export * from './lifecycle';
 export * from './checkpoint';
 export * from './privacy';
 export * from './mcp-types';
+export * from './browser-control';

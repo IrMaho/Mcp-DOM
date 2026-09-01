@@ -1,9 +1,11 @@
 import { ForensicRecorder } from '../../core/recorder';
+import { LiveBrowserController } from '../../core/live-browser-controller';
 import { BaseEvent } from '../../types/events';
 import { InPageFloatingController } from './floating-controller';
 
 (function () {
   let recorder: ForensicRecorder | null = null;
+  const liveController = new LiveBrowserController();
   let eventBatch: BaseEvent[] = [];
   let flushTimer: ReturnType<typeof setInterval> | null = null;
   let floatingController: InPageFloatingController | null = null;
@@ -248,10 +250,15 @@ import { InPageFloatingController } from './floating-controller';
     }
   }
 
-  // Handle messages from Popup or Background
+  // Handle messages from Popup, Background, or Live MCP Bridge
   if (typeof chrome !== 'undefined' && chrome.runtime?.onMessage) {
     chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
-      if (message.type === 'START_RECORDING') {
+      if (message.type === 'BROWSER_COMMAND_REQUEST') {
+        liveController.handleCommand(message, document).then((res) => {
+          sendResponse(res);
+        });
+        return true;
+      } else if (message.type === 'START_RECORDING') {
         const meta = startRecording(message.sessionName);
         const controller = getOrCreateFloatingController();
         controller.mount();

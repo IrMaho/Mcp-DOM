@@ -8,16 +8,42 @@ import { DisappearingElementAnalyzer } from '../lifecycle/disappearing-analyzer'
 import { SessionSerializer } from '../storage/session-serializer';
 import { VirtualQueryEngine } from '../reconstruction/virtual-query';
 import { VirtualTreeBuilder } from '../reconstruction/tree-builder';
+import { LiveToolsHandler } from './live-tools-handler';
 
 export class MCPToolsHandler {
   private storage: ForensicStorageProvider;
+  private liveToolsHandler: LiveToolsHandler;
 
-  constructor(storage: ForensicStorageProvider) {
+  constructor(storage: ForensicStorageProvider, liveToolsHandler?: LiveToolsHandler) {
     this.storage = storage;
+    this.liveToolsHandler = liveToolsHandler || new LiveToolsHandler();
+  }
+
+  public getLiveToolsHandler(): LiveToolsHandler {
+    return this.liveToolsHandler;
   }
 
   public async handleToolCall(name: string, args: Record<string, any>): Promise<MCPToolCallResult> {
     try {
+      // Check Live Browser Tools first
+      if (
+        name === 'inspect_live_page' ||
+        name === 'inspect_live_element' ||
+        name === 'get_selected_element' ||
+        name === 'start_element_picker' ||
+        name === 'stop_element_picker' ||
+        name === 'capture_page_screenshot' ||
+        name === 'capture_element_screenshot' ||
+        name === 'interact_with_element' ||
+        name === 'start_element_observation' ||
+        name === 'stop_element_observation' ||
+        name === 'get_live_dom_snapshot' ||
+        name === 'get_live_dom_subtree' ||
+        name === 'get_element_visual_state'
+      ) {
+        return await this.liveToolsHandler.handleToolCall(name, args);
+      }
+
       switch (name) {
         case 'list_sessions':
           return await this.handleListSessions(args);
