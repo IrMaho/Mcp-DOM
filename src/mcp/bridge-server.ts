@@ -41,11 +41,26 @@ export class MCPBridgeServer {
           return;
         }
 
+        const MAX_PAYLOAD_BYTES = 50 * 1024 * 1024; // 50MB limit
+
         // 2. Upload Session Bundle
         if (url === '/api/sessions/upload' && req.method === 'POST') {
           let body = '';
-          req.on('data', (chunk) => (body += chunk));
+          let isTooLarge = false;
+
+          req.on('data', (chunk) => {
+            if (isTooLarge) return;
+            body += chunk;
+            if (body.length > MAX_PAYLOAD_BYTES) {
+              isTooLarge = true;
+              res.writeHead(413, { 'Content-Type': 'application/json' });
+              res.end(JSON.stringify({ error: 'Payload too large (exceeds 50MB)' }));
+              req.destroy();
+            }
+          });
+
           req.on('end', async () => {
+            if (isTooLarge) return;
             try {
               const bundle = SessionSerializer.importFromJson(body);
               await this.storage.saveSession(bundle.metadata);
@@ -71,8 +86,21 @@ export class MCPBridgeServer {
         // 3. MCP Tool Call via HTTP POST
         if (url === '/api/mcp/tool' && req.method === 'POST') {
           let body = '';
-          req.on('data', (chunk) => (body += chunk));
+          let isTooLarge = false;
+
+          req.on('data', (chunk) => {
+            if (isTooLarge) return;
+            body += chunk;
+            if (body.length > MAX_PAYLOAD_BYTES) {
+              isTooLarge = true;
+              res.writeHead(413, { 'Content-Type': 'application/json' });
+              res.end(JSON.stringify({ error: 'Payload too large (exceeds 50MB)' }));
+              req.destroy();
+            }
+          });
+
           req.on('end', async () => {
+            if (isTooLarge) return;
             try {
               const { name, arguments: args } = JSON.parse(body);
               const result = await this.toolsHandler.handleToolCall(name, args || {});

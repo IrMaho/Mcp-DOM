@@ -1,4 +1,4 @@
-import { n as SessionSerializer, r as FileStorageProvider, t as MCPToolsHandler } from "./assets/tools-handler-DgKUPJSo.js";
+import { n as SessionSerializer, r as FileStorageProvider, t as MCPToolsHandler } from "./assets/tools-handler-DfKhMwP0.js";
 import * as http from "http";
 import { WebSocketServer } from "ws";
 //#region src/mcp/bridge-server.ts
@@ -34,10 +34,22 @@ var MCPBridgeServer = class {
 					}));
 					return;
 				}
+				const MAX_PAYLOAD_BYTES = 52428800;
 				if (url === "/api/sessions/upload" && req.method === "POST") {
 					let body = "";
-					req.on("data", (chunk) => body += chunk);
+					let isTooLarge = false;
+					req.on("data", (chunk) => {
+						if (isTooLarge) return;
+						body += chunk;
+						if (body.length > MAX_PAYLOAD_BYTES) {
+							isTooLarge = true;
+							res.writeHead(413, { "Content-Type": "application/json" });
+							res.end(JSON.stringify({ error: "Payload too large (exceeds 50MB)" }));
+							req.destroy();
+						}
+					});
 					req.on("end", async () => {
+						if (isTooLarge) return;
 						try {
 							const bundle = SessionSerializer.importFromJson(body);
 							await this.storage.saveSession(bundle.metadata);
@@ -59,8 +71,19 @@ var MCPBridgeServer = class {
 				}
 				if (url === "/api/mcp/tool" && req.method === "POST") {
 					let body = "";
-					req.on("data", (chunk) => body += chunk);
+					let isTooLarge = false;
+					req.on("data", (chunk) => {
+						if (isTooLarge) return;
+						body += chunk;
+						if (body.length > MAX_PAYLOAD_BYTES) {
+							isTooLarge = true;
+							res.writeHead(413, { "Content-Type": "application/json" });
+							res.end(JSON.stringify({ error: "Payload too large (exceeds 50MB)" }));
+							req.destroy();
+						}
+					});
 					req.on("end", async () => {
+						if (isTooLarge) return;
 						try {
 							const { name, arguments: args } = JSON.parse(body);
 							const result = await this.toolsHandler.handleToolCall(name, args || {});

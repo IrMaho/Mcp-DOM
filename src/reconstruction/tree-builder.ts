@@ -119,9 +119,19 @@ export class VirtualTreeBuilder {
       }
     }
 
-    node.isDetached = true;
+    this.markSubtreeDetached(nodeId);
     node.parentId = null;
-    // Note: we keep the node in this.nodes with isDetached=true so historical queries and diffs can inspect it
+  }
+
+  private markSubtreeDetached(nodeId: LogicalNodeId): void {
+    const node = this.nodes[nodeId];
+    if (!node) return;
+    node.isDetached = true;
+    if (node.children && node.children.length > 0) {
+      for (const childId of node.children) {
+        this.markSubtreeDetached(childId);
+      }
+    }
   }
 
   public applyMove(payload: DOMMoveNodePayload): void {
@@ -212,6 +222,12 @@ export class VirtualTreeBuilder {
 
     if (node.nodeType === VirtualDOMNodeType.DOCUMENT_TYPE_NODE) {
       return `<!DOCTYPE ${node.tagName || 'html'}>`;
+    }
+
+    if (node.isShadowRoot || node.nodeType === VirtualDOMNodeType.DOCUMENT_FRAGMENT_NODE) {
+      const mode = node.shadowMode || 'open';
+      const inner = (node.children || []).map((c) => this.toHTML(c, indent + 1)).join('\n');
+      return `${spacing}<template shadowrootmode="${mode}">\n${inner}\n${spacing}</template>`;
     }
 
     if (node.nodeType === VirtualDOMNodeType.TEXT_NODE) {

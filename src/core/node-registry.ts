@@ -61,38 +61,50 @@ export class NodeRegistry {
 
   public computeSelector(element: Element): string {
     try {
-      if (element.id && /^[a-zA-Z][a-zA-Z0-9_-]*$/.test(element.id)) {
-        return `#${element.id}`;
+      const rawId = typeof element.id === 'string' ? element.id : element.getAttribute ? element.getAttribute('id') : '';
+      if (rawId && /^[a-zA-Z][a-zA-Z0-9_-]*$/.test(rawId)) {
+        return `#${rawId}`;
       }
 
-      const tagName = element.tagName.toLowerCase();
+      const tagName = element.tagName ? element.tagName.toLowerCase() : 'element';
       if (tagName === 'body' || tagName === 'html' || tagName === 'head') {
         return tagName;
       }
 
+      let classListArray: string[] = [];
+      if (element.classList && typeof element.classList.forEach === 'function') {
+        classListArray = Array.from(element.classList);
+      } else if (typeof element.className === 'string') {
+        classListArray = element.className.split(/\s+/);
+      } else if (element.className && typeof (element.className as any).baseVal === 'string') {
+        classListArray = (element.className as any).baseVal.split(/\s+/);
+      }
+
       let classSelector = '';
-      if (element.classList && element.classList.length > 0) {
-        const classes = Array.from(element.classList)
-          .filter((c) => /^[a-zA-Z0-9_-]+$/.test(c) && !c.startsWith('ng-') && !c.startsWith('_ng'))
+      if (classListArray.length > 0) {
+        const validClasses = classListArray
+          .filter((c) => typeof c === 'string' && /^[a-zA-Z0-9_-]+$/.test(c) && !c.startsWith('ng-') && !c.startsWith('_ng'))
           .slice(0, 3);
-        if (classes.length > 0) {
-          classSelector = '.' + classes.join('.');
+        if (validClasses.length > 0) {
+          classSelector = '.' + validClasses.join('.');
         }
       }
 
-      if (element.parentElement) {
+      if (element.parentElement && element.parentElement.children) {
         const siblings = Array.from(element.parentElement.children).filter(
-          (s) => s.tagName.toLowerCase() === tagName
+          (s) => s.tagName && s.tagName.toLowerCase() === tagName
         );
         if (siblings.length > 1) {
           const index = siblings.indexOf(element) + 1;
-          return `${tagName}${classSelector}:nth-of-type(${index})`;
+          if (index > 0) {
+            return `${tagName}${classSelector}:nth-of-type(${index})`;
+          }
         }
       }
 
       return `${tagName}${classSelector}`;
     } catch {
-      return element.tagName.toLowerCase();
+      return element.tagName ? element.tagName.toLowerCase() : 'element';
     }
   }
 

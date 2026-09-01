@@ -71,12 +71,27 @@ export class VirtualQueryEngine {
         node.nodeType === VirtualDOMNodeType.ELEMENT_NODE &&
         !node.isDetached &&
         node.attributes &&
-        node.attributes['id'] === id
+        node.attributes['id'] === id &&
+        this.isNodeConnected(node, nodes)
       ) {
         return node;
       }
     }
     return null;
+  }
+
+  public static isNodeConnected(node: VirtualDOMNode, nodes: Record<LogicalNodeId, VirtualDOMNode>): boolean {
+    if (node.isDetached) return false;
+    let curr: VirtualDOMNode | undefined = node;
+    const visited = new Set<LogicalNodeId>();
+    while (curr && curr.parentId) {
+      if (visited.has(curr.id)) return false;
+      visited.add(curr.id);
+      const parent: VirtualDOMNode | undefined = nodes[curr.parentId];
+      if (!parent || parent.isDetached) return false;
+      curr = parent;
+    }
+    return true;
   }
 
   public static computeSelector(

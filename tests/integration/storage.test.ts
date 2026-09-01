@@ -144,6 +144,34 @@ describe('Storage Providers (Memory & File)', () => {
       const events = await storage.getEvents(sessionId);
       expect(events.length).toBe(1);
       expect(events[0].id).toBe('f1');
+
+      // Test streaming pagination with multiple events
+      const moreEvents = Array.from({ length: 50 }, (_, i) => ({
+        id: `f_stream_${i}`,
+        sessionId,
+        timestamp: 100 + i * 10,
+        sequence: i + 2,
+        wallClockTime: 2100 + i * 10,
+        type: (i % 2 === 0 ? 'DOM_MUTATION_ATTR' : 'USER_INPUT') as any,
+        category: (i % 2 === 0 ? 'DOM' : 'USER') as any,
+        source: 'PAGE' as const,
+        payload: { index: i },
+      }));
+
+      await storage.appendEvents(sessionId, moreEvents);
+
+      const totalCount = await storage.getEventCount(sessionId);
+      expect(totalCount).toBe(51);
+
+      // Paginate: limit 5, offset 10
+      const paged = await storage.getEvents(sessionId, { limit: 5, offset: 10 });
+      expect(paged.length).toBe(5);
+      expect((paged[0].payload as any).index).toBe(9);
+
+      // Category filter + limit
+      const userPaged = await storage.getEvents(sessionId, { category: 'USER', limit: 3 });
+      expect(userPaged.length).toBe(3);
+      expect(userPaged.every((e) => e.category === 'USER')).toBe(true);
     } finally {
       if (fs.existsSync(testDir)) {
         fs.rmSync(testDir, { recursive: true, force: true });

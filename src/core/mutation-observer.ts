@@ -252,8 +252,11 @@ export class DOMMutationObserver {
     wallClockTime: number
   ): void {
     const target = record.target;
-    const nodeId = this.registry.getOrCreateId(target, timestamp);
     const parentElement = target.parentElement;
+    if (parentElement && this.privacy.shouldBlockNode(parentElement)) {
+      return;
+    }
+    const nodeId = this.registry.getOrCreateId(target, timestamp);
     const parentId = parentElement ? this.registry.getId(parentElement) || null : null;
     const isMasked = parentElement ? this.privacy.shouldMaskText(parentElement) : false;
 

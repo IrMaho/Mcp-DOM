@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import * as readline from 'readline';
 import { Annotation, SessionMetadata } from '../types/session';
 import { BaseEvent } from '../types/events';
 import { SnapshotCheckpoint } from '../types/checkpoint';
@@ -86,54 +87,79 @@ export class FileStorageProvider implements ForensicStorageProvider {
     const eventsPath = path.join(dir, 'events.jsonl');
     if (!fs.existsSync(eventsPath)) return [];
 
-    const lines = fs.readFileSync(eventsPath, 'utf-8').split('\n');
-    const all: BaseEvent[] = [];
+    const fileStream = fs.createReadStream(eventsPath, { encoding: 'utf-8' });
+    const rl = readline.createInterface({
+      input: fileStream,
+      crlfDelay: Infinity,
+    });
 
-    for (const line of lines) {
+    const results: BaseEvent[] = [];
+    let matchedCount = 0;
+    const offset = typeof filter?.offset === 'number' ? filter.offset : 0;
+    const limit = typeof filter?.limit === 'number' ? filter.limit : Infinity;
+
+    for await (const line of rl) {
       const trimmed = line.trim();
       if (!trimmed) continue;
+
+      let e: BaseEvent;
       try {
-        all.push(JSON.parse(trimmed));
+        e = JSON.parse(trimmed);
       } catch {
-        // Skip malformed line
+        continue;
       }
-    }
 
-    if (!filter) return all;
+      if (filter) {
+        if (filter.category && e.category !== filter.category) continue;
+        if (filter.type && e.type !== filter.type) continue;
+        if (typeof filter.fromTimestamp === 'number' && e.timestamp < filter.fromTimestamp) continue;
+        if (typeof filter.toTimestamp === 'number' && e.timestamp > filter.toTimestamp) continue;
+        if (typeof filter.fromSequence === 'number' && e.sequence < filter.fromSequence) continue;
+        if (typeof filter.toSequence === 'number' && e.sequence > filter.toSequence) continue;
+        if (typeof filter.targetNodeId === 'number' && e.targetNodeId !== filter.targetNodeId) continue;
+        if (filter.targetSelector && e.targetSelector && !e.targetSelector.includes(filter.targetSelector)) continue;
 
-    let filtered = all.filter((e) => {
-      if (filter.category && e.category !== filter.category) return false;
-      if (filter.type && e.type !== filter.type) return false;
-      if (typeof filter.fromTimestamp === 'number' && e.timestamp < filter.fromTimestamp) return false;
-      if (typeof filter.toTimestamp === 'number' && e.timestamp > filter.toTimestamp) return false;
-      if (typeof filter.fromSequence === 'number' && e.sequence < filter.fromSequence) return false;
-      if (typeof filter.toSequence === 'number' && e.sequence > filter.toSequence) return false;
-      if (typeof filter.targetNodeId === 'number' && e.targetNodeId !== filter.targetNodeId) return false;
-      if (filter.targetSelector && e.targetSelector && !e.targetSelector.includes(filter.targetSelector)) return false;
-
-      if (filter.searchQuery) {
-        const query = filter.searchQuery.toLowerCase();
-        const strPayload = JSON.stringify(e.payload).toLowerCase();
-        if (!strPayload.includes(query) && !e.type.toLowerCase().includes(query)) {
-          return false;
+        if (filter.searchQuery) {
+          const query = filter.searchQuery.toLowerCase();
+          const strPayload = JSON.stringify(e.payload || {}).toLowerCase();
+          if (!strPayload.includes(query) && !e.type.toLowerCase().includes(query)) {
+            continue;
+          }
         }
       }
 
-      return true;
-    });
+      matchedCount++;
+      if (matchedCount <= offset) {
+        continue;
+      }
 
-    if (typeof filter.offset === 'number') filtered = filtered.slice(filter.offset);
-    if (typeof filter.limit === 'number') filtered = filtered.slice(0, filter.limit);
+      results.push(e);
+      if (results.length >= limit) {
+        rl.close();
+        fileStream.destroy();
+        break;
+      }
+    }
 
-    return filtered;
+    return results;
   }
 
   public async getEventCount(sessionId: string): Promise<number> {
     const dir = path.join(this.baseDir, sessionId);
     const eventsPath = path.join(dir, 'events.jsonl');
     if (!fs.existsSync(eventsPath)) return 0;
-    const lines = fs.readFileSync(eventsPath, 'utf-8').split('\n').filter(Boolean);
-    return lines.length;
+
+    const fileStream = fs.createReadStream(eventsPath, { encoding: 'utf-8' });
+    const rl = readline.createInterface({
+      input: fileStream,
+      crlfDelay: Infinity,
+    });
+
+    let count = 0;
+    for await (const line of rl) {
+      if (line.trim()) count++;
+    }
+    return count;
   }
 
   public async saveCheckpoint(checkpoint: SnapshotCheckpoint): Promise<void> {

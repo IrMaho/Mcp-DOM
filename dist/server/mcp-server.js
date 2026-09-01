@@ -1,4 +1,4 @@
-import { r as FileStorageProvider, t as MCPToolsHandler } from "./assets/tools-handler-DgKUPJSo.js";
+import { r as FileStorageProvider, t as MCPToolsHandler } from "./assets/tools-handler-DfKhMwP0.js";
 import * as readline from "readline";
 //#region src/mcp/tools-definition.ts
 var FORENSIC_MCP_TOOLS = [

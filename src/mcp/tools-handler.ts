@@ -598,12 +598,23 @@ export class MCPToolsHandler {
     const events = await this.storage.getEvents(args.sessionId);
     const checkpoints = await this.storage.getCheckpoints(args.sessionId);
 
-    const bundle = SessionSerializer.exportBundle(
-      session,
-      initialSnapshot || checkpoints[0]?.snapshot || ({} as any),
-      events,
-      checkpoints
-    );
+    const snapshotToUse =
+      initialSnapshot ||
+      checkpoints[0]?.snapshot || {
+        snapshotId: 'snap_empty',
+        sessionId: session.id,
+        timestamp: 0,
+        sequence: 0,
+        rootId: 1,
+        nodes: {},
+        title: session.title || '',
+        url: session.url || '',
+        origin: session.origin || '',
+        viewport: { width: 1920, height: 1080, scrollX: 0, scrollY: 0, devicePixelRatio: 1 },
+        totalNodeCount: 0,
+      };
+
+    const bundle = SessionSerializer.exportBundle(session, snapshotToUse, events, checkpoints);
     const integrity = SessionSerializer.validateIntegrity(bundle);
 
     return {

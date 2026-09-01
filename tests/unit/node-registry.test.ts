@@ -29,6 +29,20 @@ describe('NodeRegistry', () => {
     expect(selector).toBe('#main-panel');
   });
 
+  it('should safely compute selector hints for SVG elements with SVGAnimatedString className', () => {
+    const registry = new NodeRegistry();
+    const mockSvgElem = {
+      nodeType: 1,
+      tagName: 'svg',
+      id: '',
+      className: { baseVal: 'lucide-icon text-primary', animVal: 'lucide-icon text-primary' },
+      getAttribute: (name: string) => (name === 'id' ? '' : null),
+    } as unknown as Element;
+
+    const selector = registry.computeSelector(mockSvgElem);
+    expect(selector).toBe('svg.lucide-icon.text-primary');
+  });
+
   it('should record parent ancestry history', () => {
     const registry = new NodeRegistry();
     registry.recordParent(10, 5);

@@ -130,6 +130,12 @@ export class ReplayEngine {
         return `<${tag} ${attrStr}>${innerHtml}</${tag}>`;
       }
 
+      if (node.isShadowRoot || node.nodeType === VirtualDOMNodeType.DOCUMENT_FRAGMENT_NODE) {
+        const mode = node.shadowMode || 'open';
+        const innerHtml = (node.children || []).map(renderNodeHtml).join('');
+        return `<template shadowrootmode="${mode}">${innerHtml}</template>`;
+      }
+
       if (node.nodeType === VirtualDOMNodeType.DOCUMENT_NODE) {
         return (node.children || []).map(renderNodeHtml).join('');
       }
