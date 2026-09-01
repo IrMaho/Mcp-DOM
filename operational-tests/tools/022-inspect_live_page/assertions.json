@@ -1,0 +1,12 @@
+[
+  {
+    "assertion": "JSON-RPC 2.0 Stdio Status Code & Envelope",
+    "passed": true,
+    "details": "Successful JSON-RPC 2.0 resolution across stdio pipe"
+  },
+  {
+    "assertion": "Inspects live active page URL, dimensions, and readyState",
+    "passed": true,
+    "details": "url, title, origin, viewport, documentDimensions, activeElement, visibilityState, readyState, framesCount"
+  }
+]

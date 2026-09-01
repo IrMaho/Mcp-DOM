@@ -1,0 +1,11 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_018_get_screenshots",
+  "method": "tools/call",
+  "params": {
+    "name": "get_screenshots",
+    "arguments": {
+      "sessionId": "operational_acceptance_session_001"
+    }
+  }
+}

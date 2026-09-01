@@ -1,0 +1,10 @@
+{
+  "tool": "get_selected_element",
+  "category": "live_browser_control",
+  "executionMode": "live",
+  "schema": {
+    "type": "object",
+    "properties": {}
+  },
+  "expectedBehavior": "Retrieves selected element metadata"
+}

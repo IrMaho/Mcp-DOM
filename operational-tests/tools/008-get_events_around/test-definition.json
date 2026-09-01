@@ -1,0 +1,30 @@
+{
+  "tool": "get_events_around",
+  "category": "historical",
+  "executionMode": "historical",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "sessionId": {
+        "type": "string",
+        "description": "Session ID"
+      },
+      "timestamp": {
+        "type": "number",
+        "description": "Target timestamp in milliseconds"
+      },
+      "eventId": {
+        "type": "string",
+        "description": "Target event ID"
+      },
+      "windowMs": {
+        "type": "number",
+        "description": "Window radius in milliseconds (default: 300ms)"
+      }
+    },
+    "required": [
+      "sessionId"
+    ]
+  },
+  "expectedBehavior": "Returns temporal slice of events surrounding T=200ms"
+}

@@ -1,0 +1,124 @@
+{
+  "sessionId": "operational_acceptance_session_001",
+  "maxLifespanMs": 1000,
+  "disappearingElementsCount": 13,
+  "elements": [
+    {
+      "nodeId": 4,
+      "tagName": "div",
+      "selector": "#host-sidebar",
+      "createdAt": 0,
+      "removedAt": 380,
+      "lifespanMs": 380,
+      "mutationCount": 0
+    },
+    {
+      "nodeId": 4,
+      "tagName": "div",
+      "selector": "#host-sidebar",
+      "createdAt": 0,
+      "removedAt": 380,
+      "lifespanMs": 380,
+      "mutationCount": 0
+    },
+    {
+      "nodeId": 4,
+      "tagName": "div",
+      "selector": "#host-sidebar",
+      "createdAt": 0,
+      "removedAt": 380,
+      "lifespanMs": 380,
+      "mutationCount": 0
+    },
+    {
+      "nodeId": 4,
+      "tagName": "div",
+      "selector": "#host-sidebar",
+      "createdAt": 0,
+      "removedAt": 380,
+      "lifespanMs": 380,
+      "mutationCount": 0
+    },
+    {
+      "nodeId": 4,
+      "tagName": "div",
+      "selector": "#host-sidebar",
+      "createdAt": 0,
+      "removedAt": 380,
+      "lifespanMs": 380,
+      "mutationCount": 0
+    },
+    {
+      "nodeId": 4,
+      "tagName": "div",
+      "selector": "#host-sidebar",
+      "createdAt": 0,
+      "removedAt": 380,
+      "lifespanMs": 380,
+      "mutationCount": 0
+    },
+    {
+      "nodeId": 4,
+      "tagName": "div",
+      "selector": "#host-sidebar",
+      "createdAt": 0,
+      "removedAt": 380,
+      "lifespanMs": 380,
+      "mutationCount": 0
+    },
+    {
+      "nodeId": 4,
+      "tagName": "div",
+      "selector": "#host-sidebar",
+      "createdAt": 0,
+      "removedAt": 380,
+      "lifespanMs": 380,
+      "mutationCount": 0
+    },
+    {
+      "nodeId": 4,
+      "tagName": "div",
+      "selector": "#host-sidebar",
+      "createdAt": 0,
+      "removedAt": 380,
+      "lifespanMs": 380,
+      "mutationCount": 0
+    },
+    {
+      "nodeId": 4,
+      "tagName": "div",
+      "selector": "#host-sidebar",
+      "createdAt": 0,
+      "removedAt": 380,
+      "lifespanMs": 380,
+      "mutationCount": 0
+    },
+    {
+      "nodeId": 4,
+      "tagName": "div",
+      "selector": "#host-sidebar",
+      "createdAt": 0,
+      "removedAt": 380,
+      "lifespanMs": 380,
+      "mutationCount": 0
+    },
+    {
+      "nodeId": 4,
+      "tagName": "div",
+      "selector": "#host-sidebar",
+      "createdAt": 0,
+      "removedAt": 380,
+      "lifespanMs": 380,
+      "mutationCount": 0
+    },
+    {
+      "nodeId": 4,
+      "tagName": "div",
+      "selector": "#host-sidebar",
+      "createdAt": 0,
+      "removedAt": 380,
+      "lifespanMs": 380,
+      "mutationCount": 0
+    }
+  ]
+}

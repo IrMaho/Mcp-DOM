@@ -1,0 +1,11 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_028_capture_element_screenshot",
+  "method": "tools/call",
+  "params": {
+    "name": "capture_element_screenshot",
+    "arguments": {
+      "selector": "#primary-action-btn"
+    }
+  }
+}

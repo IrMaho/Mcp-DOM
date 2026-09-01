@@ -1,0 +1,1 @@
+[EXEC] stop_element_observation executed via stdio JSON-RPC at 2026-09-01T14:11:46.467Z in 7ms

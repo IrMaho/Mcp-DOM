@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_001_list_sessions",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"totalSessions\": 1,\n  \"sessions\": [\n    {\n      \"id\": \"operational_acceptance_session_001\",\n      \"name\": \"Operational Acceptance Test Session\",\n      \"url\": \"https://app.internal/dashboard\",\n      \"startTime\": 1725000000000,\n      \"durationMs\": 2000,\n      \"status\": \"stopped\",\n      \"stats\": {\n        \"eventCount\": 8,\n        \"mutationCount\": 4,\n        \"errorCount\": 1,\n        \"consoleCount\": 1,\n        \"networkCount\": 2,\n        \"checkpointCount\": 2,\n        \"screenshotCount\": 1,\n        \"nodeCount\": 12\n      }\n    }\n  ]\n}"
+      }
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "tool": "get_events",
+  "category": "historical",
+  "executionMode": "historical",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "sessionId": {
+        "type": "string",
+        "description": "Session ID"
+      },
+      "category": {
+        "type": "string",
+        "description": "Filter by category (DOM, USER, ERROR, CONSOLE, NETWORK, NAVIGATION, etc.)"
+      },
+      "type": {
+        "type": "string",
+        "description": "Filter by exact event type (e.g. DOM_MUTATION_ADD, RUNTIME_ERROR, USER_CLICK)"
+      },
+      "fromTimestamp": {
+        "type": "number",
+        "description": "Start timestamp in milliseconds"
+      },
+      "toTimestamp": {
+        "type": "number",
+        "description": "End timestamp in milliseconds"
+      },
+      "targetNodeId": {
+        "type": "number",
+        "description": "Filter by affected LogicalNodeId"
+      },
+      "targetSelector": {
+        "type": "string",
+        "description": "Filter by CSS selector substring"
+      },
+      "searchQuery": {
+        "type": "string",
+        "description": "Search term inside event payload"
+      },
+      "limit": {
+        "type": "number",
+        "description": "Max events to return (default: 50)"
+      },
+      "offset": {
+        "type": "number",
+        "description": "Offset for pagination"
+      }
+    },
+    "required": [
+      "sessionId"
+    ]
+  },
+  "expectedBehavior": "Returns filtered historical events with sequence numbers"
+}

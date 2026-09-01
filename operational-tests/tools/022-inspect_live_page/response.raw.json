@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_022_inspect_live_page",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"url\": \"https://app.internal/dashboard\",\n  \"title\": \"MCP Operational Acceptance DOM Fixture\",\n  \"origin\": \"https://app.internal\",\n  \"viewport\": {\n    \"width\": 1024,\n    \"height\": 768,\n    \"scrollX\": 0,\n    \"scrollY\": 0,\n    \"devicePixelRatio\": 1\n  },\n  \"documentDimensions\": {\n    \"width\": 0,\n    \"height\": 0\n  },\n  \"activeElement\": {\n    \"tag\": \"body\",\n    \"selector\": \"body\",\n    \"text\": \"Operational DOM Test Fixture\\n    Deterministic test harness for live & historical MCP capabi\"\n  },\n  \"visibilityState\": \"visible\",\n  \"readyState\": \"complete\",\n  \"framesCount\": 0\n}"
+      }
+    ]
+  }
+}

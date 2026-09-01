@@ -1,0 +1,1 @@
+[EXEC] capture_page_screenshot executed via stdio JSON-RPC at 2026-09-01T14:11:46.072Z in 384ms

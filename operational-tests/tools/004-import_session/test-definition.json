@@ -1,0 +1,18 @@
+{
+  "tool": "import_session",
+  "category": "historical",
+  "executionMode": "historical",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "bundleJson": {
+        "type": "string",
+        "description": "Raw JSON string of the session bundle"
+      }
+    },
+    "required": [
+      "bundleJson"
+    ]
+  },
+  "expectedBehavior": "Imports session bundle successfully into storage"
+}

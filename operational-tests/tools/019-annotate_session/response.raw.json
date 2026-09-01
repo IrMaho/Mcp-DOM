@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_019_annotate_session",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"success\": true,\n  \"annotation\": {\n    \"id\": \"ann_1788271905443_uqlu\",\n    \"sessionId\": \"operational_acceptance_session_001\",\n    \"timestamp\": 0,\n    \"author\": \"AGENT\",\n    \"label\": \"Root Cause Confirmed\",\n    \"comment\": \"Host framework unmounted #host-sidebar after network update\",\n    \"category\": \"ROOT_CAUSE\",\n    \"createdAt\": 1788271905443\n  }\n}"
+      }
+    ]
+  }
+}

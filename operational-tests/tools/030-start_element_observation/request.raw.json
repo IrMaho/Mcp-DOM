@@ -1,0 +1,11 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_030_start_element_observation",
+  "method": "tools/call",
+  "params": {
+    "name": "start_element_observation",
+    "arguments": {
+      "selector": "#removable-card"
+    }
+  }
+}

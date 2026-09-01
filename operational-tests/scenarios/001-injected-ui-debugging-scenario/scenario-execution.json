@@ -1,0 +1,52 @@
+[
+  {
+    "step": 1,
+    "tool": "inspect_live_page",
+    "success": true
+  },
+  {
+    "step": 2,
+    "tool": "start_element_picker",
+    "success": true
+  },
+  {
+    "step": 3,
+    "tool": "get_selected_element",
+    "success": true
+  },
+  {
+    "step": 4,
+    "tool": "inspect_live_element",
+    "success": true
+  },
+  {
+    "step": 5,
+    "tool": "capture_element_screenshot",
+    "success": true
+  },
+  {
+    "step": 6,
+    "tool": "start_element_observation",
+    "success": true
+  },
+  {
+    "step": 7,
+    "tool": "interact_with_element",
+    "success": true
+  },
+  {
+    "step": 8,
+    "tool": "stop_element_observation",
+    "success": true
+  },
+  {
+    "step": 9,
+    "tool": "why_did_element_disappear",
+    "success": true
+  },
+  {
+    "step": 10,
+    "tool": "diff_dom",
+    "success": true
+  }
+]

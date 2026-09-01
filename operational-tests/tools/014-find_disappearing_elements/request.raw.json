@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_014_find_disappearing_elements",
+  "method": "tools/call",
+  "params": {
+    "name": "find_disappearing_elements",
+    "arguments": {
+      "sessionId": "operational_acceptance_session_001",
+      "maxLifespanMs": 1000
+    }
+  }
+}

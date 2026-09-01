@@ -1,0 +1,45 @@
+# Operational Test: `get_events`
+
+**Status**: **PASS** (2/2 Assertions Passed)
+**Transport**: `JSON-RPC 2.0 over Stdio Subprocess`
+**Execution Mode**: `historical`
+**Duration**: 5ms
+
+## Test Objective
+Returns filtered historical events with sequence numbers
+
+## Raw Transmitted JSON-RPC Request
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_007_get_events",
+  "method": "tools/call",
+  "params": {
+    "name": "get_events",
+    "arguments": {
+      "sessionId": "operational_acceptance_session_001",
+      "limit": 20
+    }
+  }
+}
+```
+
+## Raw Received JSON-RPC Response
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_007_get_events",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"sessionId\": \"operational_acceptance_session_001\",\n  \"returnedEvents\": 20,\n  \"events\": [\n    {\n      \"id\": \"evt_op_001\",\n      \"sequence\": 2,\n      \"timestamp\": 50,\n      \"type\": \"DOM_MUTATION_ADD\",\n      \"category\": \"DOM\",\n      \"targetNodeId\": 10,\n      \"targetSelector\": \"#injected-action-btn\",\n      \"payload\": {\n        \"node\": {\n          \"id\": 10,\n          \"nodeType\": 1,\n          \"tagName\": \"button\",\n          \"attributes\": {\n            \"class\": \"btn btn-primary\",\n            \"id\": \"injected-action-btn\"\n          },\n          \"textContent\": \"⚡ Run Analysis\",\n          \"children\": [],\n          \"parentId\": 4\n        },\n        \"parentId\": 4,\n        \"index\": 0\n      }\n    },\n    {\n      \"id\": \"evt_op_002\",\n      \"sequence\": 3,\n      \"timestamp\": 100,\n      \"type\": \"USER_CLICK\",\n      \"category\": \"USER\",\n      \"targetNodeId\": 10,\n      \"targetSelector\": \"#injected-action-btn\",\n      \"payload\": {\n        \"x\": 120,\n        \"y\": 45,\n        \"button\": 0\n      }\n    },\n    {\n      \"id\": \"evt_op_003\",\n      \"sequence\": 4,\n      \"timestamp\": 150,\n      \"type\": \"CONSOLE_LOG\",\n      \"category\": \"CONSOLE\",\n      \"payload\": {\n        \"level\": \"log\",\n        \"message\": \"Analysis requested for active dashboard context\"\n      }\n    },\n    {\n      \"id\": \"evt_op_004\",\n      \"sequence\": 5,\n      \"timestamp\": 200,\n      \"type\": \"NETWORK_REQUEST_START\",\n      \"category\": \"NETWORK\",\n      \"payload\": {\n        \"requestId\": \"req_op_99\",\n        \"url\": \"https://api.internal/v1/analyze\",\n        \"method\": \"POST\"\n      }\n    },\n    {\n      \"id\": \"evt_op_005\",\n      \"sequence\": 6,\n      \"timestamp\": 280,\n      \"type\": \"NETWORK_RESPONSE_COMPLETE\",\n      \"category\": \"NETWORK\",\n      \"payload\": {\n        \"requestId\": \"req_op_99\",\n        \"url\": \"https://api.internal/v1/analyze\",\n        \"status\": 200,\n        \"durationMs\": 80\n      }\n    },\n    {\n      \"id\": \"evt_op_006\",\n      \"sequence\": 7,\n      \"timestamp\": 320,\n      \"type\": \"RUNTIME_ERROR\",\n      \"category\": \"ERROR\",\n      \"payload\": {\n        \"message\": \"Uncaught TypeError: Cannot read properties of undefined\",\n        \"stack\": \"TypeError at dashboard.js:42:12\"\n      }\n    },\n    {\n      \"id\": \"evt_op_007\",\n      \"sequence\": 8,\n      \"timestamp\": 380,\n      \"type\": \"DOM_MUTATION_REMOVE\",\n      \"category\": \"DOM\",\n      \"targetNodeId\": 4,\n      \"targetSelector\": \"#host-sidebar\",\n      \"payload\": {\n        \"nodeId\": 4,\n        \"parentId\": 3,\n        \"index\": 0,\n        \"removedSubtreeNodeCount\": 2\n      }\n    },\n    {\n      \"id\": \"evt_op_008\",\n      \"sequence\": 9,\n      \"timestamp\": 450,\n      \"type\": \"SCREENSHOT_CHECKPOINT\",\n      \"category\": \"VISUAL\",\n      \"payload\": {\n        \"screenshotId\": \"scr_op_chk_1\",\n        \"dataUrl\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==\"\n      }\n    },\n    {\n      \"id\": \"evt_op_001\",\n      \"sequence\": 2,\n      \"timestamp\": 50,\n      \"type\": \"DOM_MUTATION_ADD\",\n      \"category\": \"DOM\",\n      \"targetNodeId\": 10,\n      \"targetSelector\": \"#injected-action-btn\",\n      \"payload\": {\n        \"node\": {\n          \"id\": 10,\n          \"nodeType\": 1,\n          \"tagName\": \"button\",\n          \"attributes\": {\n            \"class\": \"btn btn-primary\",\n            \"id\": \"injected-action-btn\"\n          },\n          \"textContent\": \"⚡ Run Analysis\",\n          \"children\": [],\n          \"parentId\": 4\n        },\n        \"parentId\": 4,\n        \"index\": 0\n      }\n    },\n    {\n      \"id\": \"evt_op_002\",\n      \"sequence\": 3,\n      \"timestamp\": 100,\n      \"type\": \"USER_CLICK\",\n      \"category\": \"USER\",\n      \"targetNodeId\": 10,\n      \"targetSelector\": \"#injected-action-btn\",\n      \"payload\": {\n        \"x\": 120,\n        \"y\": 45,\n        \"button\": 0\n      }\n    },\n    {\n      \"id\": \"evt_op_003\",\n      \"sequence\": 4,\n      \"timestamp\": 150,\n      \"type\": \"CONSOLE_LOG\",\n      \"category\": \"CONSOLE\",\n      \"payload\": {\n        \"level\": \"log\",\n        \"message\": \"Analysis requested for active dashboard context\"\n      }\n    },\n    {\n      \"id\": \"evt_op_004\",\n      \"sequence\": 5,\n      \"timestamp\": 200,\n      \"type\": \"NETWORK_REQUEST_START\",\n      \"category\": \"NETWORK\",\n      \"payload\": {\n        \"requestId\": \"req_op_99\",\n        \"url\": \"https://api.internal/v1/analyze\",\n        \"method\": \"POST\"\n      }\n    },\n    {\n      \"id\": \"evt_op_005\",\n      \"sequence\": 6,\n      \"timestamp\": 280,\n      \"type\": \"NETWORK_RESPONSE_COMPLETE\",\n      \"category\": \"NETWORK\",\n      \"payload\": {\n        \"requestId\": \"req_op_99\",\n        \"url\": \"https://api.internal/v1/analyze\",\n        \"status\": 200,\n        \"durationMs\": 80\n      }\n    },\n    {\n      \"id\": \"evt_op_006\",\n      \"sequence\": 7,\n      \"timestamp\": 320,\n      \"type\": \"RUNTIME_ERROR\",\n      \"category\": \"ERROR\",\n      \"payload\": {\n        \"message\": \"Uncaught TypeError: Cannot read properties of undefined\",\n        \"stack\": \"TypeError at dashboard.js:42:12\"\n      }\n    },\n    {\n      \"id\": \"evt_op_007\",\n      \"sequence\": 8,\n      \"timestamp\": 380,\n      \"type\": \"DOM_MUTATION_REMOVE\",\n      \"category\": \"DOM\",\n      \"targetNodeId\": 4,\n      \"targetSelector\": \"#host-sidebar\",\n      \"payload\": {\n        \"nodeId\": 4,\n        \"parentId\": 3,\n        \"index\": 0,\n        \"removedSubtreeNodeCount\": 2\n      }\n    },\n    {\n      \"id\": \"evt_op_008\",\n      \"sequence\": 9,\n      \"timestamp\": 450,\n      \"type\": \"SCREENSHOT_CHECKPOINT\",\n      \"category\": \"VISUAL\",\n      \"payload\": {\n        \"screenshotId\": \"scr_op_chk_1\",\n        \"dataUrl\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==\"\n      }\n    },\n    {\n      \"id\": \"evt_op_001\",\n      \"sequence\": 2,\n      \"timestamp\": 50,\n      \"type\": \"DOM_MUTATION_ADD\",\n      \"category\": \"DOM\",\n      \"targetNodeId\": 10,\n      \"targetSelector\": \"#injected-action-btn\",\n      \"payload\": {\n        \"node\": {\n          \"id\": 10,\n          \"nodeType\": 1,\n          \"tagName\": \"button\",\n          \"attributes\": {\n            \"class\": \"btn btn-primary\",\n            \"id\": \"injected-action-btn\"\n          },\n          \"textContent\": \"⚡ Run Analysis\",\n          \"children\": [],\n          \"parentId\": 4\n        },\n        \"parentId\": 4,\n        \"index\": 0\n      }\n    },\n    {\n      \"id\": \"evt_op_002\",\n      \"sequence\": 3,\n      \"timestamp\": 100,\n      \"type\": \"USER_CLICK\",\n      \"category\": \"USER\",\n      \"targetNodeId\": 10,\n      \"targetSelector\": \"#injected-action-btn\",\n      \"payload\": {\n        \"x\": 120,\n        \"y\": 45,\n        \"button\": 0\n      }\n    },\n    {\n      \"id\": \"evt_op_003\",\n      \"sequence\": 4,\n      \"timestamp\": 150,\n      \"type\": \"CONSOLE_LOG\",\n      \"category\": \"CONSOLE\",\n      \"payload\": {\n        \"level\": \"log\",\n        \"message\": \"Analysis requested for active dashboard context\"\n      }\n    },\n    {\n      \"id\": \"evt_op_004\",\n      \"sequence\": 5,\n      \"timestamp\": 200,\n      \"type\": \"NETWORK_REQUEST_START\",\n      \"category\": \"NETWORK\",\n      \"payload\": {\n        \"requestId\": \"req_op_99\",\n        \"url\": \"https://api.internal/v1/analyze\",\n        \"method\": \"POST\"\n      }\n    }\n  ]\n}"
+      }
+    ]
+  }
+}
+```
+
+## Assertions
+- [x] **JSON-RPC 2.0 Stdio Status Code & Envelope**: Successful JSON-RPC 2.0 resolution across stdio pipe
+- [x] **Returns filtered historical events with sequence numbers**: sessionId, returnedEvents, events

@@ -1,0 +1,42 @@
+{
+  "tool": "annotate_session",
+  "category": "historical",
+  "executionMode": "historical",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "sessionId": {
+        "type": "string",
+        "description": "Session ID"
+      },
+      "label": {
+        "type": "string",
+        "description": "Short title for annotation"
+      },
+      "comment": {
+        "type": "string",
+        "description": "Detailed investigative note or root-cause finding"
+      },
+      "nodeId": {
+        "type": "number",
+        "description": "Optional associated LogicalNodeId"
+      },
+      "category": {
+        "type": "string",
+        "enum": [
+          "NOTE",
+          "ROOT_CAUSE",
+          "HYPOTHESIS",
+          "WARNING",
+          "VERIFIED"
+        ]
+      }
+    },
+    "required": [
+      "sessionId",
+      "label",
+      "comment"
+    ]
+  },
+  "expectedBehavior": "Appends new investigative annotation to timeline"
+}

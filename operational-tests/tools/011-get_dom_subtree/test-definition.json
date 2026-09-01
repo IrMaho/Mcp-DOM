@@ -1,0 +1,30 @@
+{
+  "tool": "get_dom_subtree",
+  "category": "historical",
+  "executionMode": "historical",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "sessionId": {
+        "type": "string",
+        "description": "Session ID"
+      },
+      "timestamp": {
+        "type": "number",
+        "description": "Timestamp in milliseconds"
+      },
+      "selector": {
+        "type": "string",
+        "description": "CSS selector for the root of the subtree"
+      },
+      "nodeId": {
+        "type": "number",
+        "description": "LogicalNodeId for the root of the subtree"
+      }
+    },
+    "required": [
+      "sessionId"
+    ]
+  },
+  "expectedBehavior": "Reconstructs HTML subtree for #host-sidebar"
+}

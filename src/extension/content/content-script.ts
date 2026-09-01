@@ -253,7 +253,33 @@ import { InPageFloatingController } from './floating-controller';
   // Handle messages from Popup, Background, or Live MCP Bridge
   if (typeof chrome !== 'undefined' && chrome.runtime?.onMessage) {
     chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
-      if (message.type === 'BROWSER_COMMAND_REQUEST') {
+      if (message.type === 'HIDE_FORENSIC_OVERLAYS') {
+        if (floatingController) {
+          floatingController.hide();
+        }
+        const hosts = document.querySelectorAll('#forensic-recorder-floating-host, #forensic-inspect-highlighter, [id^="forensic-"]');
+        hosts.forEach((el) => {
+          const htmlEl = el as HTMLElement;
+          htmlEl.style.setProperty('display', 'none', 'important');
+          htmlEl.style.setProperty('visibility', 'hidden', 'important');
+          htmlEl.style.setProperty('opacity', '0', 'important');
+        });
+        sendResponse({ success: true });
+        return true;
+      } else if (message.type === 'RESTORE_FORENSIC_OVERLAYS') {
+        if (floatingController) {
+          floatingController.show();
+        }
+        const hosts = document.querySelectorAll('#forensic-recorder-floating-host, #forensic-inspect-highlighter, [id^="forensic-"]');
+        hosts.forEach((el) => {
+          const htmlEl = el as HTMLElement;
+          htmlEl.style.removeProperty('display');
+          htmlEl.style.removeProperty('visibility');
+          htmlEl.style.removeProperty('opacity');
+        });
+        sendResponse({ success: true });
+        return true;
+      } else if (message.type === 'BROWSER_COMMAND_REQUEST') {
         liveController.handleCommand(message, document).then((res) => {
           sendResponse(res);
         });

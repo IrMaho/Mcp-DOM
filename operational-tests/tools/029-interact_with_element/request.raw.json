@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_029_interact_with_element",
+  "method": "tools/call",
+  "params": {
+    "name": "interact_with_element",
+    "arguments": {
+      "action": "type",
+      "selector": "#search-input",
+      "text": " operational test text"
+    }
+  }
+}

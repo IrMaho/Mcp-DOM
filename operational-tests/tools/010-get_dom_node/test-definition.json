@@ -1,0 +1,30 @@
+{
+  "tool": "get_dom_node",
+  "category": "historical",
+  "executionMode": "historical",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "sessionId": {
+        "type": "string",
+        "description": "Session ID"
+      },
+      "timestamp": {
+        "type": "number",
+        "description": "Timestamp in milliseconds"
+      },
+      "nodeId": {
+        "type": "number",
+        "description": "LogicalNodeId to inspect"
+      },
+      "selector": {
+        "type": "string",
+        "description": "CSS selector query if nodeId is unknown"
+      }
+    },
+    "required": [
+      "sessionId"
+    ]
+  },
+  "expectedBehavior": "Inspects properties of Node 4 (host-sidebar)"
+}

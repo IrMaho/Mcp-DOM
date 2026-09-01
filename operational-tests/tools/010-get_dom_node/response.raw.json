@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_010_get_dom_node",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"id\": 4,\n  \"tagName\": \"div\",\n  \"nodeType\": 1,\n  \"selector\": \"#host-sidebar\",\n  \"attributes\": {\n    \"id\": \"host-sidebar\",\n    \"class\": \"sidebar\"\n  },\n  \"parentId\": 3,\n  \"parentSelector\": \"body\",\n  \"childrenIds\": [\n    10\n  ],\n  \"isDetached\": false,\n  \"isHidden\": false\n}"
+      }
+    ]
+  }
+}

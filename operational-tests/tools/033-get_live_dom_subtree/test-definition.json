@@ -1,0 +1,19 @@
+{
+  "tool": "get_live_dom_subtree",
+  "category": "live_browser_control",
+  "executionMode": "live",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "selector": {
+        "type": "string",
+        "description": "CSS selector of the subtree root"
+      },
+      "nodeId": {
+        "type": "number",
+        "description": "LogicalNodeId of the subtree root"
+      }
+    }
+  },
+  "expectedBehavior": "Reconstructs live HTML subtree for #interactive-section"
+}

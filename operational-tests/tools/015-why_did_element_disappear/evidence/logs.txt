@@ -1,0 +1,1 @@
+[EXEC] why_did_element_disappear executed via stdio JSON-RPC at 2026-09-01T14:11:45.334Z in 137ms

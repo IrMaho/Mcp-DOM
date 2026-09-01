@@ -1,0 +1,11 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_034_get_element_visual_state",
+  "method": "tools/call",
+  "params": {
+    "name": "get_element_visual_state",
+    "arguments": {
+      "selector": "#search-input"
+    }
+  }
+}

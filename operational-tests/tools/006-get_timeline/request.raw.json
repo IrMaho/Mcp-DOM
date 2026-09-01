@@ -1,0 +1,11 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_006_get_timeline",
+  "method": "tools/call",
+  "params": {
+    "name": "get_timeline",
+    "arguments": {
+      "sessionId": "operational_acceptance_session_001"
+    }
+  }
+}

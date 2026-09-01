@@ -1,0 +1,34 @@
+{
+  "id": "operational_acceptance_session_001",
+  "name": "Operational Acceptance Test Session",
+  "url": "https://app.internal/dashboard",
+  "origin": "https://app.internal",
+  "title": "Cloud Management Dashboard",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+  "schemaVersion": "2.0.0",
+  "recorderVersion": "2.0.0",
+  "extensionVersion": "2.0.0",
+  "startTime": 1725000000000,
+  "endTime": 1725000002000,
+  "durationMs": 2000,
+  "status": "stopped",
+  "health": {
+    "domRecording": "HEALTHY",
+    "userEvents": "HEALTHY",
+    "console": "HEALTHY",
+    "network": "HEALTHY",
+    "screenshots": "HEALTHY",
+    "shadowDom": "HEALTHY",
+    "iframes": "HEALTHY"
+  },
+  "stats": {
+    "eventCount": 8,
+    "mutationCount": 4,
+    "errorCount": 1,
+    "consoleCount": 1,
+    "networkCount": 2,
+    "checkpointCount": 2,
+    "screenshotCount": 1,
+    "nodeCount": 12
+  }
+}

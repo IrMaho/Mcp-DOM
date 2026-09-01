@@ -1,0 +1,16 @@
+{
+  "sessionId": "operational_acceptance_session_001",
+  "durationMs": 400,
+  "firstTimestamp": 50,
+  "lastTimestamp": 450,
+  "totalEvents": 104,
+  "categoryBreakdown": {
+    "DOM": 26,
+    "USER": 13,
+    "CONSOLE": 13,
+    "NETWORK": 26,
+    "ERROR": 13,
+    "VISUAL": 13
+  },
+  "sessionStatus": "stopped"
+}

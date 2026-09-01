@@ -1,0 +1,5 @@
+{
+  "action": "type",
+  "selector": "#search-input",
+  "text": " operational test text"
+}

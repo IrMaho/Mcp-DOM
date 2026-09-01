@@ -1,0 +1,15 @@
+{
+  "tool": "list_sessions",
+  "category": "historical",
+  "executionMode": "historical",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "limit": {
+        "type": "number",
+        "description": "Maximum number of sessions to return"
+      }
+    }
+  },
+  "expectedBehavior": "Returns array of sessions containing seeded sessionId"
+}

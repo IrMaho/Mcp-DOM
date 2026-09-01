@@ -1,0 +1,9 @@
+{
+  "tool": "diff_dom",
+  "index": 12,
+  "status": "PASS",
+  "executionTimeMs": 37,
+  "assertionsPassed": 2,
+  "assertionsTotal": 2,
+  "timestamp": "2026-09-01T14:11:45.096Z"
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "assertion": "JSON-RPC 2.0 Stdio Status Code & Envelope",
+    "passed": true,
+    "details": "Successful JSON-RPC 2.0 resolution across stdio pipe"
+  },
+  {
+    "assertion": "Discovers short-lived button 10 that existed for 330ms",
+    "passed": true,
+    "details": "sessionId, maxLifespanMs, disappearingElementsCount, elements"
+  }
+]

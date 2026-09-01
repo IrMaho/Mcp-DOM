@@ -1,0 +1,1 @@
+"<html>\n  <body>\n    <div id=\"host-sidebar\" class=\"sidebar\">\n      <button class=\"btn btn-primary\" id=\"injected-action-btn\">⚡ Run Analysis</button>\n    </div>\n    <main id=\"main-content\">\n      <input id=\"search-input\" type=\"text\" value=\"initial query\" />\n    </main>\n  </body>\n</html>"

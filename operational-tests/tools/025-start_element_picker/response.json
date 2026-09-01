@@ -1,0 +1,7 @@
+{
+  "status": "PICKER_ACTIVE",
+  "message": "Visual element picker activated in the browser. Click any element or hold Ctrl+Shift and click.",
+  "details": {
+    "pickerActive": true
+  }
+}

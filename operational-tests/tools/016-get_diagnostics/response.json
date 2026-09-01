@@ -1,0 +1,370 @@
+{
+  "sessionId": "operational_acceptance_session_001",
+  "totalDiagnostics": 26,
+  "diagnostics": [
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    }
+  ]
+}

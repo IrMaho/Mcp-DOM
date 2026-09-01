@@ -1,0 +1,17 @@
+[
+  {
+    "assertion": "JSON-RPC 2.0 Stdio Status Code & Envelope",
+    "passed": true,
+    "details": "Successful JSON-RPC 2.0 resolution across stdio pipe"
+  },
+  {
+    "assertion": "Diagnoses PARENT_SUBTREE_REPLACED root cause with high confidence",
+    "passed": true,
+    "details": "targetQuery, targetNodeId, found, tagName, selectorHint, createdAt, firstVisibleAt, lastKnownGoodStateAt, disappearedAt, lifespanMs, disappearanceMechanism, likelyRootCause, confidenceScore, detailedExplanation, evidentiaryTrail, precedingEvents, followingEvents, correlatedErrors, correlatedNetworkCalls, alternativeHypotheses"
+  },
+  {
+    "assertion": "Identified PARENT_SUBTREE_REPLACED mechanism",
+    "passed": true,
+    "details": "Mechanism: PARENT_SUBTREE_REPLACED, Confidence: 92%"
+  }
+]

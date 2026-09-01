@@ -1,0 +1,19 @@
+{
+  "tool": "capture_page_screenshot",
+  "category": "live_browser_control",
+  "executionMode": "live",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "format": {
+        "type": "string",
+        "enum": [
+          "png",
+          "jpeg"
+        ],
+        "description": "Image format (default: png)"
+      }
+    }
+  },
+  "expectedBehavior": "Captures full page visible screenshot dataUrl with metadata"
+}

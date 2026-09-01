@@ -1,0 +1,1144 @@
+[
+  {
+    "index": 1,
+    "name": "list_sessions",
+    "category": "historical",
+    "description": "List all recorded browser forensic debugging sessions with metadata, timestamps, and stats.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "limit": {
+          "type": "number",
+          "description": "Maximum number of sessions to return"
+        }
+      }
+    },
+    "requiredArguments": [],
+    "executionMode": "historical",
+    "requiresBrowser": false,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": true,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 2,
+    "name": "get_session",
+    "category": "historical",
+    "description": "Retrieve full metadata, capabilities, health status, and statistics for a specific debugging session.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Unique identifier of the recording session"
+        }
+      },
+      "required": [
+        "sessionId"
+      ]
+    },
+    "requiredArguments": [
+      "sessionId"
+    ],
+    "executionMode": "historical",
+    "requiresBrowser": false,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": true,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 3,
+    "name": "export_session",
+    "category": "historical",
+    "description": "Export a complete recording session as a portable, self-contained JSON bundle.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Unique identifier of the recording session"
+        }
+      },
+      "required": [
+        "sessionId"
+      ]
+    },
+    "requiredArguments": [
+      "sessionId"
+    ],
+    "executionMode": "historical",
+    "requiresBrowser": false,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": true,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 4,
+    "name": "import_session",
+    "category": "historical",
+    "description": "Import a recording session bundle from raw JSON string.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "bundleJson": {
+          "type": "string",
+          "description": "Raw JSON string of the session bundle"
+        }
+      },
+      "required": [
+        "bundleJson"
+      ]
+    },
+    "requiredArguments": [
+      "bundleJson"
+    ],
+    "executionMode": "historical",
+    "requiresBrowser": false,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": true,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 5,
+    "name": "delete_session",
+    "category": "historical",
+    "description": "Delete a recording session from storage.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Unique identifier of the recording session"
+        }
+      },
+      "required": [
+        "sessionId"
+      ]
+    },
+    "requiredArguments": [
+      "sessionId"
+    ],
+    "executionMode": "historical",
+    "requiresBrowser": false,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": true,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 6,
+    "name": "get_timeline",
+    "category": "historical",
+    "description": "Retrieve summary breakdown of events across the session timeline, including event categories and significant milestones.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Session ID"
+        }
+      },
+      "required": [
+        "sessionId"
+      ]
+    },
+    "requiredArguments": [
+      "sessionId"
+    ],
+    "executionMode": "historical",
+    "requiresBrowser": false,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": true,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 7,
+    "name": "get_events",
+    "category": "historical",
+    "description": "Query recorded events with filtering by category (DOM, USER, ERROR, CONSOLE, NETWORK, etc.), type, timestamp range, target node, or search query.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Session ID"
+        },
+        "category": {
+          "type": "string",
+          "description": "Filter by category (DOM, USER, ERROR, CONSOLE, NETWORK, NAVIGATION, etc.)"
+        },
+        "type": {
+          "type": "string",
+          "description": "Filter by exact event type (e.g. DOM_MUTATION_ADD, RUNTIME_ERROR, USER_CLICK)"
+        },
+        "fromTimestamp": {
+          "type": "number",
+          "description": "Start timestamp in milliseconds"
+        },
+        "toTimestamp": {
+          "type": "number",
+          "description": "End timestamp in milliseconds"
+        },
+        "targetNodeId": {
+          "type": "number",
+          "description": "Filter by affected LogicalNodeId"
+        },
+        "targetSelector": {
+          "type": "string",
+          "description": "Filter by CSS selector substring"
+        },
+        "searchQuery": {
+          "type": "string",
+          "description": "Search term inside event payload"
+        },
+        "limit": {
+          "type": "number",
+          "description": "Max events to return (default: 50)"
+        },
+        "offset": {
+          "type": "number",
+          "description": "Offset for pagination"
+        }
+      },
+      "required": [
+        "sessionId"
+      ]
+    },
+    "requiredArguments": [
+      "sessionId"
+    ],
+    "executionMode": "historical",
+    "requiresBrowser": false,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": true,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 8,
+    "name": "get_events_around",
+    "category": "historical",
+    "description": "Retrieve a focused contextual window of events occurring immediately before and after a specific timestamp or event ID.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Session ID"
+        },
+        "timestamp": {
+          "type": "number",
+          "description": "Target timestamp in milliseconds"
+        },
+        "eventId": {
+          "type": "string",
+          "description": "Target event ID"
+        },
+        "windowMs": {
+          "type": "number",
+          "description": "Window radius in milliseconds (default: 300ms)"
+        }
+      },
+      "required": [
+        "sessionId"
+      ]
+    },
+    "requiredArguments": [
+      "sessionId"
+    ],
+    "executionMode": "historical",
+    "requiresBrowser": false,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": true,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 9,
+    "name": "get_dom_state",
+    "category": "historical",
+    "description": "Reconstruct the complete DOM snapshot at an arbitrary timestamp or event ID using checkpoint delta replay.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Session ID"
+        },
+        "timestamp": {
+          "type": "number",
+          "description": "Target timestamp in milliseconds"
+        },
+        "eventId": {
+          "type": "string",
+          "description": "Target event ID"
+        },
+        "format": {
+          "type": "string",
+          "enum": [
+            "html",
+            "json_summary",
+            "full_nodes"
+          ],
+          "description": "Output format (default: html)"
+        }
+      },
+      "required": [
+        "sessionId"
+      ]
+    },
+    "requiredArguments": [
+      "sessionId"
+    ],
+    "executionMode": "historical",
+    "requiresBrowser": false,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": true,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 10,
+    "name": "get_dom_node",
+    "category": "historical",
+    "description": "Inspect detailed properties of a specific DOM node at a given timestamp (tag, attributes, text, parent, children, visibility state).",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Session ID"
+        },
+        "timestamp": {
+          "type": "number",
+          "description": "Timestamp in milliseconds"
+        },
+        "nodeId": {
+          "type": "number",
+          "description": "LogicalNodeId to inspect"
+        },
+        "selector": {
+          "type": "string",
+          "description": "CSS selector query if nodeId is unknown"
+        }
+      },
+      "required": [
+        "sessionId"
+      ]
+    },
+    "requiredArguments": [
+      "sessionId"
+    ],
+    "executionMode": "historical",
+    "requiresBrowser": false,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": true,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 11,
+    "name": "get_dom_subtree",
+    "category": "historical",
+    "description": "Reconstruct and extract the HTML of a specific subtree (e.g. #app or .gpt-panel) at a given timestamp.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Session ID"
+        },
+        "timestamp": {
+          "type": "number",
+          "description": "Timestamp in milliseconds"
+        },
+        "selector": {
+          "type": "string",
+          "description": "CSS selector for the root of the subtree"
+        },
+        "nodeId": {
+          "type": "number",
+          "description": "LogicalNodeId for the root of the subtree"
+        }
+      },
+      "required": [
+        "sessionId"
+      ]
+    },
+    "requiredArguments": [
+      "sessionId"
+    ],
+    "executionMode": "historical",
+    "requiresBrowser": false,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": true,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 12,
+    "name": "diff_dom",
+    "category": "historical",
+    "description": "Compare two DOM states between timestamp T1 and T2 (or event E1 and E2) and return structured additions, removals, moves, attribute, style, and text changes.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Session ID"
+        },
+        "t1": {
+          "type": "number",
+          "description": "Start timestamp in milliseconds"
+        },
+        "t2": {
+          "type": "number",
+          "description": "End timestamp in milliseconds"
+        },
+        "e1": {
+          "type": "string",
+          "description": "Start event ID (alternative to t1)"
+        },
+        "e2": {
+          "type": "string",
+          "description": "End event ID (alternative to t2)"
+        }
+      },
+      "required": [
+        "sessionId"
+      ]
+    },
+    "requiredArguments": [
+      "sessionId"
+    ],
+    "executionMode": "historical",
+    "requiresBrowser": false,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": true,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 13,
+    "name": "trace_element",
+    "category": "historical",
+    "description": "Trace the entire chronological lifecycle of a DOM element from creation, mounting, mutations, style changes to unmounting/removal.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Session ID"
+        },
+        "nodeId": {
+          "type": "number",
+          "description": "LogicalNodeId of the element"
+        },
+        "selector": {
+          "type": "string",
+          "description": "CSS selector hint for the element"
+        }
+      },
+      "required": [
+        "sessionId"
+      ]
+    },
+    "requiredArguments": [
+      "sessionId"
+    ],
+    "executionMode": "historical",
+    "requiresBrowser": false,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": true,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 14,
+    "name": "find_disappearing_elements",
+    "category": "historical",
+    "description": "Automatically scan the session and identify all elements that existed temporarily and were subsequently removed or hidden.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Session ID"
+        },
+        "maxLifespanMs": {
+          "type": "number",
+          "description": "Maximum lifespan in ms to consider (default: 5000ms)"
+        }
+      },
+      "required": [
+        "sessionId"
+      ]
+    },
+    "requiredArguments": [
+      "sessionId"
+    ],
+    "executionMode": "historical",
+    "requiresBrowser": false,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": true,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 15,
+    "name": "why_did_element_disappear",
+    "category": "historical",
+    "description": "Forensic root-cause diagnosis for why an injected or existing UI element disappeared. Pinpoints removal mechanism, ancestor container destruction, style changes, and correlated errors/network triggers.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Session ID"
+        },
+        "target": {
+          "type": "string",
+          "description": "CSS selector or LogicalNodeId of the target element"
+        }
+      },
+      "required": [
+        "sessionId",
+        "target"
+      ]
+    },
+    "requiredArguments": [
+      "sessionId",
+      "target"
+    ],
+    "executionMode": "historical",
+    "requiresBrowser": false,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": true,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 16,
+    "name": "get_diagnostics",
+    "category": "historical",
+    "description": "Query recorded console messages, runtime errors, and unhandled promise rejections with stack traces.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Session ID"
+        },
+        "level": {
+          "type": "string",
+          "enum": [
+            "all",
+            "error",
+            "warn",
+            "info",
+            "log"
+          ],
+          "description": "Log level filter"
+        },
+        "fromTimestamp": {
+          "type": "number",
+          "description": "Start timestamp"
+        },
+        "toTimestamp": {
+          "type": "number",
+          "description": "End timestamp"
+        }
+      },
+      "required": [
+        "sessionId"
+      ]
+    },
+    "requiredArguments": [
+      "sessionId"
+    ],
+    "executionMode": "historical",
+    "requiresBrowser": false,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": true,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 17,
+    "name": "get_network_events",
+    "category": "historical",
+    "description": "Query recorded network requests and responses correlated with timing and duration.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Session ID"
+        },
+        "statusFilter": {
+          "type": "string",
+          "enum": [
+            "all",
+            "errors_only",
+            "success_only"
+          ],
+          "description": "HTTP status filter"
+        }
+      },
+      "required": [
+        "sessionId"
+      ]
+    },
+    "requiredArguments": [
+      "sessionId"
+    ],
+    "executionMode": "historical",
+    "requiresBrowser": false,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": true,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 18,
+    "name": "get_screenshots",
+    "category": "historical",
+    "description": "List visual checkpoints and screenshot checkpoints captured during the recording session.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Session ID"
+        }
+      },
+      "required": [
+        "sessionId"
+      ]
+    },
+    "requiredArguments": [
+      "sessionId"
+    ],
+    "executionMode": "historical",
+    "requiresBrowser": false,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": true,
+    "visualEvidenceExpected": true,
+    "status": "PENDING"
+  },
+  {
+    "index": 19,
+    "name": "annotate_session",
+    "category": "historical",
+    "description": "Add an investigative annotation or hypothesis to the session timeline.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Session ID"
+        },
+        "label": {
+          "type": "string",
+          "description": "Short title for annotation"
+        },
+        "comment": {
+          "type": "string",
+          "description": "Detailed investigative note or root-cause finding"
+        },
+        "nodeId": {
+          "type": "number",
+          "description": "Optional associated LogicalNodeId"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "NOTE",
+            "ROOT_CAUSE",
+            "HYPOTHESIS",
+            "WARNING",
+            "VERIFIED"
+          ]
+        }
+      },
+      "required": [
+        "sessionId",
+        "label",
+        "comment"
+      ]
+    },
+    "requiredArguments": [
+      "sessionId",
+      "label",
+      "comment"
+    ],
+    "executionMode": "historical",
+    "requiresBrowser": false,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": true,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 20,
+    "name": "get_annotations",
+    "category": "historical",
+    "description": "Retrieve all human and AI annotations created for a session.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Session ID"
+        }
+      },
+      "required": [
+        "sessionId"
+      ]
+    },
+    "requiredArguments": [
+      "sessionId"
+    ],
+    "executionMode": "historical",
+    "requiresBrowser": false,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": true,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 21,
+    "name": "get_recording_health",
+    "category": "historical",
+    "description": "Run an automated integrity audit on a recording session to check sequence monotonicity, missing nodes, and capability health.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Session ID"
+        }
+      },
+      "required": [
+        "sessionId"
+      ]
+    },
+    "requiredArguments": [
+      "sessionId"
+    ],
+    "executionMode": "historical",
+    "requiresBrowser": false,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": true,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 22,
+    "name": "inspect_live_page",
+    "category": "live_browser_control",
+    "description": "Inspect the current live browser page state, including URL, title, viewport dimensions, scroll positions, readyState, active and focused elements.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {}
+    },
+    "requiredArguments": [],
+    "executionMode": "live",
+    "requiresBrowser": true,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": false,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 23,
+    "name": "inspect_live_element",
+    "category": "live_browser_control",
+    "description": "Deeply inspect a live DOM element on the active browser page by CSS selector, LogicalNodeId, or selectedElementRef, returning bounds, computed styles, visibility, attributes, state, role, aria, and parent context.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "selector": {
+          "type": "string",
+          "description": "CSS selector of the target element"
+        },
+        "nodeId": {
+          "type": "number",
+          "description": "LogicalNodeId of the element if recorded"
+        },
+        "selectedElementRef": {
+          "type": "string",
+          "description": "Reference token of the last selected element"
+        },
+        "xpath": {
+          "type": "string",
+          "description": "XPath expression for the element"
+        }
+      }
+    },
+    "requiredArguments": [],
+    "executionMode": "live",
+    "requiresBrowser": true,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": false,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 24,
+    "name": "get_selected_element",
+    "category": "live_browser_control",
+    "description": "Retrieve the DOM element visually selected by the user via Ctrl + Shift + Mouse Click in the live browser.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {}
+    },
+    "requiredArguments": [],
+    "executionMode": "live",
+    "requiresBrowser": true,
+    "requiresRecording": false,
+    "requiresSelection": true,
+    "requiresSession": false,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 25,
+    "name": "start_element_picker",
+    "category": "live_browser_control",
+    "description": "Activate the interactive visual element picker mode in the live browser with hover highlighting and click selection.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "highlightColor": {
+          "type": "string",
+          "description": "Hex color for hover highlighter (default: #0ea5e9)"
+        }
+      }
+    },
+    "requiredArguments": [],
+    "executionMode": "live",
+    "requiresBrowser": true,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": false,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 26,
+    "name": "stop_element_picker",
+    "category": "live_browser_control",
+    "description": "Deactivate the visual element picker mode in the browser and restore normal cursor and interaction state.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {}
+    },
+    "requiredArguments": [],
+    "executionMode": "live",
+    "requiresBrowser": true,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": false,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 27,
+    "name": "capture_page_screenshot",
+    "category": "live_browser_control",
+    "description": "Capture a screenshot of the visible browser page viewport with temporal, scroll, and viewport metadata.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "format": {
+          "type": "string",
+          "enum": [
+            "png",
+            "jpeg"
+          ],
+          "description": "Image format (default: png)"
+        }
+      }
+    },
+    "requiredArguments": [],
+    "executionMode": "live",
+    "requiresBrowser": true,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": false,
+    "visualEvidenceExpected": true,
+    "status": "PENDING"
+  },
+  {
+    "index": 28,
+    "name": "capture_element_screenshot",
+    "category": "live_browser_control",
+    "description": "Capture an element-specific screenshot bounded to the target element exact geometry and device pixel ratio.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "selector": {
+          "type": "string",
+          "description": "CSS selector of the target element"
+        },
+        "nodeId": {
+          "type": "number",
+          "description": "LogicalNodeId of the target element"
+        },
+        "selectedElementRef": {
+          "type": "string",
+          "description": "Selected element reference token"
+        }
+      }
+    },
+    "requiredArguments": [],
+    "executionMode": "live",
+    "requiresBrowser": true,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": false,
+    "visualEvidenceExpected": true,
+    "status": "PENDING"
+  },
+  {
+    "index": 29,
+    "name": "interact_with_element",
+    "category": "live_browser_control",
+    "description": "Perform an interaction (click, double_click, right_click, hover, focus, blur, type, clear, press_key, select_option, scroll_into_view, scroll) on a live element and return before/after state and effect measurements.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "click",
+            "double_click",
+            "right_click",
+            "hover",
+            "focus",
+            "blur",
+            "type",
+            "clear",
+            "press_key",
+            "select_option",
+            "scroll_into_view",
+            "scroll"
+          ],
+          "description": "The user action to perform"
+        },
+        "selector": {
+          "type": "string",
+          "description": "CSS selector of the target element"
+        },
+        "nodeId": {
+          "type": "number",
+          "description": "LogicalNodeId of the target element"
+        },
+        "selectedElementRef": {
+          "type": "string",
+          "description": "Selected element reference token"
+        },
+        "text": {
+          "type": "string",
+          "description": "Text string for type action"
+        },
+        "key": {
+          "type": "string",
+          "description": "Key name for press_key action (e.g. Enter, Escape, Tab, ArrowDown)"
+        },
+        "optionValue": {
+          "type": "string",
+          "description": "Value or label for select_option action"
+        },
+        "scrollDelta": {
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            }
+          },
+          "description": "Scroll deltas for scroll action"
+        },
+        "waitForStabilization": {
+          "type": "boolean",
+          "description": "Wait for DOM and network stabilization after interaction (default: true)"
+        },
+        "stabilizationTimeoutMs": {
+          "type": "number",
+          "description": "Max wait time in milliseconds (default: 300ms)"
+        }
+      },
+      "required": [
+        "action"
+      ]
+    },
+    "requiredArguments": [
+      "action"
+    ],
+    "executionMode": "live",
+    "requiresBrowser": true,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": false,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 30,
+    "name": "start_element_observation",
+    "category": "live_browser_control",
+    "description": "Start focused continuous recording and observation around a target element and its subtree/ancestors.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "selector": {
+          "type": "string",
+          "description": "CSS selector of the target element"
+        },
+        "nodeId": {
+          "type": "number",
+          "description": "LogicalNodeId of the target element"
+        }
+      }
+    },
+    "requiredArguments": [],
+    "executionMode": "live",
+    "requiresBrowser": true,
+    "requiresRecording": true,
+    "requiresSelection": false,
+    "requiresSession": false,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 31,
+    "name": "stop_element_observation",
+    "category": "live_browser_control",
+    "description": "Stop focused element observation and assemble a complete correlation bundle with mutations, diagnostics, network activity, and root-cause analysis.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {}
+    },
+    "requiredArguments": [],
+    "executionMode": "live",
+    "requiresBrowser": true,
+    "requiresRecording": true,
+    "requiresSelection": false,
+    "requiresSession": false,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 32,
+    "name": "get_live_dom_snapshot",
+    "category": "live_browser_control",
+    "description": "Capture the current live virtual DOM state snapshot of the active browser page in HTML or structured JSON format.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "format": {
+          "type": "string",
+          "enum": [
+            "html",
+            "json"
+          ],
+          "description": "Output format (default: html)"
+        }
+      }
+    },
+    "requiredArguments": [],
+    "executionMode": "live",
+    "requiresBrowser": true,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": false,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 33,
+    "name": "get_live_dom_subtree",
+    "category": "live_browser_control",
+    "description": "Reconstruct and extract the live HTML or node structure of a specific subtree on the active browser page.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "selector": {
+          "type": "string",
+          "description": "CSS selector of the subtree root"
+        },
+        "nodeId": {
+          "type": "number",
+          "description": "LogicalNodeId of the subtree root"
+        }
+      }
+    },
+    "requiredArguments": [],
+    "executionMode": "live",
+    "requiresBrowser": true,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": false,
+    "visualEvidenceExpected": false,
+    "status": "PENDING"
+  },
+  {
+    "index": 34,
+    "name": "get_element_visual_state",
+    "category": "live_browser_control",
+    "description": "Inspect detailed visual layout, occlusion, clipping, opacity, z-index, and viewport visibility for a live element.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "selector": {
+          "type": "string",
+          "description": "CSS selector of the target element"
+        },
+        "nodeId": {
+          "type": "number",
+          "description": "LogicalNodeId of the target element"
+        }
+      }
+    },
+    "requiredArguments": [],
+    "executionMode": "live",
+    "requiresBrowser": true,
+    "requiresRecording": false,
+    "requiresSelection": false,
+    "requiresSession": false,
+    "visualEvidenceExpected": true,
+    "status": "PENDING"
+  }
+]

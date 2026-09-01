@@ -1,0 +1,88 @@
+{
+  "tag": "button",
+  "id": "primary-action-btn",
+  "classes": [
+    "btn"
+  ],
+  "role": "button",
+  "text": "⚡ Run Analysis",
+  "normalizedText": "⚡ Run Analysis",
+  "value": "",
+  "type": "submit",
+  "selector": "#primary-action-btn",
+  "bestSelector": "#primary-action-btn",
+  "selectorCandidates": [
+    "#primary-action-btn",
+    "button[data-testid=\"action-button\"]",
+    "button.btn",
+    "button.btn"
+  ],
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0,
+    "left": 0
+  },
+  "visibility": {
+    "isVisible": true,
+    "display": "inline-block",
+    "visibility": "visible",
+    "opacity": 1,
+    "pointerEvents": "auto",
+    "isClipped": false,
+    "isInViewport": true,
+    "zIndex": "auto"
+  },
+  "computedStyle": {
+    "display": "inline-block",
+    "visibility": "visible",
+    "opacity": "1",
+    "position": "static",
+    "zIndex": "auto",
+    "pointerEvents": "auto",
+    "overflow": "",
+    "boxSizing": "border-box",
+    "color": "rgb(15, 23, 42)",
+    "backgroundColor": "rgb(56, 189, 248)",
+    "fontSize": "medium"
+  },
+  "attributes": {
+    "id": "primary-action-btn",
+    "class": "btn",
+    "data-testid": "action-button"
+  },
+  "state": {
+    "disabled": false,
+    "readOnly": false,
+    "focused": false,
+    "isShadowHost": false,
+    "hasShadowRoot": false
+  },
+  "context": {
+    "parentChain": [
+      "#interactive-section > div:nth-of-type(2)",
+      "#interactive-section",
+      "#main-content",
+      "body"
+    ],
+    "parentSelector": "#interactive-section > div:nth-of-type(2)",
+    "childrenSummary": {
+      "count": 0,
+      "tags": []
+    },
+    "containingBlock": "#interactive-section > div:nth-of-type(2)",
+    "iframe": null,
+    "shadowRoot": null
+  },
+  "forensics": {
+    "logicalNodeId": null,
+    "creationSequence": null,
+    "lastMutationSequence": null,
+    "eventCount": 0,
+    "isRecorded": false
+  }
+}

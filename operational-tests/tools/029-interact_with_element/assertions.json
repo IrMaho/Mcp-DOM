@@ -1,0 +1,12 @@
+[
+  {
+    "assertion": "JSON-RPC 2.0 Stdio Status Code & Envelope",
+    "passed": true,
+    "details": "Successful JSON-RPC 2.0 resolution across stdio pipe"
+  },
+  {
+    "assertion": "Types text into input and measures immediate effects",
+    "passed": true,
+    "details": "success, action, target, beforeState, afterState, effects, durationMs, stabilized"
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "tool": "capture_element_screenshot",
+  "category": "live_browser_control",
+  "executionMode": "live",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "selector": {
+        "type": "string",
+        "description": "CSS selector of the target element"
+      },
+      "nodeId": {
+        "type": "number",
+        "description": "LogicalNodeId of the target element"
+      },
+      "selectedElementRef": {
+        "type": "string",
+        "description": "Selected element reference token"
+      }
+    }
+  },
+  "expectedBehavior": "Captures element-bounded screenshot cropped to geometry"
+}

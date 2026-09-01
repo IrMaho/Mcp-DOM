@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_016_get_diagnostics",
+  "method": "tools/call",
+  "params": {
+    "name": "get_diagnostics",
+    "arguments": {
+      "sessionId": "operational_acceptance_session_001",
+      "level": "all"
+    }
+  }
+}

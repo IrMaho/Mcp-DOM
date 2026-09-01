@@ -1,0 +1,6 @@
+{
+  "sessionId": "operational_acceptance_session_001",
+  "label": "Root Cause Confirmed",
+  "comment": "Host framework unmounted #host-sidebar after network update",
+  "category": "ROOT_CAUSE"
+}

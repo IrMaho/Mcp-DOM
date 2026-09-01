@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_008_get_events_around",
+  "method": "tools/call",
+  "params": {
+    "name": "get_events_around",
+    "arguments": {
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "windowMs": 150
+    }
+  }
+}

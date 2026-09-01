@@ -1,0 +1,18 @@
+{
+  "tool": "get_session",
+  "category": "historical",
+  "executionMode": "historical",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "sessionId": {
+        "type": "string",
+        "description": "Unique identifier of the recording session"
+      }
+    },
+    "required": [
+      "sessionId"
+    ]
+  },
+  "expectedBehavior": "Returns full metadata and health metrics for session"
+}

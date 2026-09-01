@@ -1,0 +1,9 @@
+{
+  "tool": "get_dom_state",
+  "index": 9,
+  "status": "PASS",
+  "executionTimeMs": 33,
+  "assertionsPassed": 2,
+  "assertionsTotal": 2,
+  "timestamp": "2026-09-01T14:11:44.984Z"
+}

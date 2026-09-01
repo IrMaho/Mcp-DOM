@@ -13,6 +13,7 @@ import { NodeRegistry } from './node-registry';
 import { PrivacyEngine } from './privacy-engine';
 import { SequenceCounter } from './sequence-counter';
 import { SnapshotEngine } from './snapshot-engine';
+import { PNGBuilder } from './png-builder';
 
 export class LiveBrowserController {
   private nodeRegistry: NodeRegistry;
@@ -208,36 +209,55 @@ export class LiveBrowserController {
     // When running inside extension with chrome.tabs API or when payload contains pre-captured image
     let dataUrl = payload?.dataUrl || '';
 
-    // If no dataUrl provided, generate lightweight placeholder/canvas dataURL for offline/test environments
-    if (!dataUrl && typeof document !== 'undefined') {
+    // If running in live browser with element bounds, crop the full page capture to element dimensions
+    if (command === 'LIVE_ELEMENT_SCREENSHOT' && dataUrl && targetBounds && typeof Image !== 'undefined') {
       try {
-        const canvas = document.createElement('canvas');
-        canvas.width = Math.min(1920, captureDimensions.width || 800);
-        canvas.height = Math.min(1080, captureDimensions.height || 600);
-        const ctx = canvas.getContext('2d');
-        if (ctx) {
-          ctx.fillStyle = '#0f172a';
-          ctx.fillRect(0, 0, canvas.width, canvas.height);
-          ctx.fillStyle = '#38bdf8';
-          ctx.font = '16px monospace';
-          ctx.fillText(`Browser Screenshot [${command}]`, 20, 40);
-          ctx.fillStyle = '#94a3b8';
-          ctx.font = '12px monospace';
-          ctx.fillText(`URL: ${win.location?.href || 'unknown'}`, 20, 70);
-          if (targetSelector) {
-            ctx.fillText(`Target: ${targetSelector}`, 20, 95);
-          }
-          if (dataUrl === '') {
-            dataUrl = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
-          }
+        const cropped = await new Promise<string>((resolve) => {
+          const img = new Image();
+          img.onload = () => {
+            try {
+              const cropCanvas = doc.createElement('canvas');
+              const sx = Math.max(0, Math.floor(targetBounds!.x * dpr));
+              const sy = Math.max(0, Math.floor(targetBounds!.y * dpr));
+              const sw = Math.max(1, Math.floor(targetBounds!.width * dpr));
+              const sh = Math.max(1, Math.floor(targetBounds!.height * dpr));
+
+              cropCanvas.width = sw;
+              cropCanvas.height = sh;
+              const ctx = cropCanvas.getContext('2d');
+              if (ctx) {
+                ctx.drawImage(img, sx, sy, sw, sh, 0, 0, sw, sh);
+                resolve(cropCanvas.toDataURL('image/png'));
+                return;
+              }
+            } catch {
+              // Fallback to uncropped if canvas context fails
+            }
+            resolve(dataUrl);
+          };
+          img.onerror = () => resolve(dataUrl);
+          img.src = dataUrl;
+        });
+        if (cropped) {
+          dataUrl = cropped;
         }
       } catch {
-        // Ignored
+        // Fallback
       }
     }
 
+    // If no dataUrl provided, generate valid viewable PNG dataURL via PNGBuilder
     if (!dataUrl) {
-      dataUrl = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
+      const width = command === 'LIVE_ELEMENT_SCREENSHOT' ? Math.max(120, captureDimensions.width || 320) : Math.max(800, viewport.width || 1280);
+      const height = command === 'LIVE_ELEMENT_SCREENSHOT' ? Math.max(60, captureDimensions.height || 180) : Math.max(600, viewport.height || 800);
+      dataUrl = PNGBuilder.createDataUrl({
+        width,
+        height,
+        backgroundColor: command === 'LIVE_ELEMENT_SCREENSHOT' ? [30, 41, 59, 255] : [15, 23, 42, 255],
+        headerColor: [56, 189, 248, 255],
+        borderColor: [99, 102, 241, 255],
+        label: targetSelector || (command === 'LIVE_ELEMENT_SCREENSHOT' ? 'Element Screenshot' : 'Page Screenshot'),
+      });
     }
 
     return {

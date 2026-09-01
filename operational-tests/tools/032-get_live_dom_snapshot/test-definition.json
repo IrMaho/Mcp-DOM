@@ -1,0 +1,19 @@
+{
+  "tool": "get_live_dom_snapshot",
+  "category": "live_browser_control",
+  "executionMode": "live",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "format": {
+        "type": "string",
+        "enum": [
+          "html",
+          "json"
+        ],
+        "description": "Output format (default: html)"
+      }
+    }
+  },
+  "expectedBehavior": "Captures full live virtual DOM snapshot in HTML format"
+}

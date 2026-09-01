@@ -1,0 +1,12 @@
+[
+  {
+    "assertion": "JSON-RPC 2.0 Stdio Status Code & Envelope",
+    "passed": true,
+    "details": "Successful JSON-RPC 2.0 resolution across stdio pipe"
+  },
+  {
+    "assertion": "Activates visual element picker mode with hover overlay",
+    "passed": true,
+    "details": "status, message, details"
+  }
+]

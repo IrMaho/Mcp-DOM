@@ -1,0 +1,12 @@
+[
+  {
+    "assertion": "JSON-RPC 2.0 Stdio Status Code & Envelope",
+    "passed": true,
+    "details": "Successful JSON-RPC 2.0 resolution across stdio pipe"
+  },
+  {
+    "assertion": "Returns event count breakdown across categories",
+    "passed": true,
+    "details": "sessionId, durationMs, firstTimestamp, lastTimestamp, totalEvents, categoryBreakdown, sessionStatus"
+  }
+]

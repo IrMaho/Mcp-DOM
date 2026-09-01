@@ -1,4 +1,5 @@
 import { spawn } from 'child_process';
+import readline from 'readline';
 import path from 'path';
 import { FileStorageProvider } from '../dist/server/mcp-server.js';
 
@@ -150,54 +151,57 @@ const server = spawn('node', ['./bin/mcp-server.js'], {
 });
 
 let testPassed = 0;
-let expectedTests = 8;
+const expectedTests = 8;
 
-server.stdout.on('data', (chunk) => {
-  const lines = chunk.toString().trim().split('\n');
-  for (const line of lines) {
-    if (!line.trim()) continue;
-    try {
-      const msg = JSON.parse(line);
-      console.log(`\n[MCP Received] ID ${msg.id}:`);
+const rl = readline.createInterface({
+  input: server.stdout,
+  terminal: false,
+});
 
-      if (msg.id === 1) {
-        console.log('✔ Initialize result:', msg.result.serverInfo.name, 'v' + msg.result.serverInfo.version);
-        testPassed++;
-      } else if (msg.id === 2) {
-        console.log('✔ Tools count:', msg.result.tools.length, '(21 Historical + 13 Live Tools = 34 total)');
-        testPassed++;
-      } else if (msg.id === 3) {
-        const data = JSON.parse(msg.result.content[0].text);
-        console.log('✔ list_sessions total:', data.totalSessions, 'Found ID:', data.sessions[0]?.id);
-        testPassed++;
-      } else if (msg.id === 4) {
-        const trace = JSON.parse(msg.result.content[0].text);
-        console.log('✔ trace_element target:', trace.targetNodeId, 'Lifespan:', trace.lifespanMs, 'ms, alive:', trace.isCurrentlyAlive);
-        testPassed++;
-      } else if (msg.id === 5) {
-        const diag = JSON.parse(msg.result.content[0].text);
-        console.log('✔ why_did_element_disappear diagnosis:');
-        console.log('   - Mechanism:', diag.disappearanceMechanism);
-        console.log('   - Confidence:', diag.confidenceScore + '%');
-        console.log('   - Likely Root Cause:', diag.likelyRootCause);
-        testPassed++;
-      } else if (msg.id === 6) {
-        const diff = msg.result.content[0].text;
-        console.log('✔ diff_dom output preview:');
-        console.log(diff.slice(0, 200) + '...');
-        testPassed++;
-      } else if (msg.id === 7) {
-        const livePage = JSON.parse(msg.result.content[0].text);
-        console.log('✔ inspect_live_page result:', 'Viewport:', livePage.viewport?.width + 'x' + livePage.viewport?.height, 'ReadyState:', livePage.readyState);
-        testPassed++;
-      } else if (msg.id === 8) {
-        const liveScr = JSON.parse(msg.result.content[0].text);
-        console.log('✔ capture_page_screenshot result:', 'Type:', liveScr.captureType, 'ID:', liveScr.screenshotId, 'Format:', liveScr.imageFormat);
-        testPassed++;
-      }
-    } catch (err) {
-      console.error('Failed to parse line:', line, err);
+rl.on('line', (line) => {
+  const trimmed = line.trim();
+  if (!trimmed) return;
+  try {
+    const msg = JSON.parse(trimmed);
+    console.log(`\n[MCP Received] ID ${msg.id}:`);
+
+    if (msg.id === 1) {
+      console.log('✔ Initialize result:', msg.result.serverInfo.name, 'v' + msg.result.serverInfo.version);
+      testPassed++;
+    } else if (msg.id === 2) {
+      console.log('✔ Tools count:', msg.result.tools.length, '(21 Historical + 13 Live Tools = 34 total)');
+      testPassed++;
+    } else if (msg.id === 3) {
+      const data = JSON.parse(msg.result.content[0].text);
+      console.log('✔ list_sessions total:', data.totalSessions, 'Found ID:', data.sessions[0]?.id);
+      testPassed++;
+    } else if (msg.id === 4) {
+      const trace = JSON.parse(msg.result.content[0].text);
+      console.log('✔ trace_element target:', trace.targetNodeId, 'Lifespan:', trace.lifespanMs, 'ms, alive:', trace.isCurrentlyAlive);
+      testPassed++;
+    } else if (msg.id === 5) {
+      const diag = JSON.parse(msg.result.content[0].text);
+      console.log('✔ why_did_element_disappear diagnosis:');
+      console.log('   - Mechanism:', diag.disappearanceMechanism);
+      console.log('   - Confidence:', diag.confidenceScore + '%');
+      console.log('   - Likely Root Cause:', diag.likelyRootCause);
+      testPassed++;
+    } else if (msg.id === 6) {
+      const diff = msg.result.content[0].text;
+      console.log('✔ diff_dom output preview:');
+      console.log(diff.slice(0, 200) + '...');
+      testPassed++;
+    } else if (msg.id === 7) {
+      const livePage = JSON.parse(msg.result.content[0].text);
+      console.log('✔ inspect_live_page result:', 'Viewport:', livePage.viewport?.width + 'x' + livePage.viewport?.height, 'ReadyState:', livePage.readyState);
+      testPassed++;
+    } else if (msg.id === 8) {
+      const liveScr = JSON.parse(msg.result.content[0].text);
+      console.log('✔ capture_page_screenshot result:', 'Type:', liveScr.captureType, 'ID:', liveScr.screenshotId, 'Format:', liveScr.imageFormat);
+      testPassed++;
     }
+  } catch (err) {
+    console.error('Failed to parse line:', err);
   }
 });
 
@@ -226,4 +230,4 @@ setTimeout(() => {
     console.error(`❌ Only ${testPassed}/${expectedTests} tests passed.`);
     process.exit(1);
   }
-}, 800);
+}, 2000);

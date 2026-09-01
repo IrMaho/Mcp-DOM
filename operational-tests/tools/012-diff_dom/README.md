@@ -1,0 +1,46 @@
+# Operational Test: `diff_dom`
+
+**Status**: **PASS** (2/2 Assertions Passed)
+**Transport**: `JSON-RPC 2.0 over Stdio Subprocess`
+**Execution Mode**: `historical`
+**Duration**: 37ms
+
+## Test Objective
+Calculates structural diff showing removal of #host-sidebar and button 10
+
+## Raw Transmitted JSON-RPC Request
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_012_diff_dom",
+  "method": "tools/call",
+  "params": {
+    "name": "diff_dom",
+    "arguments": {
+      "sessionId": "operational_acceptance_session_001",
+      "t1": 50,
+      "t2": 400
+    }
+  }
+}
+```
+
+## Raw Received JSON-RPC Response
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_012_diff_dom",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "### DOM Structural Diff: T1 (50.0ms) → T2 (400.0ms)\n- **Summary**: Total Changes: 2 (Added: 0, Removed: 2, Moved: 0, Attr Changes: 0, Class Changes: 0, Text Changes: 0)\n- **Structural Shift**: YES\n- **Visibility Impact**: NO\n\n#### ➖ Removed Nodes\n- **[ID: 4]** `#host-sidebar` (Parent ID: 3)\n- **[ID: 10]** `#injected-action-btn` (Parent ID: 4)\n\n\n{\n  \"t1\": {\n    \"timestamp\": 50,\n    \"sequence\": 2,\n    \"eventId\": \"recon_2_1788271905091\",\n    \"nodeCount\": 7\n  },\n  \"t2\": {\n    \"timestamp\": 400,\n    \"sequence\": 8,\n    \"eventId\": \"recon_8_1788271905091\",\n    \"nodeCount\": 5\n  },\n  \"addedNodes\": [],\n  \"removedNodes\": [\n    {\n      \"id\": 4,\n      \"tagName\": \"div\",\n      \"lastKnownParentId\": 3,\n      \"selector\": \"#host-sidebar\",\n      \"attributes\": {\n        \"id\": \"host-sidebar\",\n        \"class\": \"sidebar\"\n      }\n    },\n    {\n      \"id\": 10,\n      \"tagName\": \"button\",\n      \"lastKnownParentId\": 4,\n      \"selector\": \"#injected-action-btn\",\n      \"attributes\": {\n        \"class\": \"btn btn-primary\",\n        \"id\": \"injected-action-btn\"\n      },\n      \"textContent\": \"⚡ Run Analysis\"\n    }\n  ],\n  \"movedNodes\": [],\n  \"changedAttributes\": [],\n  \"changedClasses\": [],\n  \"changedStyles\": [],\n  \"changedText\": [],\n  \"summary\": {\n    \"addedNodesCount\": 0,\n    \"removedNodesCount\": 2,\n    \"movedNodesCount\": 0,\n    \"attributeChangesCount\": 0,\n    \"classChangesCount\": 0,\n    \"styleChangesCount\": 0,\n    \"textChangesCount\": 0,\n    \"totalChanges\": 2,\n    \"hasStructuralChanges\": true,\n    \"hasVisibilityChanges\": false\n  }\n}"
+      }
+    ]
+  }
+}
+```
+
+## Assertions
+- [x] **JSON-RPC 2.0 Stdio Status Code & Envelope**: Successful JSON-RPC 2.0 resolution across stdio pipe
+- [x] **Calculates structural diff showing removal of #host-sidebar and button 10**: Received valid payload content

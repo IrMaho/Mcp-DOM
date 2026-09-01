@@ -1,0 +1,9 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_031_stop_element_observation",
+  "method": "tools/call",
+  "params": {
+    "name": "stop_element_observation",
+    "arguments": {}
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_001_list_sessions",
+  "method": "tools/call",
+  "params": {
+    "name": "list_sessions",
+    "arguments": {
+      "limit": 10
+    }
+  }
+}

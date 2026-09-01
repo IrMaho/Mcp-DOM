@@ -1,0 +1,17 @@
+{
+  "id": 4,
+  "tagName": "div",
+  "nodeType": 1,
+  "selector": "#host-sidebar",
+  "attributes": {
+    "id": "host-sidebar",
+    "class": "sidebar"
+  },
+  "parentId": 3,
+  "parentSelector": "body",
+  "childrenIds": [
+    10
+  ],
+  "isDetached": false,
+  "isHidden": false
+}

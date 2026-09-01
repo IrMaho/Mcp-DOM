@@ -1,0 +1,23 @@
+{
+  "totalSessions": 1,
+  "sessions": [
+    {
+      "id": "operational_acceptance_session_001",
+      "name": "Operational Acceptance Test Session",
+      "url": "https://app.internal/dashboard",
+      "startTime": 1725000000000,
+      "durationMs": 2000,
+      "status": "stopped",
+      "stats": {
+        "eventCount": 8,
+        "mutationCount": 4,
+        "errorCount": 1,
+        "consoleCount": 1,
+        "networkCount": 2,
+        "checkpointCount": 2,
+        "screenshotCount": 1,
+        "nodeCount": 12
+      }
+    }
+  ]
+}

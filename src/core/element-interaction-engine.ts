@@ -239,40 +239,87 @@ export class ElementInteractionEngine {
       case 'type': {
         const text = payload.text || '';
         const inputEl = element as HTMLInputElement | HTMLTextAreaElement;
+        const win = element.ownerDocument?.defaultView || (typeof window !== 'undefined' ? window : null);
 
         if (typeof htmlEl.focus === 'function') htmlEl.focus();
 
         for (const char of text) {
-          element.dispatchEvent(new KeyboardEvent('keydown', { key: char, bubbles: true }));
-          element.dispatchEvent(new KeyboardEvent('keypress', { key: char, bubbles: true }));
+          const createKeyEvt = (evtType: string) => {
+            try {
+              const KeyCtor = (win as any)?.KeyboardEvent || (typeof KeyboardEvent !== 'undefined' ? KeyboardEvent : null);
+              if (KeyCtor) return new KeyCtor(evtType, { key: char, bubbles: true });
+            } catch {
+              // Fallback
+            }
+            const FallbackCtor = (win as any)?.CustomEvent || (win as any)?.Event || CustomEvent;
+            return new FallbackCtor(evtType, { bubbles: true, cancelable: true });
+          };
+
+          const createInputEvt = (evtType: string, opts: any) => {
+            try {
+              const InputCtor = (win as any)?.InputEvent || (typeof InputEvent !== 'undefined' ? InputEvent : null);
+              if (InputCtor) return new InputCtor(evtType, opts);
+            } catch {
+              // Fallback
+            }
+            const FallbackCtor = (win as any)?.CustomEvent || (win as any)?.Event || CustomEvent;
+            return new FallbackCtor(evtType, { bubbles: true, cancelable: true });
+          };
+
+          element.dispatchEvent(createKeyEvt('keydown'));
+          element.dispatchEvent(createKeyEvt('keypress'));
 
           if ('value' in inputEl) {
             inputEl.value = (inputEl.value || '') + char;
           }
 
-          element.dispatchEvent(new InputEvent('input', { data: char, inputType: 'insertText', bubbles: true }));
-          element.dispatchEvent(new KeyboardEvent('keyup', { key: char, bubbles: true }));
+          element.dispatchEvent(createInputEvt('input', { data: char, inputType: 'insertText', bubbles: true }));
+          element.dispatchEvent(createKeyEvt('keyup'));
         }
 
-        element.dispatchEvent(new Event('change', { bubbles: true }));
+        const ChangeCtor = (win as any)?.Event || Event;
+        element.dispatchEvent(new ChangeCtor('change', { bubbles: true }));
         break;
       }
 
       case 'clear': {
         const inputEl = element as HTMLInputElement | HTMLTextAreaElement;
+        const win = element.ownerDocument?.defaultView || (typeof window !== 'undefined' ? window : null);
         if ('value' in inputEl) {
           inputEl.value = '';
-          element.dispatchEvent(new InputEvent('input', { inputType: 'deleteContentBackward', bubbles: true }));
-          element.dispatchEvent(new Event('change', { bubbles: true }));
+          const createInputEvt = (evtType: string, opts: any) => {
+            try {
+              const InputCtor = (win as any)?.InputEvent || (typeof InputEvent !== 'undefined' ? InputEvent : null);
+              if (InputCtor) return new InputCtor(evtType, opts);
+            } catch {
+              // Fallback
+            }
+            const FallbackCtor = (win as any)?.CustomEvent || (win as any)?.Event || CustomEvent;
+            return new FallbackCtor(evtType, { bubbles: true, cancelable: true });
+          };
+          element.dispatchEvent(createInputEvt('input', { inputType: 'deleteContentBackward', bubbles: true }));
+          const ChangeCtor = (win as any)?.Event || Event;
+          element.dispatchEvent(new ChangeCtor('change', { bubbles: true }));
         }
         break;
       }
 
       case 'press_key': {
         const key = payload.key || 'Enter';
-        element.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
-        element.dispatchEvent(new KeyboardEvent('keypress', { key, bubbles: true }));
-        element.dispatchEvent(new KeyboardEvent('keyup', { key, bubbles: true }));
+        const win = element.ownerDocument?.defaultView || (typeof window !== 'undefined' ? window : null);
+        const createKeyEvt = (evtType: string) => {
+          try {
+            const KeyCtor = (win as any)?.KeyboardEvent || (typeof KeyboardEvent !== 'undefined' ? KeyboardEvent : null);
+            if (KeyCtor) return new KeyCtor(evtType, { key, bubbles: true });
+          } catch {
+            // Fallback
+          }
+          const FallbackCtor = (win as any)?.CustomEvent || (win as any)?.Event || CustomEvent;
+          return new FallbackCtor(evtType, { bubbles: true, cancelable: true });
+        };
+        element.dispatchEvent(createKeyEvt('keydown'));
+        element.dispatchEvent(createKeyEvt('keypress'));
+        element.dispatchEvent(createKeyEvt('keyup'));
         break;
       }
 

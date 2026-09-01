@@ -61,6 +61,22 @@ export class InPageFloatingController {
     this.shadowRoot = null;
   }
 
+  public hide(): void {
+    if (this.hostElement) {
+      this.hostElement.style.setProperty('display', 'none', 'important');
+      this.hostElement.style.setProperty('visibility', 'hidden', 'important');
+      this.hostElement.style.setProperty('opacity', '0', 'important');
+    }
+  }
+
+  public show(): void {
+    if (this.hostElement) {
+      this.hostElement.style.removeProperty('display');
+      this.hostElement.style.removeProperty('visibility');
+      this.hostElement.style.removeProperty('opacity');
+    }
+  }
+
   public updateState(isRecording: boolean, isPaused: boolean = false, startTime: number = 0, eventCount: number = 0): void {
     this.isRecording = isRecording;
     this.isPaused = isPaused;

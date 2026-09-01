@@ -1,0 +1,35 @@
+{
+  "tool": "get_dom_state",
+  "category": "historical",
+  "executionMode": "historical",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "sessionId": {
+        "type": "string",
+        "description": "Session ID"
+      },
+      "timestamp": {
+        "type": "number",
+        "description": "Target timestamp in milliseconds"
+      },
+      "eventId": {
+        "type": "string",
+        "description": "Target event ID"
+      },
+      "format": {
+        "type": "string",
+        "enum": [
+          "html",
+          "json_summary",
+          "full_nodes"
+        ],
+        "description": "Output format (default: html)"
+      }
+    },
+    "required": [
+      "sessionId"
+    ]
+  },
+  "expectedBehavior": "Reconstructs virtual DOM state at T=100ms containing injected button"
+}

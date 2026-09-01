@@ -1,0 +1,9 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_024_get_selected_element",
+  "method": "tools/call",
+  "params": {
+    "name": "get_selected_element",
+    "arguments": {}
+  }
+}

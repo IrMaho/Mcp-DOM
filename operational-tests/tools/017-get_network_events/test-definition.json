@@ -1,0 +1,27 @@
+{
+  "tool": "get_network_events",
+  "category": "historical",
+  "executionMode": "historical",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "sessionId": {
+        "type": "string",
+        "description": "Session ID"
+      },
+      "statusFilter": {
+        "type": "string",
+        "enum": [
+          "all",
+          "errors_only",
+          "success_only"
+        ],
+        "description": "HTTP status filter"
+      }
+    },
+    "required": [
+      "sessionId"
+    ]
+  },
+  "expectedBehavior": "Returns network request and response records"
+}

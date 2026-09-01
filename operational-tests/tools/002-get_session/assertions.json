@@ -1,0 +1,12 @@
+[
+  {
+    "assertion": "JSON-RPC 2.0 Stdio Status Code & Envelope",
+    "passed": true,
+    "details": "Successful JSON-RPC 2.0 resolution across stdio pipe"
+  },
+  {
+    "assertion": "Returns full metadata and health metrics for session",
+    "passed": true,
+    "details": "id, name, url, origin, title, userAgent, schemaVersion, recorderVersion, extensionVersion, startTime, endTime, durationMs, status, health, stats"
+  }
+]

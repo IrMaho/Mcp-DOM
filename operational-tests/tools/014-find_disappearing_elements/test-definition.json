@@ -1,0 +1,22 @@
+{
+  "tool": "find_disappearing_elements",
+  "category": "historical",
+  "executionMode": "historical",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "sessionId": {
+        "type": "string",
+        "description": "Session ID"
+      },
+      "maxLifespanMs": {
+        "type": "number",
+        "description": "Maximum lifespan in ms to consider (default: 5000ms)"
+      }
+    },
+    "required": [
+      "sessionId"
+    ]
+  },
+  "expectedBehavior": "Discovers short-lived button 10 that existed for 330ms"
+}

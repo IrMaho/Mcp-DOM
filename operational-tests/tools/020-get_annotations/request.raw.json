@@ -1,0 +1,11 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_020_get_annotations",
+  "method": "tools/call",
+  "params": {
+    "name": "get_annotations",
+    "arguments": {
+      "sessionId": "operational_acceptance_session_001"
+    }
+  }
+}

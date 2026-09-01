@@ -1,0 +1,26 @@
+{
+  "tool": "trace_element",
+  "category": "historical",
+  "executionMode": "historical",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "sessionId": {
+        "type": "string",
+        "description": "Session ID"
+      },
+      "nodeId": {
+        "type": "number",
+        "description": "LogicalNodeId of the element"
+      },
+      "selector": {
+        "type": "string",
+        "description": "CSS selector hint for the element"
+      }
+    },
+    "required": [
+      "sessionId"
+    ]
+  },
+  "expectedBehavior": "Traces complete lifecycle of button 10 from creation to removal"
+}

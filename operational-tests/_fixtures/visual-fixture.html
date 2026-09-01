@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Visual Geometry & Screenshot Fixture</title>
+  <style>
+    body { margin: 0; padding: 20px; background: #030712; color: #f9fafb; font-family: sans-serif; }
+    .zone-container { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+    .zone { height: 140px; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; align-items: center; font-weight: bold; }
+    #zone-sky { background: #38bdf8; color: #082f49; }
+    #zone-indigo { background: #818cf8; color: #1e1b4b; }
+    #zone-rose { background: #f43f5e; color: #4c0519; }
+    #zone-emerald { background: #10b981; color: #022c22; }
+    #target-badge { background: #ffffff; color: #0f172a; padding: 6px 14px; border-radius: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Visual Calibration & Geometry Fixture</h1>
+    <p>High-contrast color matrices for element bounding-box and screenshot crop assertions.</p>
+  </header>
+
+  <div class="zone-container">
+    <div id="zone-sky" class="zone">
+      <span>ZONE A: SKY BLUE</span>
+      <span id="target-badge">🎯 TARGET_ELEMENT_001</span>
+    </div>
+    <div id="zone-indigo" class="zone">
+      <span>ZONE B: INDIGO</span>
+    </div>
+    <div id="zone-rose" class="zone">
+      <span>ZONE C: ROSE</span>
+    </div>
+    <div id="zone-emerald" class="zone">
+      <span>ZONE D: EMERALD</span>
+    </div>
+  </div>
+</body>
+</html>

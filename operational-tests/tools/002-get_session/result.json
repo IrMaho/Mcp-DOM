@@ -1,0 +1,9 @@
+{
+  "tool": "get_session",
+  "index": 2,
+  "status": "PASS",
+  "executionTimeMs": 4,
+  "assertionsPassed": 2,
+  "assertionsTotal": 2,
+  "timestamp": "2026-09-01T14:11:39.971Z"
+}

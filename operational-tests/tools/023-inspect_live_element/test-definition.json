@@ -1,0 +1,27 @@
+{
+  "tool": "inspect_live_element",
+  "category": "live_browser_control",
+  "executionMode": "live",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "selector": {
+        "type": "string",
+        "description": "CSS selector of the target element"
+      },
+      "nodeId": {
+        "type": "number",
+        "description": "LogicalNodeId of the element if recorded"
+      },
+      "selectedElementRef": {
+        "type": "string",
+        "description": "Reference token of the last selected element"
+      },
+      "xpath": {
+        "type": "string",
+        "description": "XPath expression for the element"
+      }
+    }
+  },
+  "expectedBehavior": "Deeply inspects #primary-action-btn styles, bounds, and role"
+}

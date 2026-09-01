@@ -1,0 +1,409 @@
+{
+  "sessionId": "operational_acceptance_session_001",
+  "totalNetworkEvents": 26,
+  "events": [
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    }
+  ]
+}

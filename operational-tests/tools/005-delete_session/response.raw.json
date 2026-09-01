@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_005_delete_session",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"success\":true,\"sessionId\":\"imported_op_session_test\"}"
+      }
+    ]
+  }
+}

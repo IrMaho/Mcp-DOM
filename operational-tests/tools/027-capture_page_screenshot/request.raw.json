@@ -1,0 +1,11 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_027_capture_page_screenshot",
+  "method": "tools/call",
+  "params": {
+    "name": "capture_page_screenshot",
+    "arguments": {
+      "format": "png"
+    }
+  }
+}

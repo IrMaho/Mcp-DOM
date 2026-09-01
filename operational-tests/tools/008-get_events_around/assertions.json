@@ -1,0 +1,12 @@
+[
+  {
+    "assertion": "JSON-RPC 2.0 Stdio Status Code & Envelope",
+    "passed": true,
+    "details": "Successful JSON-RPC 2.0 resolution across stdio pipe"
+  },
+  {
+    "assertion": "Returns temporal slice of events surrounding T=200ms",
+    "passed": true,
+    "details": "sessionId, targetTimestamp, windowMs, totalEventsInWindow, events"
+  }
+]

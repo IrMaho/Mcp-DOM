@@ -1,0 +1,11 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_021_get_recording_health",
+  "method": "tools/call",
+  "params": {
+    "name": "get_recording_health",
+    "arguments": {
+      "sessionId": "operational_acceptance_session_001"
+    }
+  }
+}

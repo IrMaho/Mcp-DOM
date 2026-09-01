@@ -1,0 +1,9 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_026_stop_element_picker",
+  "method": "tools/call",
+  "params": {
+    "name": "stop_element_picker",
+    "arguments": {}
+  }
+}

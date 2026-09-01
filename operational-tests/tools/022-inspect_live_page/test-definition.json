@@ -1,0 +1,10 @@
+{
+  "tool": "inspect_live_page",
+  "category": "live_browser_control",
+  "executionMode": "live",
+  "schema": {
+    "type": "object",
+    "properties": {}
+  },
+  "expectedBehavior": "Inspects live active page URL, dimensions, and readyState"
+}

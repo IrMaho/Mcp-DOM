@@ -23,6 +23,7 @@ function connectBridge() {
     const ws = new WebSocket('ws://127.0.0.1:3847');
     ws.onopen = () => {
       wsBridge = ws;
+      console.log('[Forensic Extension] Connected to MCP Bridge on ws://127.0.0.1:3847');
       if (reconnectTimer) {
         clearInterval(reconnectTimer);
         reconnectTimer = null;
@@ -79,42 +80,50 @@ function connectBridge() {
 
             // If command is screenshot, capture pixel buffer using chrome.tabs.captureVisibleTab
             if (command === 'LIVE_PAGE_SCREENSHOT' || command === 'LIVE_ELEMENT_SCREENSHOT') {
-              chrome.tabs.captureVisibleTab({ format: 'png' }, (dataUrl) => {
-                if (chrome.runtime.lastError || !dataUrl) {
-                  ws.send(
-                    JSON.stringify({
-                      type: 'BROWSER_COMMAND_RESPONSE',
-                      id,
-                      command,
-                      success: false,
-                      error: {
-                        code: 'SCREENSHOT_FAILED',
-                        message: chrome.runtime.lastError?.message || 'captureVisibleTab failed',
-                      },
-                    })
-                  );
-                  return;
-                }
+              // 1. Temporarily hide floating debugger & overlays
+              chrome.tabs.sendMessage(tabId, { type: 'HIDE_FORENSIC_OVERLAYS' }, () => {
+                setTimeout(() => {
+                  chrome.tabs.captureVisibleTab({ format: 'png' }, (dataUrl) => {
+                    // 2. Restore floating debugger & overlays immediately
+                    chrome.tabs.sendMessage(tabId, { type: 'RESTORE_FORENSIC_OVERLAYS' });
 
-                // Pass screenshot pixel dataUrl to content script for coordinate framing and metadata
-                chrome.tabs.sendMessage(
-                  tabId,
-                  {
-                    type: 'BROWSER_COMMAND_REQUEST',
-                    id,
-                    command,
-                    payload: { ...payload, dataUrl },
-                  },
-                  (res) => {
-                    const response = res || {
-                      id,
-                      command,
-                      success: true,
-                      data: { dataUrl, captureType: command === 'LIVE_ELEMENT_SCREENSHOT' ? 'ELEMENT' : 'FULL_PAGE' },
-                    };
-                    ws.send(JSON.stringify({ type: 'BROWSER_COMMAND_RESPONSE', ...response }));
-                  }
-                );
+                    if (chrome.runtime.lastError || !dataUrl) {
+                      ws.send(
+                        JSON.stringify({
+                          type: 'BROWSER_COMMAND_RESPONSE',
+                          id,
+                          command,
+                          success: false,
+                          error: {
+                            code: 'SCREENSHOT_FAILED',
+                            message: chrome.runtime.lastError?.message || 'captureVisibleTab failed',
+                          },
+                        })
+                      );
+                      return;
+                    }
+
+                    // Pass screenshot pixel dataUrl to content script for coordinate framing, element crop and metadata
+                    chrome.tabs.sendMessage(
+                      tabId,
+                      {
+                        type: 'BROWSER_COMMAND_REQUEST',
+                        id,
+                        command,
+                        payload: { ...payload, dataUrl },
+                      },
+                      (res) => {
+                        const response = res || {
+                          id,
+                          command,
+                          success: true,
+                          data: { dataUrl, captureType: command === 'LIVE_ELEMENT_SCREENSHOT' ? 'ELEMENT' : 'FULL_PAGE' },
+                        };
+                        ws.send(JSON.stringify({ type: 'BROWSER_COMMAND_RESPONSE', ...response }));
+                      }
+                    );
+                  });
+                }, 150);
               });
               return;
             }
@@ -302,3 +311,6 @@ if (typeof chrome !== 'undefined' && chrome.runtime?.onMessage) {
     return true; // Keep message channel open for async response
   });
 }
+
+// Auto-connect to MCP Bridge WebSocket on startup
+connectBridge();

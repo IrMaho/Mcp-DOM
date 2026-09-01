@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_018_get_screenshots",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"sessionId\": \"operational_acceptance_session_001\",\n  \"totalScreenshots\": 0,\n  \"screenshots\": []\n}"
+      }
+    ]
+  }
+}

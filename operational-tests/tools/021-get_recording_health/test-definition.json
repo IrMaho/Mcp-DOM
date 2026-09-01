@@ -1,0 +1,18 @@
+{
+  "tool": "get_recording_health",
+  "category": "historical",
+  "executionMode": "historical",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "sessionId": {
+        "type": "string",
+        "description": "Session ID"
+      }
+    },
+    "required": [
+      "sessionId"
+    ]
+  },
+  "expectedBehavior": "Audits recording integrity and returns HEALTHY status"
+}

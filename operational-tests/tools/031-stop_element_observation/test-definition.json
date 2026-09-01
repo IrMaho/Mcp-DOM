@@ -1,0 +1,10 @@
+{
+  "tool": "stop_element_observation",
+  "category": "live_browser_control",
+  "executionMode": "live",
+  "schema": {
+    "type": "object",
+    "properties": {}
+  },
+  "expectedBehavior": "Stops observation and reports element unmounting cause"
+}

@@ -1,0 +1,11 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_025_start_element_picker",
+  "method": "tools/call",
+  "params": {
+    "name": "start_element_picker",
+    "arguments": {
+      "highlightColor": "#38bdf8"
+    }
+  }
+}

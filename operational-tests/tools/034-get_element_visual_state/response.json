@@ -1,0 +1,48 @@
+{
+  "selector": "#search-input",
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0,
+    "left": 0
+  },
+  "viewport": {
+    "scrollX": 0,
+    "scrollY": 0,
+    "width": 1024,
+    "height": 768,
+    "devicePixelRatio": 1
+  },
+  "layout": {
+    "display": "inline-block",
+    "position": "static",
+    "zIndex": "auto",
+    "opacity": 1,
+    "visibility": "visible",
+    "overflow": "clip",
+    "boxSizing": "content-box",
+    "pointerEvents": "auto"
+  },
+  "occlusion": {
+    "isInViewport": false,
+    "isClipped": true,
+    "isZeroDimension": true,
+    "isTransparent": false,
+    "isDisplayNone": false,
+    "isVisibilityHidden": false,
+    "isOffscreen": true,
+    "occludedBy": null
+  },
+  "computedStyleSummary": {
+    "display": "inline-block",
+    "position": "static",
+    "zIndex": "auto",
+    "opacity": "1",
+    "visibility": "visible",
+    "pointerEvents": "auto"
+  }
+}

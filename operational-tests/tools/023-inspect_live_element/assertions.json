@@ -1,0 +1,12 @@
+[
+  {
+    "assertion": "JSON-RPC 2.0 Stdio Status Code & Envelope",
+    "passed": true,
+    "details": "Successful JSON-RPC 2.0 resolution across stdio pipe"
+  },
+  {
+    "assertion": "Deeply inspects #primary-action-btn styles, bounds, and role",
+    "passed": true,
+    "details": "tag, id, classes, role, text, normalizedText, value, type, selector, bestSelector, selectorCandidates, bounds, visibility, computedStyle, attributes, state, context, forensics"
+  }
+]

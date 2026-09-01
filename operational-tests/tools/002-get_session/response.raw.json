@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_002_get_session",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"id\": \"operational_acceptance_session_001\",\n  \"name\": \"Operational Acceptance Test Session\",\n  \"url\": \"https://app.internal/dashboard\",\n  \"origin\": \"https://app.internal\",\n  \"title\": \"Cloud Management Dashboard\",\n  \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\",\n  \"schemaVersion\": \"2.0.0\",\n  \"recorderVersion\": \"2.0.0\",\n  \"extensionVersion\": \"2.0.0\",\n  \"startTime\": 1725000000000,\n  \"endTime\": 1725000002000,\n  \"durationMs\": 2000,\n  \"status\": \"stopped\",\n  \"health\": {\n    \"domRecording\": \"HEALTHY\",\n    \"userEvents\": \"HEALTHY\",\n    \"console\": \"HEALTHY\",\n    \"network\": \"HEALTHY\",\n    \"screenshots\": \"HEALTHY\",\n    \"shadowDom\": \"HEALTHY\",\n    \"iframes\": \"HEALTHY\"\n  },\n  \"stats\": {\n    \"eventCount\": 8,\n    \"mutationCount\": 4,\n    \"errorCount\": 1,\n    \"consoleCount\": 1,\n    \"networkCount\": 2,\n    \"checkpointCount\": 2,\n    \"screenshotCount\": 1,\n    \"nodeCount\": 12\n  }\n}"
+      }
+    ]
+  }
+}

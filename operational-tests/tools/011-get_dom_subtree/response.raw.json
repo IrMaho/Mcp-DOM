@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_011_get_dom_subtree",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "<div id=\"host-sidebar\" class=\"sidebar\">\n  <button class=\"btn btn-primary\" id=\"injected-action-btn\">⚡ Run Analysis</button>\n</div>"
+      }
+    ]
+  }
+}

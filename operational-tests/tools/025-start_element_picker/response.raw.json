@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_025_start_element_picker",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"status\": \"PICKER_ACTIVE\",\n  \"message\": \"Visual element picker activated in the browser. Click any element or hold Ctrl+Shift and click.\",\n  \"details\": {\n    \"pickerActive\": true\n  }\n}"
+      }
+    ]
+  }
+}

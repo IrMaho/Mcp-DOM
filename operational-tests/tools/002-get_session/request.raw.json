@@ -1,0 +1,11 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_002_get_session",
+  "method": "tools/call",
+  "params": {
+    "name": "get_session",
+    "arguments": {
+      "sessionId": "operational_acceptance_session_001"
+    }
+  }
+}

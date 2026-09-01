@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_013_trace_element",
+  "method": "tools/call",
+  "params": {
+    "name": "trace_element",
+    "arguments": {
+      "sessionId": "operational_acceptance_session_001",
+      "nodeId": 10
+    }
+  }
+}

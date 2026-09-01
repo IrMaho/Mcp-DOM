@@ -1,0 +1,10 @@
+{
+  "tool": "stop_element_picker",
+  "category": "live_browser_control",
+  "executionMode": "live",
+  "schema": {
+    "type": "object",
+    "properties": {}
+  },
+  "expectedBehavior": "Deactivates element picker mode"
+}

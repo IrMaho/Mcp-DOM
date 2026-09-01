@@ -1,0 +1,37 @@
+{
+  "tool": "get_diagnostics",
+  "category": "historical",
+  "executionMode": "historical",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "sessionId": {
+        "type": "string",
+        "description": "Session ID"
+      },
+      "level": {
+        "type": "string",
+        "enum": [
+          "all",
+          "error",
+          "warn",
+          "info",
+          "log"
+        ],
+        "description": "Log level filter"
+      },
+      "fromTimestamp": {
+        "type": "number",
+        "description": "Start timestamp"
+      },
+      "toTimestamp": {
+        "type": "number",
+        "description": "End timestamp"
+      }
+    },
+    "required": [
+      "sessionId"
+    ]
+  },
+  "expectedBehavior": "Returns console log and runtime error records"
+}

@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_024_get_selected_element",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"selected\": false,\n  \"message\": \"No element has been selected yet. Use Ctrl + Shift + Click in the browser or call start_element_picker.\"\n}"
+      }
+    ]
+  }
+}

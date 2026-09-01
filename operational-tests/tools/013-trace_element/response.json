@@ -1,0 +1,1285 @@
+{
+  "targetNodeId": 10,
+  "tagName": "button",
+  "selectorHint": "",
+  "initialAttributes": {
+    "class": "btn btn-primary",
+    "id": "injected-action-btn"
+  },
+  "createdAt": 50,
+  "createdSequence": 2,
+  "createdEventId": "evt_op_001",
+  "removedAt": 380,
+  "removedSequence": 8,
+  "removedEventId": "evt_op_007",
+  "isCurrentlyAlive": false,
+  "lifespanMs": 330,
+  "mutationCount": 0,
+  "entries": [
+    {
+      "timestamp": 50,
+      "sequence": 2,
+      "wallClockTime": 1725000000050,
+      "stage": "ATTACHED_TO_DOM",
+      "eventId": "evt_op_001",
+      "eventType": "DOM_MUTATION_ADD",
+      "description": "Element <button> added to DOM under parent ID 4",
+      "details": {
+        "parentId": 4,
+        "index": 0
+      },
+      "nodeSnapshot": {
+        "id": 10,
+        "nodeType": 1,
+        "tagName": "button",
+        "attributes": {
+          "class": "btn btn-primary",
+          "id": "injected-action-btn"
+        },
+        "textContent": "⚡ Run Analysis",
+        "children": [],
+        "parentId": 4
+      }
+    },
+    {
+      "timestamp": 50,
+      "sequence": 2,
+      "wallClockTime": 1725000000050,
+      "stage": "ATTACHED_TO_DOM",
+      "eventId": "evt_op_001",
+      "eventType": "DOM_MUTATION_ADD",
+      "description": "Element <button> added to DOM under parent ID 4",
+      "details": {
+        "parentId": 4,
+        "index": 0
+      },
+      "nodeSnapshot": {
+        "id": 10,
+        "nodeType": 1,
+        "tagName": "button",
+        "attributes": {
+          "class": "btn btn-primary",
+          "id": "injected-action-btn"
+        },
+        "textContent": "⚡ Run Analysis",
+        "children": [],
+        "parentId": 4
+      }
+    },
+    {
+      "timestamp": 50,
+      "sequence": 2,
+      "wallClockTime": 1725000000050,
+      "stage": "ATTACHED_TO_DOM",
+      "eventId": "evt_op_001",
+      "eventType": "DOM_MUTATION_ADD",
+      "description": "Element <button> added to DOM under parent ID 4",
+      "details": {
+        "parentId": 4,
+        "index": 0
+      },
+      "nodeSnapshot": {
+        "id": 10,
+        "nodeType": 1,
+        "tagName": "button",
+        "attributes": {
+          "class": "btn btn-primary",
+          "id": "injected-action-btn"
+        },
+        "textContent": "⚡ Run Analysis",
+        "children": [],
+        "parentId": 4
+      }
+    },
+    {
+      "timestamp": 50,
+      "sequence": 2,
+      "wallClockTime": 1725000000050,
+      "stage": "ATTACHED_TO_DOM",
+      "eventId": "evt_op_001",
+      "eventType": "DOM_MUTATION_ADD",
+      "description": "Element <button> added to DOM under parent ID 4",
+      "details": {
+        "parentId": 4,
+        "index": 0
+      },
+      "nodeSnapshot": {
+        "id": 10,
+        "nodeType": 1,
+        "tagName": "button",
+        "attributes": {
+          "class": "btn btn-primary",
+          "id": "injected-action-btn"
+        },
+        "textContent": "⚡ Run Analysis",
+        "children": [],
+        "parentId": 4
+      }
+    },
+    {
+      "timestamp": 50,
+      "sequence": 2,
+      "wallClockTime": 1725000000050,
+      "stage": "ATTACHED_TO_DOM",
+      "eventId": "evt_op_001",
+      "eventType": "DOM_MUTATION_ADD",
+      "description": "Element <button> added to DOM under parent ID 4",
+      "details": {
+        "parentId": 4,
+        "index": 0
+      },
+      "nodeSnapshot": {
+        "id": 10,
+        "nodeType": 1,
+        "tagName": "button",
+        "attributes": {
+          "class": "btn btn-primary",
+          "id": "injected-action-btn"
+        },
+        "textContent": "⚡ Run Analysis",
+        "children": [],
+        "parentId": 4
+      }
+    },
+    {
+      "timestamp": 50,
+      "sequence": 2,
+      "wallClockTime": 1725000000050,
+      "stage": "ATTACHED_TO_DOM",
+      "eventId": "evt_op_001",
+      "eventType": "DOM_MUTATION_ADD",
+      "description": "Element <button> added to DOM under parent ID 4",
+      "details": {
+        "parentId": 4,
+        "index": 0
+      },
+      "nodeSnapshot": {
+        "id": 10,
+        "nodeType": 1,
+        "tagName": "button",
+        "attributes": {
+          "class": "btn btn-primary",
+          "id": "injected-action-btn"
+        },
+        "textContent": "⚡ Run Analysis",
+        "children": [],
+        "parentId": 4
+      }
+    },
+    {
+      "timestamp": 50,
+      "sequence": 2,
+      "wallClockTime": 1725000000050,
+      "stage": "ATTACHED_TO_DOM",
+      "eventId": "evt_op_001",
+      "eventType": "DOM_MUTATION_ADD",
+      "description": "Element <button> added to DOM under parent ID 4",
+      "details": {
+        "parentId": 4,
+        "index": 0
+      },
+      "nodeSnapshot": {
+        "id": 10,
+        "nodeType": 1,
+        "tagName": "button",
+        "attributes": {
+          "class": "btn btn-primary",
+          "id": "injected-action-btn"
+        },
+        "textContent": "⚡ Run Analysis",
+        "children": [],
+        "parentId": 4
+      }
+    },
+    {
+      "timestamp": 50,
+      "sequence": 2,
+      "wallClockTime": 1725000000050,
+      "stage": "ATTACHED_TO_DOM",
+      "eventId": "evt_op_001",
+      "eventType": "DOM_MUTATION_ADD",
+      "description": "Element <button> added to DOM under parent ID 4",
+      "details": {
+        "parentId": 4,
+        "index": 0
+      },
+      "nodeSnapshot": {
+        "id": 10,
+        "nodeType": 1,
+        "tagName": "button",
+        "attributes": {
+          "class": "btn btn-primary",
+          "id": "injected-action-btn"
+        },
+        "textContent": "⚡ Run Analysis",
+        "children": [],
+        "parentId": 4
+      }
+    },
+    {
+      "timestamp": 50,
+      "sequence": 2,
+      "wallClockTime": 1725000000050,
+      "stage": "ATTACHED_TO_DOM",
+      "eventId": "evt_op_001",
+      "eventType": "DOM_MUTATION_ADD",
+      "description": "Element <button> added to DOM under parent ID 4",
+      "details": {
+        "parentId": 4,
+        "index": 0
+      },
+      "nodeSnapshot": {
+        "id": 10,
+        "nodeType": 1,
+        "tagName": "button",
+        "attributes": {
+          "class": "btn btn-primary",
+          "id": "injected-action-btn"
+        },
+        "textContent": "⚡ Run Analysis",
+        "children": [],
+        "parentId": 4
+      }
+    },
+    {
+      "timestamp": 50,
+      "sequence": 2,
+      "wallClockTime": 1725000000050,
+      "stage": "ATTACHED_TO_DOM",
+      "eventId": "evt_op_001",
+      "eventType": "DOM_MUTATION_ADD",
+      "description": "Element <button> added to DOM under parent ID 4",
+      "details": {
+        "parentId": 4,
+        "index": 0
+      },
+      "nodeSnapshot": {
+        "id": 10,
+        "nodeType": 1,
+        "tagName": "button",
+        "attributes": {
+          "class": "btn btn-primary",
+          "id": "injected-action-btn"
+        },
+        "textContent": "⚡ Run Analysis",
+        "children": [],
+        "parentId": 4
+      }
+    },
+    {
+      "timestamp": 50,
+      "sequence": 2,
+      "wallClockTime": 1725000000050,
+      "stage": "ATTACHED_TO_DOM",
+      "eventId": "evt_op_001",
+      "eventType": "DOM_MUTATION_ADD",
+      "description": "Element <button> added to DOM under parent ID 4",
+      "details": {
+        "parentId": 4,
+        "index": 0
+      },
+      "nodeSnapshot": {
+        "id": 10,
+        "nodeType": 1,
+        "tagName": "button",
+        "attributes": {
+          "class": "btn btn-primary",
+          "id": "injected-action-btn"
+        },
+        "textContent": "⚡ Run Analysis",
+        "children": [],
+        "parentId": 4
+      }
+    },
+    {
+      "timestamp": 50,
+      "sequence": 2,
+      "wallClockTime": 1725000000050,
+      "stage": "ATTACHED_TO_DOM",
+      "eventId": "evt_op_001",
+      "eventType": "DOM_MUTATION_ADD",
+      "description": "Element <button> added to DOM under parent ID 4",
+      "details": {
+        "parentId": 4,
+        "index": 0
+      },
+      "nodeSnapshot": {
+        "id": 10,
+        "nodeType": 1,
+        "tagName": "button",
+        "attributes": {
+          "class": "btn btn-primary",
+          "id": "injected-action-btn"
+        },
+        "textContent": "⚡ Run Analysis",
+        "children": [],
+        "parentId": 4
+      }
+    },
+    {
+      "timestamp": 50,
+      "sequence": 2,
+      "wallClockTime": 1725000000050,
+      "stage": "ATTACHED_TO_DOM",
+      "eventId": "evt_op_001",
+      "eventType": "DOM_MUTATION_ADD",
+      "description": "Element <button> added to DOM under parent ID 4",
+      "details": {
+        "parentId": 4,
+        "index": 0
+      },
+      "nodeSnapshot": {
+        "id": 10,
+        "nodeType": 1,
+        "tagName": "button",
+        "attributes": {
+          "class": "btn btn-primary",
+          "id": "injected-action-btn"
+        },
+        "textContent": "⚡ Run Analysis",
+        "children": [],
+        "parentId": 4
+      }
+    },
+    {
+      "timestamp": 380,
+      "sequence": 8,
+      "wallClockTime": 1725000000380,
+      "stage": "PARENT_SUBTREE_REPLACED",
+      "eventId": "evt_op_007",
+      "eventType": "DOM_MUTATION_REMOVE",
+      "description": "Ancestor element [ID: 4] was removed, causing target element [ID: 10] to detach from DOM",
+      "details": {
+        "removedAncestorId": 4,
+        "parentId": 3
+      }
+    },
+    {
+      "timestamp": 380,
+      "sequence": 8,
+      "wallClockTime": 1725000000380,
+      "stage": "PARENT_SUBTREE_REPLACED",
+      "eventId": "evt_op_007",
+      "eventType": "DOM_MUTATION_REMOVE",
+      "description": "Ancestor element [ID: 4] was removed, causing target element [ID: 10] to detach from DOM",
+      "details": {
+        "removedAncestorId": 4,
+        "parentId": 3
+      }
+    },
+    {
+      "timestamp": 380,
+      "sequence": 8,
+      "wallClockTime": 1725000000380,
+      "stage": "PARENT_SUBTREE_REPLACED",
+      "eventId": "evt_op_007",
+      "eventType": "DOM_MUTATION_REMOVE",
+      "description": "Ancestor element [ID: 4] was removed, causing target element [ID: 10] to detach from DOM",
+      "details": {
+        "removedAncestorId": 4,
+        "parentId": 3
+      }
+    },
+    {
+      "timestamp": 380,
+      "sequence": 8,
+      "wallClockTime": 1725000000380,
+      "stage": "PARENT_SUBTREE_REPLACED",
+      "eventId": "evt_op_007",
+      "eventType": "DOM_MUTATION_REMOVE",
+      "description": "Ancestor element [ID: 4] was removed, causing target element [ID: 10] to detach from DOM",
+      "details": {
+        "removedAncestorId": 4,
+        "parentId": 3
+      }
+    },
+    {
+      "timestamp": 380,
+      "sequence": 8,
+      "wallClockTime": 1725000000380,
+      "stage": "PARENT_SUBTREE_REPLACED",
+      "eventId": "evt_op_007",
+      "eventType": "DOM_MUTATION_REMOVE",
+      "description": "Ancestor element [ID: 4] was removed, causing target element [ID: 10] to detach from DOM",
+      "details": {
+        "removedAncestorId": 4,
+        "parentId": 3
+      }
+    },
+    {
+      "timestamp": 380,
+      "sequence": 8,
+      "wallClockTime": 1725000000380,
+      "stage": "PARENT_SUBTREE_REPLACED",
+      "eventId": "evt_op_007",
+      "eventType": "DOM_MUTATION_REMOVE",
+      "description": "Ancestor element [ID: 4] was removed, causing target element [ID: 10] to detach from DOM",
+      "details": {
+        "removedAncestorId": 4,
+        "parentId": 3
+      }
+    },
+    {
+      "timestamp": 380,
+      "sequence": 8,
+      "wallClockTime": 1725000000380,
+      "stage": "PARENT_SUBTREE_REPLACED",
+      "eventId": "evt_op_007",
+      "eventType": "DOM_MUTATION_REMOVE",
+      "description": "Ancestor element [ID: 4] was removed, causing target element [ID: 10] to detach from DOM",
+      "details": {
+        "removedAncestorId": 4,
+        "parentId": 3
+      }
+    },
+    {
+      "timestamp": 380,
+      "sequence": 8,
+      "wallClockTime": 1725000000380,
+      "stage": "PARENT_SUBTREE_REPLACED",
+      "eventId": "evt_op_007",
+      "eventType": "DOM_MUTATION_REMOVE",
+      "description": "Ancestor element [ID: 4] was removed, causing target element [ID: 10] to detach from DOM",
+      "details": {
+        "removedAncestorId": 4,
+        "parentId": 3
+      }
+    },
+    {
+      "timestamp": 380,
+      "sequence": 8,
+      "wallClockTime": 1725000000380,
+      "stage": "PARENT_SUBTREE_REPLACED",
+      "eventId": "evt_op_007",
+      "eventType": "DOM_MUTATION_REMOVE",
+      "description": "Ancestor element [ID: 4] was removed, causing target element [ID: 10] to detach from DOM",
+      "details": {
+        "removedAncestorId": 4,
+        "parentId": 3
+      }
+    },
+    {
+      "timestamp": 380,
+      "sequence": 8,
+      "wallClockTime": 1725000000380,
+      "stage": "PARENT_SUBTREE_REPLACED",
+      "eventId": "evt_op_007",
+      "eventType": "DOM_MUTATION_REMOVE",
+      "description": "Ancestor element [ID: 4] was removed, causing target element [ID: 10] to detach from DOM",
+      "details": {
+        "removedAncestorId": 4,
+        "parentId": 3
+      }
+    },
+    {
+      "timestamp": 380,
+      "sequence": 8,
+      "wallClockTime": 1725000000380,
+      "stage": "PARENT_SUBTREE_REPLACED",
+      "eventId": "evt_op_007",
+      "eventType": "DOM_MUTATION_REMOVE",
+      "description": "Ancestor element [ID: 4] was removed, causing target element [ID: 10] to detach from DOM",
+      "details": {
+        "removedAncestorId": 4,
+        "parentId": 3
+      }
+    },
+    {
+      "timestamp": 380,
+      "sequence": 8,
+      "wallClockTime": 1725000000380,
+      "stage": "PARENT_SUBTREE_REPLACED",
+      "eventId": "evt_op_007",
+      "eventType": "DOM_MUTATION_REMOVE",
+      "description": "Ancestor element [ID: 4] was removed, causing target element [ID: 10] to detach from DOM",
+      "details": {
+        "removedAncestorId": 4,
+        "parentId": 3
+      }
+    },
+    {
+      "timestamp": 380,
+      "sequence": 8,
+      "wallClockTime": 1725000000380,
+      "stage": "PARENT_SUBTREE_REPLACED",
+      "eventId": "evt_op_007",
+      "eventType": "DOM_MUTATION_REMOVE",
+      "description": "Ancestor element [ID: 4] was removed, causing target element [ID: 10] to detach from DOM",
+      "details": {
+        "removedAncestorId": 4,
+        "parentId": 3
+      }
+    }
+  ],
+  "correlatedDiagnostics": [
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 150,
+      "sequence": 4,
+      "wallClockTime": 1725000000150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "source": "PAGE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 320,
+      "sequence": 7,
+      "wallClockTime": 1725000000320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "source": "PAGE",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    }
+  ],
+  "correlatedNetwork": [
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 200,
+      "sequence": 5,
+      "wallClockTime": 1725000000200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 280,
+      "sequence": 6,
+      "wallClockTime": 1725000000280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "source": "PAGE",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    }
+  ]
+}

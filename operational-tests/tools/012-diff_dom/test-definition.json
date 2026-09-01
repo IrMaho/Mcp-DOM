@@ -1,0 +1,34 @@
+{
+  "tool": "diff_dom",
+  "category": "historical",
+  "executionMode": "historical",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "sessionId": {
+        "type": "string",
+        "description": "Session ID"
+      },
+      "t1": {
+        "type": "number",
+        "description": "Start timestamp in milliseconds"
+      },
+      "t2": {
+        "type": "number",
+        "description": "End timestamp in milliseconds"
+      },
+      "e1": {
+        "type": "string",
+        "description": "Start event ID (alternative to t1)"
+      },
+      "e2": {
+        "type": "string",
+        "description": "End event ID (alternative to t2)"
+      }
+    },
+    "required": [
+      "sessionId"
+    ]
+  },
+  "expectedBehavior": "Calculates structural diff showing removal of #host-sidebar and button 10"
+}

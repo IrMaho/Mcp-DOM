@@ -1,0 +1,23 @@
+{
+  "tool": "why_did_element_disappear",
+  "category": "historical",
+  "executionMode": "historical",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "sessionId": {
+        "type": "string",
+        "description": "Session ID"
+      },
+      "target": {
+        "type": "string",
+        "description": "CSS selector or LogicalNodeId of the target element"
+      }
+    },
+    "required": [
+      "sessionId",
+      "target"
+    ]
+  },
+  "expectedBehavior": "Diagnoses PARENT_SUBTREE_REPLACED root cause with high confidence"
+}

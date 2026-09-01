@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_017_get_network_events",
+  "method": "tools/call",
+  "params": {
+    "name": "get_network_events",
+    "arguments": {
+      "sessionId": "operational_acceptance_session_001",
+      "statusFilter": "all"
+    }
+  }
+}

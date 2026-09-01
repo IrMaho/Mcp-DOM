@@ -1,0 +1,91 @@
+{
+  "status": "OBSERVATION_ACTIVE",
+  "message": "Focused observation started around target element.",
+  "initialState": {
+    "tag": "div",
+    "id": "removable-card",
+    "classes": [
+      "card"
+    ],
+    "text": "\n          This element can be unmounted or restyled\n        ",
+    "normalizedText": "This element can be unmounted or restyled",
+    "selector": "#removable-card",
+    "bestSelector": "#removable-card",
+    "selectorCandidates": [
+      "#removable-card",
+      "div.card",
+      "div.card"
+    ],
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "left": 0
+    },
+    "visibility": {
+      "isVisible": true,
+      "display": "block",
+      "visibility": "visible",
+      "opacity": 1,
+      "pointerEvents": "auto",
+      "isClipped": false,
+      "isInViewport": true,
+      "zIndex": "auto"
+    },
+    "computedStyle": {
+      "display": "block",
+      "visibility": "visible",
+      "opacity": "1",
+      "position": "static",
+      "zIndex": "auto",
+      "pointerEvents": "auto",
+      "overflow": "",
+      "boxSizing": "content-box",
+      "color": "rgb(248, 250, 252)",
+      "backgroundColor": "rgb(51, 65, 85)",
+      "fontSize": "medium"
+    },
+    "attributes": {
+      "id": "removable-card",
+      "class": "card",
+      "style": "background: #334155;"
+    },
+    "state": {
+      "disabled": false,
+      "readOnly": false,
+      "focused": false,
+      "isShadowHost": false,
+      "hasShadowRoot": false
+    },
+    "context": {
+      "parentChain": [
+        "#dynamic-wrapper",
+        "#mutation-target-container",
+        "#main-content",
+        "body"
+      ],
+      "parentSelector": "#dynamic-wrapper",
+      "childrenSummary": {
+        "count": 1,
+        "tags": [
+          "span"
+        ]
+      },
+      "containingBlock": "#dynamic-wrapper",
+      "iframe": null,
+      "shadowRoot": null
+    },
+    "forensics": {
+      "logicalNodeId": null,
+      "creationSequence": null,
+      "lastMutationSequence": null,
+      "eventCount": 0,
+      "isRecorded": false
+    }
+  },
+  "observationId": "obs_1788271906438_w7u3"
+}

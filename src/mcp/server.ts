@@ -3,10 +3,12 @@ import { JSONRPCRequest, JSONRPCResponse } from '../types/mcp-types';
 import { FORENSIC_MCP_TOOLS } from './tools-definition';
 import { FileStorageProvider } from '../storage/file-storage';
 
-export { FORENSIC_MCP_TOOLS, FileStorageProvider };
 import { MCPToolsHandler } from './tools-handler';
 import { MCPResourcesHandler } from './resources-handler';
 import { ForensicStorageProvider } from '../storage/storage-interface';
+import { LiveToolsHandler } from './live-tools-handler';
+
+export { FORENSIC_MCP_TOOLS, FileStorageProvider, MCPToolsHandler };
 
 export class ForensicMCPServer {
   private storage: ForensicStorageProvider;
@@ -18,10 +20,15 @@ export class ForensicMCPServer {
     version: '2.0.0',
   };
 
-  constructor(storage?: ForensicStorageProvider) {
-    this.storage = storage || new FileStorageProvider('./.forensic_sessions');
-    this.toolsHandler = new MCPToolsHandler(this.storage);
+  constructor(storage?: ForensicStorageProvider, liveToolsHandler?: LiveToolsHandler) {
+    const storageDir = process.env.FORENSIC_STORAGE_DIR || './.forensic_sessions';
+    this.storage = storage || new FileStorageProvider(storageDir);
+    this.toolsHandler = new MCPToolsHandler(this.storage, liveToolsHandler);
     this.resourcesHandler = new MCPResourcesHandler(this.storage);
+  }
+
+  public getToolsHandler(): MCPToolsHandler {
+    return this.toolsHandler;
   }
 
   public async handleRequest(request: JSONRPCRequest): Promise<JSONRPCResponse | null> {

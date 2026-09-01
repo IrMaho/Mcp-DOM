@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_015_why_did_element_disappear",
+  "method": "tools/call",
+  "params": {
+    "name": "why_did_element_disappear",
+    "arguments": {
+      "sessionId": "operational_acceptance_session_001",
+      "target": "#injected-action-btn"
+    }
+  }
+}

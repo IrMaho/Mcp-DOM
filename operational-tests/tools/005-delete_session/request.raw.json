@@ -1,0 +1,11 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_005_delete_session",
+  "method": "tools/call",
+  "params": {
+    "name": "delete_session",
+    "arguments": {
+      "sessionId": "imported_op_session_test"
+    }
+  }
+}

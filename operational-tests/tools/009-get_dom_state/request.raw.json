@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_009_get_dom_state",
+  "method": "tools/call",
+  "params": {
+    "name": "get_dom_state",
+    "arguments": {
+      "sessionId": "operational_acceptance_session_001",
+      "timestamp": 100,
+      "format": "html"
+    }
+  }
+}

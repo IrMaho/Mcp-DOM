@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_026_stop_element_picker",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"status\": \"PICKER_INACTIVE\",\n  \"message\": \"Visual element picker stopped.\",\n  \"details\": {\n    \"pickerActive\": false\n  }\n}"
+      }
+    ]
+  }
+}

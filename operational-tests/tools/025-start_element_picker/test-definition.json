@@ -1,0 +1,15 @@
+{
+  "tool": "start_element_picker",
+  "category": "live_browser_control",
+  "executionMode": "live",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "highlightColor": {
+        "type": "string",
+        "description": "Hex color for hover highlighter (default: #0ea5e9)"
+      }
+    }
+  },
+  "expectedBehavior": "Activates visual element picker mode with hover overlay"
+}

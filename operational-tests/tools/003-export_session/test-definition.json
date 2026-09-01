@@ -1,0 +1,18 @@
+{
+  "tool": "export_session",
+  "category": "historical",
+  "executionMode": "historical",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "sessionId": {
+        "type": "string",
+        "description": "Unique identifier of the recording session"
+      }
+    },
+    "required": [
+      "sessionId"
+    ]
+  },
+  "expectedBehavior": "Exports valid portable session bundle with matching metadata"
+}

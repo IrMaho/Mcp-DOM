@@ -1,0 +1,318 @@
+{
+  "title": "MCP-DOM Operational Acceptance Test Report",
+  "timestamp": "2026-09-01T14:11:46.950Z",
+  "environment": "Real Node.js Subprocess + stdio JSON-RPC 2.0 Protocol",
+  "totalCapabilities": 34,
+  "passed": 34,
+  "failed": 0,
+  "blocked": 0,
+  "certificationStatus": "CERTIFIED",
+  "results": [
+    {
+      "tool": "list_sessions",
+      "index": 1,
+      "status": "PASS",
+      "executionTimeMs": 7,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:39.965Z"
+    },
+    {
+      "tool": "get_session",
+      "index": 2,
+      "status": "PASS",
+      "executionTimeMs": 4,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:39.971Z"
+    },
+    {
+      "tool": "export_session",
+      "index": 3,
+      "status": "PASS",
+      "executionTimeMs": 136,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:40.108Z"
+    },
+    {
+      "tool": "import_session",
+      "index": 4,
+      "status": "PASS",
+      "executionTimeMs": 4594,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:44.837Z"
+    },
+    {
+      "tool": "delete_session",
+      "index": 5,
+      "status": "PASS",
+      "executionTimeMs": 5,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:44.869Z"
+    },
+    {
+      "tool": "get_timeline",
+      "index": 6,
+      "status": "PASS",
+      "executionTimeMs": 32,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:44.904Z"
+    },
+    {
+      "tool": "get_events",
+      "index": 7,
+      "status": "PASS",
+      "executionTimeMs": 5,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:44.911Z"
+    },
+    {
+      "tool": "get_events_around",
+      "index": 8,
+      "status": "PASS",
+      "executionTimeMs": 34,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:44.948Z"
+    },
+    {
+      "tool": "get_dom_state",
+      "index": 9,
+      "status": "PASS",
+      "executionTimeMs": 33,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:44.984Z"
+    },
+    {
+      "tool": "get_dom_node",
+      "index": 10,
+      "status": "PASS",
+      "executionTimeMs": 34,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:45.021Z"
+    },
+    {
+      "tool": "get_dom_subtree",
+      "index": 11,
+      "status": "PASS",
+      "executionTimeMs": 33,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:45.056Z"
+    },
+    {
+      "tool": "diff_dom",
+      "index": 12,
+      "status": "PASS",
+      "executionTimeMs": 37,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:45.096Z"
+    },
+    {
+      "tool": "trace_element",
+      "index": 13,
+      "status": "PASS",
+      "executionTimeMs": 32,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:45.131Z"
+    },
+    {
+      "tool": "find_disappearing_elements",
+      "index": 14,
+      "status": "PASS",
+      "executionTimeMs": 37,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:45.169Z"
+    },
+    {
+      "tool": "why_did_element_disappear",
+      "index": 15,
+      "status": "PASS",
+      "executionTimeMs": 137,
+      "assertionsPassed": 3,
+      "assertionsTotal": 3,
+      "timestamp": "2026-09-01T14:11:45.309Z"
+    },
+    {
+      "tool": "get_diagnostics",
+      "index": 16,
+      "status": "PASS",
+      "executionTimeMs": 34,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:45.368Z"
+    },
+    {
+      "tool": "get_network_events",
+      "index": 17,
+      "status": "PASS",
+      "executionTimeMs": 36,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:45.406Z"
+    },
+    {
+      "tool": "get_screenshots",
+      "index": 18,
+      "status": "PASS",
+      "executionTimeMs": 32,
+      "assertionsPassed": 3,
+      "assertionsTotal": 3,
+      "timestamp": "2026-09-01T14:11:45.441Z"
+    },
+    {
+      "tool": "annotate_session",
+      "index": 19,
+      "status": "PASS",
+      "executionTimeMs": 12,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:45.455Z"
+    },
+    {
+      "tool": "get_annotations",
+      "index": 20,
+      "status": "PASS",
+      "executionTimeMs": 25,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:45.482Z"
+    },
+    {
+      "tool": "get_recording_health",
+      "index": 21,
+      "status": "PASS",
+      "executionTimeMs": 33,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:45.522Z"
+    },
+    {
+      "tool": "inspect_live_page",
+      "index": 22,
+      "status": "PASS",
+      "executionTimeMs": 12,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:45.536Z"
+    },
+    {
+      "tool": "inspect_live_element",
+      "index": 23,
+      "status": "PASS",
+      "executionTimeMs": 100,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:45.637Z"
+    },
+    {
+      "tool": "get_selected_element",
+      "index": 24,
+      "status": "PASS",
+      "executionTimeMs": 3,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:45.642Z"
+    },
+    {
+      "tool": "start_element_picker",
+      "index": 25,
+      "status": "PASS",
+      "executionTimeMs": 19,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:45.663Z"
+    },
+    {
+      "tool": "stop_element_picker",
+      "index": 26,
+      "status": "PASS",
+      "executionTimeMs": 6,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:45.671Z"
+    },
+    {
+      "tool": "capture_page_screenshot",
+      "index": 27,
+      "status": "PASS",
+      "executionTimeMs": 384,
+      "assertionsPassed": 4,
+      "assertionsTotal": 4,
+      "timestamp": "2026-09-01T14:11:46.057Z"
+    },
+    {
+      "tool": "capture_element_screenshot",
+      "index": 28,
+      "status": "PASS",
+      "executionTimeMs": 28,
+      "assertionsPassed": 4,
+      "assertionsTotal": 4,
+      "timestamp": "2026-09-01T14:11:46.100Z"
+    },
+    {
+      "tool": "interact_with_element",
+      "index": 29,
+      "status": "PASS",
+      "executionTimeMs": 333,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:46.436Z"
+    },
+    {
+      "tool": "start_element_observation",
+      "index": 30,
+      "status": "PASS",
+      "executionTimeMs": 20,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:46.458Z"
+    },
+    {
+      "tool": "stop_element_observation",
+      "index": 31,
+      "status": "PASS",
+      "executionTimeMs": 7,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:46.466Z"
+    },
+    {
+      "tool": "get_live_dom_snapshot",
+      "index": 32,
+      "status": "PASS",
+      "executionTimeMs": 4,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:46.471Z"
+    },
+    {
+      "tool": "get_live_dom_subtree",
+      "index": 33,
+      "status": "PASS",
+      "executionTimeMs": 10,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:46.483Z"
+    },
+    {
+      "tool": "get_element_visual_state",
+      "index": 34,
+      "status": "PASS",
+      "executionTimeMs": 8,
+      "assertionsPassed": 2,
+      "assertionsTotal": 2,
+      "timestamp": "2026-09-01T14:11:46.493Z"
+    }
+  ]
+}

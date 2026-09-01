@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Injected UI Extension Debugging Fixture</title>
+  <style>
+    body { font-family: monospace; background: #020617; color: #e2e8f0; padding: 20px; }
+    .sidebar { width: 280px; background: #0f172a; border: 1px solid #1e293b; padding: 12px; border-radius: 6px; }
+    .injected-ai-btn { background: #10b981; color: #020617; font-weight: bold; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; }
+    .host-panel { background: #1e293b; padding: 16px; border-radius: 6px; margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <div id="app-root">
+    <h1>Host Application Dashboard</h1>
+    <div id="host-sidebar" class="sidebar">
+      <h3>Host Navigation</h3>
+      <p>Menu items...</p>
+      <!-- Simulated Extension Injected Widget -->
+      <div id="injected-container" style="margin-top: 10px;">
+        <button id="injected-ai-btn" class="injected-ai-btn" data-extension-injected="true">🤖 AI Copilot Action</button>
+      </div>
+    </div>
+    <div id="host-main" class="host-panel">
+      <h2>Main Content Feed</h2>
+      <p id="feed-status">Awaiting network refresh...</p>
+    </div>
+  </div>
+</body>
+</html>

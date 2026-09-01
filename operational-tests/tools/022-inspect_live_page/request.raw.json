@@ -1,0 +1,9 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_022_inspect_live_page",
+  "method": "tools/call",
+  "params": {
+    "name": "inspect_live_page",
+    "arguments": {}
+  }
+}

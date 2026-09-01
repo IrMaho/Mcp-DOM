@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MCP Operational Acceptance DOM Fixture</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #0f172a; color: #f8fafc; }
+    .card { background: #1e293b; border-radius: 8px; padding: 16px; margin-bottom: 16px; border: 1px solid #334155; }
+    .btn { background: #38bdf8; color: #0f172a; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+    .btn:hover { background: #0ea5e9; }
+    .input-field { background: #0f172a; border: 1px solid #475569; color: #f8fafc; padding: 8px; border-radius: 4px; width: 240px; }
+    .badge { background: #6366f1; color: white; padding: 2px 8px; border-radius: 9999px; font-size: 12px; }
+    .hidden-state { display: none; }
+    #scroll-box { height: 120px; width: 300px; overflow-y: scroll; background: #0f172a; border: 1px solid #334155; padding: 8px; }
+  </style>
+</head>
+<body>
+  <header id="fixture-header" class="card">
+    <h1 id="main-title">Operational DOM Test Fixture</h1>
+    <p id="sub-title">Deterministic test harness for live & historical MCP capabilities</p>
+    <span id="header-badge" class="badge">ACTIVE_VERSION_2.0</span>
+  </header>
+
+  <main id="main-content" class="card">
+    <section id="interactive-section">
+      <h2>Interactive Form Controls</h2>
+      <div style="margin-bottom: 12px;">
+        <label for="search-input">Search Input: </label>
+        <input id="search-input" class="input-field" type="text" placeholder="Type here..." value="initial query" />
+      </div>
+
+      <div style="margin-bottom: 12px;">
+        <button id="primary-action-btn" class="btn" data-testid="action-button">⚡ Run Analysis</button>
+        <span id="click-counter" style="margin-left: 10px;">Clicks: 0</span>
+      </div>
+
+      <div style="margin-bottom: 12px;">
+        <label for="category-select">Category: </label>
+        <select id="category-select" class="input-field">
+          <option value="opt-default">Default Option</option>
+          <option value="opt-security">Security Analysis</option>
+          <option value="opt-performance">Performance Trace</option>
+        </select>
+      </div>
+
+      <div style="margin-bottom: 12px;">
+        <label><input type="checkbox" id="feature-toggle" /> Enable Deep Scanning</label>
+      </div>
+
+      <div id="scroll-box">
+        <p>Scrollable item 1</p>
+        <p>Scrollable item 2</p>
+        <p>Scrollable item 3</p>
+        <p>Scrollable item 4</p>
+        <p id="scroll-target">🎯 Deep Target Element</p>
+        <p>Scrollable item 6</p>
+      </div>
+    </section>
+
+    <section id="mutation-target-container" class="card" style="margin-top: 16px;">
+      <h2>Dynamic Mutation Sandbox</h2>
+      <div id="dynamic-wrapper">
+        <p id="dynamic-text">Original Static Text Content</p>
+        <div id="removable-card" class="card" style="background: #334155;">
+          <span id="removable-label">This element can be unmounted or restyled</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="fixture-footer" style="margin-top: 24px; text-align: center; color: #64748b;">
+    <p>Forensic MCP Operational Test Suite — Browser Environment</p>
+  </footer>
+</body>
+</html>

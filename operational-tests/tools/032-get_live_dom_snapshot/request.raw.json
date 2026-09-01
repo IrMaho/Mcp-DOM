@@ -1,0 +1,11 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_032_get_live_dom_snapshot",
+  "method": "tools/call",
+  "params": {
+    "name": "get_live_dom_snapshot",
+    "arguments": {
+      "format": "html"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "assertion": "JSON-RPC 2.0 Stdio Status Code & Envelope",
+    "passed": true,
+    "details": "Successful JSON-RPC 2.0 resolution across stdio pipe"
+  },
+  {
+    "assertion": "Lists visual checkpoint records for session",
+    "passed": true,
+    "details": "sessionId, totalScreenshots, screenshots"
+  },
+  {
+    "assertion": "Returns screenshots list",
+    "passed": true,
+    "details": "Total screenshots: 0"
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "annotation": {
+    "id": "ann_1788271905443_uqlu",
+    "sessionId": "operational_acceptance_session_001",
+    "timestamp": 0,
+    "author": "AGENT",
+    "label": "Root Cause Confirmed",
+    "comment": "Host framework unmounted #host-sidebar after network update",
+    "category": "ROOT_CAUSE",
+    "createdAt": 1788271905443
+  }
+}

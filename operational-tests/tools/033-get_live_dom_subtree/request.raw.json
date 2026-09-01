@@ -1,0 +1,11 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_033_get_live_dom_subtree",
+  "method": "tools/call",
+  "params": {
+    "name": "get_live_dom_subtree",
+    "arguments": {
+      "selector": "#interactive-section"
+    }
+  }
+}

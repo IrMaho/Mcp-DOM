@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_010_get_dom_node",
+  "method": "tools/call",
+  "params": {
+    "name": "get_dom_node",
+    "arguments": {
+      "sessionId": "operational_acceptance_session_001",
+      "nodeId": 4,
+      "timestamp": 50
+    }
+  }
+}

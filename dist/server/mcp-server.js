@@ -1,5 +1,5 @@
 import * as readline from "readline";
-import { F as FileStorageProvider, M as MCPToolsHandler } from "./assets/tools-handler-CJ_AUmS1.js";
+import { F as FileStorageProvider, M as MCPToolsHandler } from "./assets/tools-handler-B8Guvwia.js";
 import "fs";
 import "path";
 const FORENSIC_MCP_TOOLS = [
@@ -506,10 +506,14 @@ class ForensicMCPServer {
     name: "browser-forensic-mcp",
     version: "2.0.0"
   };
-  constructor(storage) {
-    this.storage = storage || new FileStorageProvider("./.forensic_sessions");
-    this.toolsHandler = new MCPToolsHandler(this.storage);
+  constructor(storage, liveToolsHandler) {
+    const storageDir = process.env.FORENSIC_STORAGE_DIR || "./.forensic_sessions";
+    this.storage = storage || new FileStorageProvider(storageDir);
+    this.toolsHandler = new MCPToolsHandler(this.storage, liveToolsHandler);
     this.resourcesHandler = new MCPResourcesHandler(this.storage);
+  }
+  getToolsHandler() {
+    return this.toolsHandler;
   }
   async handleRequest(request) {
     const { method, params, id } = request;
@@ -651,5 +655,6 @@ class ForensicMCPServer {
 export {
   FORENSIC_MCP_TOOLS,
   FileStorageProvider,
-  ForensicMCPServer
+  ForensicMCPServer,
+  MCPToolsHandler
 };

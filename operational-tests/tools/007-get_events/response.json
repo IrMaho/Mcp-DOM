@@ -1,0 +1,292 @@
+{
+  "sessionId": "operational_acceptance_session_001",
+  "returnedEvents": 20,
+  "events": [
+    {
+      "id": "evt_op_001",
+      "sequence": 2,
+      "timestamp": 50,
+      "type": "DOM_MUTATION_ADD",
+      "category": "DOM",
+      "targetNodeId": 10,
+      "targetSelector": "#injected-action-btn",
+      "payload": {
+        "node": {
+          "id": 10,
+          "nodeType": 1,
+          "tagName": "button",
+          "attributes": {
+            "class": "btn btn-primary",
+            "id": "injected-action-btn"
+          },
+          "textContent": "⚡ Run Analysis",
+          "children": [],
+          "parentId": 4
+        },
+        "parentId": 4,
+        "index": 0
+      }
+    },
+    {
+      "id": "evt_op_002",
+      "sequence": 3,
+      "timestamp": 100,
+      "type": "USER_CLICK",
+      "category": "USER",
+      "targetNodeId": 10,
+      "targetSelector": "#injected-action-btn",
+      "payload": {
+        "x": 120,
+        "y": 45,
+        "button": 0
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sequence": 4,
+      "timestamp": 150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sequence": 5,
+      "timestamp": 200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sequence": 6,
+      "timestamp": 280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sequence": 7,
+      "timestamp": 320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_007",
+      "sequence": 8,
+      "timestamp": 380,
+      "type": "DOM_MUTATION_REMOVE",
+      "category": "DOM",
+      "targetNodeId": 4,
+      "targetSelector": "#host-sidebar",
+      "payload": {
+        "nodeId": 4,
+        "parentId": 3,
+        "index": 0,
+        "removedSubtreeNodeCount": 2
+      }
+    },
+    {
+      "id": "evt_op_008",
+      "sequence": 9,
+      "timestamp": 450,
+      "type": "SCREENSHOT_CHECKPOINT",
+      "category": "VISUAL",
+      "payload": {
+        "screenshotId": "scr_op_chk_1",
+        "dataUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+      }
+    },
+    {
+      "id": "evt_op_001",
+      "sequence": 2,
+      "timestamp": 50,
+      "type": "DOM_MUTATION_ADD",
+      "category": "DOM",
+      "targetNodeId": 10,
+      "targetSelector": "#injected-action-btn",
+      "payload": {
+        "node": {
+          "id": 10,
+          "nodeType": 1,
+          "tagName": "button",
+          "attributes": {
+            "class": "btn btn-primary",
+            "id": "injected-action-btn"
+          },
+          "textContent": "⚡ Run Analysis",
+          "children": [],
+          "parentId": 4
+        },
+        "parentId": 4,
+        "index": 0
+      }
+    },
+    {
+      "id": "evt_op_002",
+      "sequence": 3,
+      "timestamp": 100,
+      "type": "USER_CLICK",
+      "category": "USER",
+      "targetNodeId": 10,
+      "targetSelector": "#injected-action-btn",
+      "payload": {
+        "x": 120,
+        "y": 45,
+        "button": 0
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sequence": 4,
+      "timestamp": 150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sequence": 5,
+      "timestamp": 200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "evt_op_005",
+      "sequence": 6,
+      "timestamp": 280,
+      "type": "NETWORK_RESPONSE_COMPLETE",
+      "category": "NETWORK",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "status": 200,
+        "durationMs": 80
+      }
+    },
+    {
+      "id": "evt_op_006",
+      "sequence": 7,
+      "timestamp": 320,
+      "type": "RUNTIME_ERROR",
+      "category": "ERROR",
+      "payload": {
+        "message": "Uncaught TypeError: Cannot read properties of undefined",
+        "stack": "TypeError at dashboard.js:42:12"
+      }
+    },
+    {
+      "id": "evt_op_007",
+      "sequence": 8,
+      "timestamp": 380,
+      "type": "DOM_MUTATION_REMOVE",
+      "category": "DOM",
+      "targetNodeId": 4,
+      "targetSelector": "#host-sidebar",
+      "payload": {
+        "nodeId": 4,
+        "parentId": 3,
+        "index": 0,
+        "removedSubtreeNodeCount": 2
+      }
+    },
+    {
+      "id": "evt_op_008",
+      "sequence": 9,
+      "timestamp": 450,
+      "type": "SCREENSHOT_CHECKPOINT",
+      "category": "VISUAL",
+      "payload": {
+        "screenshotId": "scr_op_chk_1",
+        "dataUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+      }
+    },
+    {
+      "id": "evt_op_001",
+      "sequence": 2,
+      "timestamp": 50,
+      "type": "DOM_MUTATION_ADD",
+      "category": "DOM",
+      "targetNodeId": 10,
+      "targetSelector": "#injected-action-btn",
+      "payload": {
+        "node": {
+          "id": 10,
+          "nodeType": 1,
+          "tagName": "button",
+          "attributes": {
+            "class": "btn btn-primary",
+            "id": "injected-action-btn"
+          },
+          "textContent": "⚡ Run Analysis",
+          "children": [],
+          "parentId": 4
+        },
+        "parentId": 4,
+        "index": 0
+      }
+    },
+    {
+      "id": "evt_op_002",
+      "sequence": 3,
+      "timestamp": 100,
+      "type": "USER_CLICK",
+      "category": "USER",
+      "targetNodeId": 10,
+      "targetSelector": "#injected-action-btn",
+      "payload": {
+        "x": 120,
+        "y": 45,
+        "button": 0
+      }
+    },
+    {
+      "id": "evt_op_003",
+      "sequence": 4,
+      "timestamp": 150,
+      "type": "CONSOLE_LOG",
+      "category": "CONSOLE",
+      "payload": {
+        "level": "log",
+        "message": "Analysis requested for active dashboard context"
+      }
+    },
+    {
+      "id": "evt_op_004",
+      "sequence": 5,
+      "timestamp": 200,
+      "type": "NETWORK_REQUEST_START",
+      "category": "NETWORK",
+      "payload": {
+        "requestId": "req_op_99",
+        "url": "https://api.internal/v1/analyze",
+        "method": "POST"
+      }
+    }
+  ]
+}

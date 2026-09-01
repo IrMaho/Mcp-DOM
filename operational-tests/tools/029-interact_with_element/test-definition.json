@@ -1,0 +1,76 @@
+{
+  "tool": "interact_with_element",
+  "category": "live_browser_control",
+  "executionMode": "live",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "action": {
+        "type": "string",
+        "enum": [
+          "click",
+          "double_click",
+          "right_click",
+          "hover",
+          "focus",
+          "blur",
+          "type",
+          "clear",
+          "press_key",
+          "select_option",
+          "scroll_into_view",
+          "scroll"
+        ],
+        "description": "The user action to perform"
+      },
+      "selector": {
+        "type": "string",
+        "description": "CSS selector of the target element"
+      },
+      "nodeId": {
+        "type": "number",
+        "description": "LogicalNodeId of the target element"
+      },
+      "selectedElementRef": {
+        "type": "string",
+        "description": "Selected element reference token"
+      },
+      "text": {
+        "type": "string",
+        "description": "Text string for type action"
+      },
+      "key": {
+        "type": "string",
+        "description": "Key name for press_key action (e.g. Enter, Escape, Tab, ArrowDown)"
+      },
+      "optionValue": {
+        "type": "string",
+        "description": "Value or label for select_option action"
+      },
+      "scrollDelta": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number"
+          },
+          "y": {
+            "type": "number"
+          }
+        },
+        "description": "Scroll deltas for scroll action"
+      },
+      "waitForStabilization": {
+        "type": "boolean",
+        "description": "Wait for DOM and network stabilization after interaction (default: true)"
+      },
+      "stabilizationTimeoutMs": {
+        "type": "number",
+        "description": "Max wait time in milliseconds (default: 300ms)"
+      }
+    },
+    "required": [
+      "action"
+    ]
+  },
+  "expectedBehavior": "Types text into input and measures immediate effects"
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "assertion": "JSON-RPC 2.0 Stdio Status Code & Envelope",
+    "passed": true,
+    "details": "Successful JSON-RPC 2.0 resolution across stdio pipe"
+  },
+  {
+    "assertion": "Captures element-bounded screenshot cropped to geometry",
+    "passed": true,
+    "details": "screenshotId, timestamp, url, viewport, targetSelector, targetBounds, dataUrl, imageFormat, dimensions, captureType"
+  },
+  {
+    "assertion": "Valid Image DataUrl Generated",
+    "passed": true,
+    "details": "Format: png, ID: scr_1788271906072_u5j8"
+  },
+  {
+    "assertion": "Verified 100% Valid Viewable PNG Binary Output",
+    "passed": true,
+    "details": "PNG Size: 28928 bytes, Header Verified (PNG)"
+  }
+]

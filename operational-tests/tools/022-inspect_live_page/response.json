@@ -1,0 +1,24 @@
+{
+  "url": "https://app.internal/dashboard",
+  "title": "MCP Operational Acceptance DOM Fixture",
+  "origin": "https://app.internal",
+  "viewport": {
+    "width": 1024,
+    "height": 768,
+    "scrollX": 0,
+    "scrollY": 0,
+    "devicePixelRatio": 1
+  },
+  "documentDimensions": {
+    "width": 0,
+    "height": 0
+  },
+  "activeElement": {
+    "tag": "body",
+    "selector": "body",
+    "text": "Operational DOM Test Fixture\n    Deterministic test harness for live & historical MCP capabi"
+  },
+  "visibilityState": "visible",
+  "readyState": "complete",
+  "framesCount": 0
+}

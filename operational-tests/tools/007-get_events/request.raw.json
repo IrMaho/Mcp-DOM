@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_007_get_events",
+  "method": "tools/call",
+  "params": {
+    "name": "get_events",
+    "arguments": {
+      "sessionId": "operational_acceptance_session_001",
+      "limit": 20
+    }
+  }
+}

@@ -81,11 +81,7 @@ export class LiveToolsHandler {
 
   private async dispatch(command: BrowserCommandType, payload?: any): Promise<any> {
     if (this.bridgeClient) {
-      try {
-        return await this.bridgeClient.sendCommand(command, payload);
-      } catch {
-        // Fall back to local controller
-      }
+      return await this.bridgeClient.sendCommand(command, payload);
     }
     const req = {
       id: `cmd_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,

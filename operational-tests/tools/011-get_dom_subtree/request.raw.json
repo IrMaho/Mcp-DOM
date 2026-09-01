@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": "op_req_011_get_dom_subtree",
+  "method": "tools/call",
+  "params": {
+    "name": "get_dom_subtree",
+    "arguments": {
+      "sessionId": "operational_acceptance_session_001",
+      "selector": "#host-sidebar",
+      "timestamp": 100
+    }
+  }
+}
